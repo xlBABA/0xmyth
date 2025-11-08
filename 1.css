@@ -24,7 +24,10 @@
             
         }
 
-
+* {
+            background-color: black;
+            color: blue;
+}
         .body {
   font-family: "Bitcount Grid Single", system-ui;
   font-optical-sizing: auto;
@@ -35,4 +38,5 @@
     "CRSV" 0.5,
     "ELSH" 0,
     "ELXP" 0;
+                    
 }

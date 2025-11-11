@@ -1,0 +1,38 @@
+:root {
+  --header-height: 80px; /* غيّر الرقم حسب ارتفاع الهيدر */
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  transition: all 1.5s ease-in-out;
+}
+
+
+
+
+
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: var(--header-height);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: purple;
+  padding: 0 50px;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  z-index: 1000;
+  background-color: #CFCFCF;
+}
+
+/* بدل margin-top الثابت */
+section {
+  padding-top: 200px;
+  padding-bottom: 20px;
+  padding-left:20px;
+  color: red;
+  background-color: black;
+}

@@ -21,18 +21,66 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
-  color: purple;
+  color: #00FFFF;
   padding: 0 50px;
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   z-index: 1000;
-  background-color: #CFCFCF;
+  background-color: #474545;
+}
+.navbar h1{
+    font-family: 'JetBrains Mono', monospace;
 }
 
 /* بدل margin-top الثابت */
-section {
+.sec1 {
   padding-top: 200px;
   padding-bottom: 20px;
   padding-left:20px;
-  color: red;
-  background-color: black;
+  gap: 30px;    
+  justify-items: center;
+  align-items: center;
+  display: flex;
+  color: #E0E0E0;
+  background-color: #0D0D0D;
+  
+}
+.sec1-img {
+    width: 300px;
+    border-radius: 20px;
+}
+ .sec1-txt {
+  display: flex;
+  flex-direction: column;   /* يخلي WHOAMI فوق والنص تحته */
+  justify-content: center;  /* يخلي النصوص بالنص رأسيًا */
+  text-align: left;         /* النص يبدأ من اليسار */
+  max-width: 500px;         /* يمنع النص من التمدد */
+}   
+
+.sec1-txt p {
+    color: #E0E0E0;
+    line-height: 1.5;
+    margin-top: 10px;
+    font-family: 'Poppins',sans-serif;
+    
+
+}
+.sec1-txt h2 {
+  color: #00FFFF;
+  font-family: 'JetBrains Mono', monospace;
+  margin-bottom: 25px;
+  
+}
+
+
+
+.find {
+    background-color:  #11155C;
+    color: #E0E0E0;
+}
+.find h2 {
+    margin-bottom: 20px;
+    margin-left: 30px;
+    padding: 10px;
+    
+    font-family: 'JetBrains Mono', monospace;
 }

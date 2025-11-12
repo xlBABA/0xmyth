@@ -10,8 +10,6 @@
 
 
 
-
-
 .navbar {
   position: fixed;
   top: 0;
@@ -26,10 +24,17 @@
   box-shadow: 0 2px 10px rgba(0,0,0,0.3);
   z-index: 1000;
   background-color: #474545;
+  background-color: #02020a;
+  background-color: #02020a;
+background-image: url("https://www.transparenttextures.com/patterns/black-felt.png");
 }
 .navbar h1{
     font-family: 'JetBrains Mono', monospace;
 }
+
+
+
+
 
 /* بدل margin-top الثابت */
 .sec1 {
@@ -42,8 +47,12 @@
   display: flex;
   color: #E0E0E0;
   background-color: #0D0D0D;
-  
+  background-color: #02060d;
+background-image: url("https://www.transparenttextures.com/patterns/dark-circles.png");
 }
+
+
+
 .sec1-img {
     width: 300px;
     border-radius: 20px;
@@ -76,11 +85,11 @@
 .find {
     background-color:  #11155C;
     color: #E0E0E0;
+    height: 600px;
 }
 .find h2 {
     margin-bottom: 20px;
     margin-left: 30px;
     padding: 10px;
-    
     font-family: 'JetBrains Mono', monospace;
 }

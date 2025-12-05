@@ -1,0 +1,72 @@
+* {
+    background-color: beige;
+}
+
+
+
+.fuck {
+    padding : 20px;
+    color : purple;
+
+}
+
+.leb{
+    
+    display: flex;  /*   هذا اللي يخلي الحاويه مرنه ويستقبل التوسيط وغيرها م يضر*/
+    justify-content: center; /*  هذا اللي خلها بالنص افقيا مفيد */
+    padding-top: 200px;
+    font-size: 130px;
+    color: blueviolet;
+    font-family: Helvetica;
+
+}
+
+#btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 5px;
+}
+
+.btn {
+    padding: 10px 20px;
+    font-size: 1.5em;
+    color:rgb(56, 56, 80);
+    background-color: rgb(216, 159, 233);
+    font-family: 'Courier New', Courier, monospace;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.925s;
+
+
+}
+
+.btn:hover {
+    background-color: rgb(148, 16, 189);;
+}
+
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.5em;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    color: rgb(51, 36, 36);
+
+
+}
+
+.text2 {
+    margin-top: 200px;
+    font-size: 3em;
+    
+}
+
+

@@ -79,7 +79,7 @@
     font-size: 2em;
 }
 
-@media (max-width: 10px) {
+@media (max-width: 600px) {
  
     .text2 {
     margin-top: 110px;
@@ -116,3 +116,4 @@
     font-size: 0.9em;
 }
 }               
+

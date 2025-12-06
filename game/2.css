@@ -1,5 +1,6 @@
 * {
     background-color: beige;
+    touch-action: manipulation;
 }
 
 
@@ -53,14 +54,17 @@
 }
 
 .header {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2.5em;
-    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-    color: rgb(51, 36, 36);
-
-
+    display: flex;             /* لجعل العناصر داخل الهيدر تكون مرتبة بشكل عمودي */
+    justify-content: center;   /* لضمان أن النص في وسط الصفحة أفقياً */
+    align-items: center;       /* لضمان أن النص في وسط الصفحة عمودياً */
+    font-size: 2.5em;          /* حجم الخط ليكون واضحًا وبارزًا */
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;  /* الخط المستخدم */
+    color: #333;               /* اللون الداكن للنص ليكون أوضح */
+    text-align: center;        /* محاذاة النص بشكل مركزي */
+    padding: 20px;             /* إضافة بعض التباعد من حول النص */
+    margin: 0;                 /* التأكد من عدم وجود أي مسافة غير مرغوب فيها حول الهيدر */
+    height: 100px;             /* تحديد ارتفاع الهيدر للتأكد من تنسيقه بشكل صحيح */
+    box-sizing: border-box;    /* التأكد من أن التباعد padding داخل الحجم المحدد */
 }
 
 .text2 {
@@ -69,4 +73,46 @@
     
 }
 
+#lab2{
+    color: brown;
+    font-family: Helvetica;
+    font-size: 2em;
+}
 
+@media (max-width: 10px) {
+ 
+    .text2 {
+    margin-top: 110px;
+    font-size: 1.7em;
+    
+}
+.leb{
+    
+    display: flex;  /*   هذا اللي يخلي الحاويه مرنه ويستقبل التوسيط وغيرها م يضر*/
+    justify-content: center; /*  هذا اللي خلها بالنص افقيا مفيد */
+    padding-top: 50px;
+    font-size: 100px;
+    color: blueviolet;
+    font-family: Helvetica;
+
+}
+.header {
+    display: flex;             /* لجعل العناصر داخل الهيدر تكون مرتبة بشكل عمودي */
+    justify-content: center;   /* لضمان أن النص في وسط الصفحة أفقياً */
+    align-items: center;       /* لضمان أن النص في وسط الصفحة عمودياً */
+    font-size: 1.8em;          /* حجم الخط ليكون واضحًا وبارزًا */
+    font-family: 'Franklin Gothic Medium', Arial, sans-serif;  /* الخط المستخدم */
+    color: #333;               /* اللون الداكن للنص ليكون أوضح */
+    text-align: center;        /* محاذاة النص بشكل مركزي */
+     padding: 15px;             /* إضافة بعض التباعد من حول النص */
+    margin: 0;                 /* التأكد من عدم وجود أي مسافة غير مرغوب فيها حول الهيدر */
+    height: 100px;             /* تحديد ارتفاع الهيدر للتأكد من تنسيقه بشكل صحيح */
+    box-sizing: border-box;    /* التأكد من أن التباعد padding داخل الحجم المحدد */
+}
+.text {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9em;
+}
+}               

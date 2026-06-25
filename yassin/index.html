@@ -1,0 +1,2129 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>نظام إدارة تأجير السيارات</title>
+<style>
+:root{
+  --sidebar-bg:#1a2436;
+  --sidebar-bg-light:#22304a;
+  --primary:#2563eb;
+  --primary-dark:#1d4ed8;
+  --success:#16a34a;
+  --success-bg:#dcfce7;
+  --danger:#dc2626;
+  --danger-bg:#fee2e2;
+  --warning:#f59e0b;
+  --warning-bg:#fef3c7;
+  --bg:#f1f4f9;
+  --card-bg:#ffffff;
+  --text:#1f2937;
+  --text-light:#6b7280;
+  --border:#e5e7eb;
+  --radius:12px;
+}
+*{box-sizing:border-box;margin:0;padding:0;}
+body{
+  font-family:'Segoe UI', Tahoma, Arial, sans-serif;
+  background:var(--bg);
+  color:var(--text);
+  display:flex;
+  min-height:100vh;
+}
+/* ===== Sidebar ===== */
+.sidebar{
+  width:230px;
+  background:var(--sidebar-bg);
+  color:#cbd5e1;
+  display:flex;
+  flex-direction:column;
+  flex-shrink:0;
+  position:fixed;
+  top:0;right:0;bottom:0;
+  z-index:100;
+  transition:transform .25s ease;
+}
+.sidebar .brand{
+  padding:22px 18px;
+  font-size:18px;
+  font-weight:700;
+  color:#fff;
+  border-bottom:1px solid rgba(255,255,255,.08);
+  display:flex;
+  align-items:center;
+  gap:10px;
+}
+.sidebar .brand .logo-icon{font-size:24px;}
+.nav-list{list-style:none;padding:14px 10px;flex:1;overflow-y:auto;}
+.nav-list li{margin-bottom:4px;}
+.nav-list a{
+  display:flex;
+  align-items:center;
+  gap:12px;
+  padding:11px 14px;
+  border-radius:10px;
+  color:#cbd5e1;
+  text-decoration:none;
+  font-size:14.5px;
+  font-weight:500;
+  cursor:pointer;
+  transition:background .15s, color .15s;
+}
+.nav-list a .nav-icon{font-size:18px;width:22px;text-align:center;}
+.nav-list a:hover{background:var(--sidebar-bg-light);color:#fff;}
+.nav-list a.active{background:var(--primary);color:#fff;}
+.sidebar-footer{
+  padding:14px 18px;
+  font-size:12px;
+  color:#7c8aa3;
+  border-top:1px solid rgba(255,255,255,.08);
+}
+/* ===== Main area ===== */
+.main{
+  margin-right:230px;
+  flex:1;
+  min-width:0;
+  display:flex;
+  flex-direction:column;
+}
+.topbar{
+  background:var(--card-bg);
+  border-bottom:1px solid var(--border);
+  padding:16px 28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  position:sticky;
+  top:0;
+  z-index:50;
+}
+.topbar h1{font-size:20px;font-weight:700;}
+.topbar .topbar-date{font-size:13px;color:var(--text-light);}
+.menu-toggle{
+  display:none;
+  background:var(--sidebar-bg);
+  color:#fff;
+  border:none;
+  border-radius:8px;
+  width:38px;height:38px;
+  font-size:18px;
+  cursor:pointer;
+}
+.content{padding:26px 28px;flex:1;}
+.page{display:none;}
+.page.active{display:block;animation:fadeIn .2s ease;}
+@keyframes fadeIn{from{opacity:0;transform:translateY(6px);}to{opacity:1;transform:translateY(0);}}
+.page-header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-bottom:20px;
+  flex-wrap:wrap;
+  gap:10px;
+}
+.page-header h2{font-size:19px;font-weight:700;}
+/* ===== Buttons ===== */
+.btn{
+  border:none;
+  border-radius:9px;
+  padding:10px 18px;
+  font-size:14px;
+  font-weight:600;
+  cursor:pointer;
+  display:inline-flex;
+  align-items:center;
+  gap:7px;
+  transition:filter .15s, transform .1s;
+}
+.btn:active{transform:scale(.97);}
+.btn-primary{background:var(--primary);color:#fff;}
+.btn-primary:hover{filter:brightness(1.08);}
+.btn-outline{background:#fff;color:var(--text);border:1px solid var(--border);}
+.btn-outline:hover{background:#f8fafc;}
+.btn-danger{background:var(--danger);color:#fff;}
+.btn-danger:hover{filter:brightness(1.08);}
+.btn-sm{padding:6px 10px;font-size:13px;border-radius:7px;}
+.btn-icon{background:transparent;border:none;cursor:pointer;font-size:15px;padding:6px 8px;border-radius:7px;}
+.btn-icon:hover{background:#f1f4f9;}
+/* ===== Cards / Stats ===== */
+.stat-grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:18px;
+  margin-bottom:24px;
+}
+.stat-card{
+  background:var(--card-bg);
+  border-radius:var(--radius);
+  padding:20px;
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+  border:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  gap:16px;
+}
+.stat-card .stat-icon{
+  width:50px;height:50px;
+  border-radius:12px;
+  display:flex;align-items:center;justify-content:center;
+  font-size:24px;
+  flex-shrink:0;
+}
+.stat-card .stat-info .stat-label{font-size:13px;color:var(--text-light);margin-bottom:4px;}
+.stat-card .stat-info .stat-value{font-size:22px;font-weight:700;}
+.stat-blue .stat-icon{background:#dbeafe;color:var(--primary);}
+.stat-green .stat-icon{background:var(--success-bg);color:var(--success);}
+.stat-red .stat-icon{background:var(--danger-bg);color:var(--danger);}
+.stat-purple .stat-icon{background:#ede9fe;color:#7c3aed;}
+.stat-value.positive{color:var(--success);}
+.stat-value.negative{color:var(--danger);}
+.section-title{font-size:15px;font-weight:700;margin:26px 0 12px;}
+/* ===== Alerts / Warning cards ===== */
+.alert-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:14px;}
+.alert-card{
+  background:var(--warning-bg);
+  border:1px solid #fde68a;
+  border-radius:var(--radius);
+  padding:14px 16px;
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+}
+.alert-card.danger{background:var(--danger-bg);border-color:#fecaca;}
+.alert-card .alert-icon{font-size:20px;}
+.alert-card .alert-title{font-weight:700;font-size:14px;margin-bottom:3px;}
+.alert-card .alert-sub{font-size:12.5px;color:var(--text-light);}
+.empty-note{color:var(--text-light);font-size:13.5px;padding:14px 0;}
+/* ===== Table / Card panel ===== */
+.panel{
+  background:var(--card-bg);
+  border-radius:var(--radius);
+  border:1px solid var(--border);
+  box-shadow:0 1px 3px rgba(0,0,0,.06);
+  overflow:hidden;
+}
+.table-wrap{overflow-x:auto;}
+table{width:100%;border-collapse:collapse;font-size:13.5px;}
+thead th{
+  background:#f8fafc;
+  text-align:right;
+  padding:13px 16px;
+  font-weight:700;
+  color:var(--text-light);
+  font-size:12.5px;
+  border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+tbody td{
+  padding:13px 16px;
+  border-bottom:1px solid var(--border);
+  white-space:nowrap;
+}
+tbody tr:last-child td{border-bottom:none;}
+tbody tr:hover{background:#fafbfd;}
+.badge{
+  display:inline-flex;
+  align-items:center;
+  gap:5px;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:700;
+}
+.badge-green{background:var(--success-bg);color:var(--success);}
+.badge-red{background:var(--danger-bg);color:var(--danger);}
+.badge-orange{background:var(--warning-bg);color:var(--warning);}
+.badge-gray{background:#f1f4f9;color:var(--text-light);}
+.row-actions{display:flex;gap:6px;}
+.profit-pos{color:var(--success);font-weight:700;}
+.profit-neg{color:var(--danger);font-weight:700;}
+/* ===== Modal ===== */
+.modal-overlay{
+  position:fixed;inset:0;
+  background:rgba(15,23,42,.55);
+  display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:1000;
+  padding:16px;
+}
+.modal-overlay.open{display:flex;}
+.modal-box{
+  background:#fff;
+  border-radius:var(--radius);
+  width:100%;
+  max-width:480px;
+  max-height:90vh;
+  overflow-y:auto;
+  box-shadow:0 20px 50px rgba(0,0,0,.25);
+  animation:fadeIn .15s ease;
+}
+.modal-head{
+  padding:18px 22px;
+  border-bottom:1px solid var(--border);
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.modal-head h3{font-size:16.5px;font-weight:700;}
+.modal-close{background:none;border:none;font-size:20px;cursor:pointer;color:var(--text-light);line-height:1;}
+.modal-body{padding:20px 22px;}
+.modal-foot{padding:16px 22px;border-top:1px solid var(--border);display:flex;justify-content:flex-start;gap:10px;}
+.form-group{margin-bottom:15px;}
+.form-group label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:var(--text);}
+.form-group input, .form-group select, .form-group textarea{
+  width:100%;
+  padding:10px 12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+  font-size:14px;
+  font-family:inherit;
+  background:#fff;
+  color:var(--text);
+}
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus{
+  outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.12);
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+@media(max-width:520px){.form-row{grid-template-columns:1fr;}}
+/* ===== Toast ===== */
+.toast{
+  position:fixed;
+  bottom:24px;
+  left:24px;
+  background:#1a2436;
+  color:#fff;
+  padding:13px 20px;
+  border-radius:10px;
+  font-size:13.5px;
+  box-shadow:0 8px 24px rgba(0,0,0,.25);
+  z-index:2000;
+  opacity:0;
+  transform:translateY(10px);
+  transition:opacity .25s, transform .25s;
+  pointer-events:none;
+}
+.toast.show{opacity:1;transform:translateY(0);}
+.toast.success{border-right:4px solid var(--success);}
+.toast.error{border-right:4px solid var(--danger);}
+/* ===== Responsive ===== */
+@media(max-width:900px){
+  .sidebar{transform:translateX(100%);}
+  .sidebar.open{transform:translateX(0);}
+  .main{margin-right:0;}
+  .menu-toggle{display:flex;align-items:center;justify-content:center;}
+  .content{padding:18px;}
+  .topbar{padding:14px 18px;}
+}
+.filter-bar{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap;}
+.filter-bar select, .filter-bar input{
+  padding:9px 12px;border:1px solid var(--border);border-radius:8px;font-size:13.5px;font-family:inherit;background:#fff;
+}
+/* ===== New: wide modal / sections ===== */
+.modal-box.modal-wide{max-width:780px;}
+.form-section-title{font-size:13px;font-weight:700;color:var(--primary);margin:20px 0 10px;padding-bottom:6px;border-bottom:1px dashed var(--border);}
+.form-section-title:first-child{margin-top:0;}
+.hidden{display:none !important;}
+/* ===== Toggle group (provider/renter type) ===== */
+.toggle-group{display:flex;gap:10px;margin-bottom:15px;}
+.toggle-group label{
+  flex:1;display:flex;align-items:center;justify-content:center;gap:6px;
+  padding:9px;border:1px solid var(--border);border-radius:8px;cursor:pointer;
+  font-size:13.5px;font-weight:600;color:var(--text-light);transition:.15s;
+}
+.toggle-group label.active{background:var(--primary);color:#fff;border-color:var(--primary);}
+.toggle-group input{display:none;}
+/* ===== Signature pad ===== */
+.sig-pad-wrap{border:1px solid var(--border);border-radius:8px;overflow:hidden;background:#fff;touch-action:none;}
+canvas.sig-pad{width:100%;height:150px;display:block;cursor:crosshair;background:#fcfcfd;}
+.sig-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:8px;}
+.sig-thumb{height:34px;max-width:120px;border:1px solid var(--border);border-radius:4px;background:#fff;object-fit:contain;}
+/* ===== Read-only auto-fill preview ===== */
+.info-preview{background:#f8fafc;border:1px solid var(--border);border-radius:8px;padding:10px 12px;font-size:12.5px;color:var(--text-light);margin-top:-4px;margin-bottom:15px;line-height:1.8;}
+.info-preview b{color:var(--text);}
+</style>
+</head>
+<body>
+
+<aside class="sidebar" id="sidebar">
+  <div class="brand"><span class="logo-icon">🚘</span><span>تأجير السيارات</span></div>
+  <ul class="nav-list">
+    <li><a class="nav-link active" data-page="dashboard"><span class="nav-icon">🏠</span><span>الرئيسية</span></a></li>
+    <li><a class="nav-link" data-page="cars"><span class="nav-icon">🚗</span><span>السيارات</span></a></li>
+    <li><a class="nav-link" data-page="renters"><span class="nav-icon">👥</span><span>المستأجرون</span></a></li>
+    <li><a class="nav-link" data-page="providers"><span class="nav-icon">🏢</span><span>الموردون</span></a></li>
+    <li><a class="nav-link" data-page="contracts"><span class="nav-icon">📄</span><span>العقود</span></a></li>
+    <li><a class="nav-link" data-page="income"><span class="nav-icon">💰</span><span>الدخل</span></a></li>
+    <li><a class="nav-link" data-page="expenses"><span class="nav-icon">💸</span><span>المصروفات</span></a></li>
+    <li><a class="nav-link" data-page="profit"><span class="nav-icon">📊</span><span>الأرباح</span></a></li>
+  </ul>
+  <div class="sidebar-footer">نظام إدارة تأجير السيارات © 2026</div>
+</aside>
+
+<div class="main">
+  <div class="topbar">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <button class="menu-toggle" id="menuToggle">☰</button>
+      <h1 id="pageTitle">الرئيسية</h1>
+    </div>
+    <div class="topbar-date" id="topbarDate"></div>
+  </div>
+
+  <div class="content">
+
+    <!-- ===================== DASHBOARD ===================== -->
+    <section class="page active" id="page-dashboard">
+      <div class="stat-grid" id="dashStats"></div>
+      <div class="section-title">⚠️ عقود تنتهي خلال 30 يوم</div>
+      <div class="alert-grid" id="dashExpiring"></div>
+    </section>
+
+    <!-- ===================== CARS ===================== -->
+    <section class="page" id="page-cars">
+      <div class="page-header">
+        <h2>السيارات</h2>
+        <button class="btn btn-primary" id="addCarBtn">+ إضافة سيارة</button>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>رقم اللوحة</th><th>الماركة</th><th>الموديل</th><th>السنة</th><th>رقم الهيكل</th><th>اللون</th><th>الحالة</th><th>إجراءات</th>
+            </tr></thead>
+            <tbody id="carsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== RENTERS ===================== -->
+    <section class="page" id="page-renters">
+      <div class="page-header">
+        <h2>المستأجرون</h2>
+        <button class="btn btn-primary" id="addRenterBtn">+ إضافة مستأجر</button>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>الاسم</th><th>النوع</th><th>الجوال</th><th>رقم الهوية</th><th>ملاحظات</th><th>إجراءات</th>
+            </tr></thead>
+            <tbody id="rentersTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROVIDERS ===================== -->
+    <section class="page" id="page-providers">
+      <div class="page-header">
+        <h2>الموردون</h2>
+        <button class="btn btn-primary" id="addProviderBtn">+ إضافة مورد</button>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>الاسم</th><th>النوع</th><th>رقم الهوية/السجل</th><th>الجوال</th><th>البريد الإلكتروني</th><th>التوقيع</th><th>إجراءات</th>
+            </tr></thead>
+            <tbody id="providersTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== CONTRACTS ===================== -->
+    <section class="page" id="page-contracts">
+      <div class="page-header">
+        <h2>العقود</h2>
+        <button class="btn btn-primary" id="addContractBtn">+ إضافة عقد</button>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>السيارة</th><th>المستأجر</th><th>المورد</th><th>تاريخ البداية</th><th>تاريخ النهاية</th><th>نوع الدفع</th><th>المبلغ</th><th>الحالة</th><th>إجراءات</th>
+            </tr></thead>
+            <tbody id="contractsTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== INCOME ===================== -->
+    <section class="page" id="page-income">
+      <div class="page-header">
+        <h2>الدخل</h2>
+        <button class="btn btn-primary" id="addIncomeBtn">+ إضافة دخل</button>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>السيارة</th><th>المبلغ</th><th>التاريخ</th><th>ملاحظات</th><th>إجراءات</th>
+            </tr></thead>
+            <tbody id="incomeTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== EXPENSES ===================== -->
+    <section class="page" id="page-expenses">
+      <div class="page-header">
+        <h2>المصروفات</h2>
+        <button class="btn btn-primary" id="addExpenseBtn">+ إضافة مصروف</button>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>السيارة</th><th>نوع المصروف</th><th>المبلغ</th><th>التاريخ</th><th>ملاحظات</th><th>إجراءات</th>
+            </tr></thead>
+            <tbody id="expensesTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===================== PROFIT ===================== -->
+    <section class="page" id="page-profit">
+      <div class="page-header">
+        <h2>الأرباح حسب السيارة</h2>
+      </div>
+      <div class="panel">
+        <div class="table-wrap">
+          <table>
+            <thead><tr>
+              <th>السيارة</th><th>إجمالي الدخل</th><th>إجمالي المصروفات</th><th>صافي الربح</th>
+            </tr></thead>
+            <tbody id="profitTableBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+  </div>
+</div>
+
+<!-- ===================== MODALS ===================== -->
+
+<!-- Car Modal -->
+<div class="modal-overlay" id="carModalOverlay">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="carModalTitle">إضافة سيارة</h3><button class="modal-close" data-close="carModalOverlay">×</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="carId">
+      <div class="form-row">
+        <div class="form-group"><label>رقم اللوحة</label><input type="text" id="carPlate"></div>
+        <div class="form-group"><label>الماركة</label><input type="text" id="carMake"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>الموديل</label><input type="text" id="carModel"></div>
+        <div class="form-group"><label>السنة</label><input type="number" id="carYear" min="1980" max="2100"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>رقم الهيكل</label><input type="text" id="carChassis"></div>
+        <div class="form-group"><label>اللون</label><input type="text" id="carColor"></div>
+      </div>
+      <div class="form-group"><label>الحالة</label>
+        <select id="carStatus"><option value="متاحة">متاحة</option><option value="مؤجرة">مؤجرة</option></select>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="saveCarBtn">حفظ</button>
+      <button class="btn btn-outline" data-close="carModalOverlay">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Renter Modal -->
+<div class="modal-overlay" id="renterModalOverlay">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="renterModalTitle">إضافة مستأجر</h3><button class="modal-close" data-close="renterModalOverlay">×</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="renterId">
+
+      <div class="toggle-group" id="renterTypeToggle">
+        <label class="active" data-type="individual"><input type="radio" name="renterType" value="individual" checked><span>👤 فرد</span></label>
+        <label data-type="company"><input type="radio" name="renterType" value="company"><span>🏢 شركة</span></label>
+      </div>
+
+      <div class="form-group"><label id="renterNameLabel">الاسم الكامل</label><input type="text" id="renterName"></div>
+
+      <div id="renterCompanyFields" class="hidden">
+        <div class="form-row">
+          <div class="form-group"><label>رقم السجل التجاري</label><input type="text" id="renterCrNumber"></div>
+          <div class="form-group"><label>اسم الممثل</label><input type="text" id="renterRepName"></div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group"><label>الجوال</label><input type="text" id="renterPhone"></div>
+        <div class="form-group"><label>رقم الهوية</label><input type="text" id="renterNationalId"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="renterEmail"></div>
+        <div class="form-group"><label>الجنسية</label><input type="text" id="renterNationality" value="سعودي"></div>
+      </div>
+      <div class="form-group"><label>العنوان</label><input type="text" id="renterAddress"></div>
+      <div class="form-group"><label>ملاحظات</label><textarea id="renterNotes" rows="3"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="saveRenterBtn">حفظ</button>
+      <button class="btn btn-outline" data-close="renterModalOverlay">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Provider Modal -->
+<div class="modal-overlay" id="providerModalOverlay">
+  <div class="modal-box modal-wide">
+    <div class="modal-head"><h3 id="providerModalTitle">إضافة مورد</h3><button class="modal-close" data-close="providerModalOverlay">×</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="providerId">
+
+      <div class="toggle-group" id="providerTypeToggle">
+        <label class="active" data-type="org"><input type="radio" name="providerType" value="org" checked><span>🏢 مؤسسة / شركة</span></label>
+        <label data-type="individual"><input type="radio" name="providerType" value="individual"><span>👤 فرد</span></label>
+      </div>
+
+      <!-- Organization fields -->
+      <div id="providerOrgFields">
+        <div class="form-row">
+          <div class="form-group"><label>اسم المؤسسة</label><input type="text" id="providerOrgName"></div>
+          <div class="form-group"><label>رقم السجل التجاري</label><input type="text" id="providerCrNumber"></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label>اسم المالك/الممثل</label><input type="text" id="providerOwnerName"></div>
+          <div class="form-group"><label>رقم هوية المالك</label><input type="text" id="providerOwnerNationalId"></div>
+        </div>
+      </div>
+
+      <!-- Individual fields -->
+      <div id="providerIndividualFields" class="hidden">
+        <div class="form-group"><label>الاسم الكامل</label><input type="text" id="providerFullName"></div>
+        <div class="form-group"><label>رقم الهوية</label><input type="text" id="providerIndividualNationalId"></div>
+      </div>
+
+      <div class="form-section-title">بيانات التواصل</div>
+      <div class="form-row">
+        <div class="form-group"><label>رقم الجوال</label><input type="text" id="providerMobile"></div>
+        <div class="form-group"><label>البريد الإلكتروني</label><input type="email" id="providerEmail"></div>
+      </div>
+      <div class="form-group"><label>العنوان</label><input type="text" id="providerAddress"></div>
+
+      <div class="form-section-title">التوقيع الإلكتروني</div>
+      <div class="sig-pad-wrap"><canvas class="sig-pad" id="providerSigPad" width="700" height="150"></canvas></div>
+      <div class="sig-actions">
+        <button class="btn btn-outline btn-sm" id="providerSigClearBtn" type="button">🗑️ مسح التوقيع</button>
+      </div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="saveProviderBtn">حفظ</button>
+      <button class="btn btn-outline" data-close="providerModalOverlay">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Contract Modal -->
+<div class="modal-overlay" id="contractModalOverlay">
+  <div class="modal-box modal-wide">
+    <div class="modal-head"><h3 id="contractModalTitle">إضافة عقد</h3><button class="modal-close" data-close="contractModalOverlay">×</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="contractId">
+
+      <div class="form-section-title">الطرف الأول (المورد/المؤجر)</div>
+      <div class="form-group"><label>المورد</label><select id="contractProvider"></select></div>
+      <div class="info-preview" id="contractProviderPreview">اختر مورداً لعرض بياناته</div>
+
+      <div class="form-section-title">الطرف الثاني (المستأجر)</div>
+      <div class="form-group"><label>المستأجر</label><select id="contractRenter"></select></div>
+      <div class="info-preview" id="contractRenterPreview">اختر مستأجراً لعرض بياناته</div>
+
+      <div class="form-section-title">بيانات السيارة</div>
+      <div class="form-row">
+        <div class="form-group"><label>السيارة</label><select id="contractCar"></select></div>
+        <div class="form-group"><label>قراءة العداد عند التسليم (كم)</label><input type="number" id="contractOdometer" min="0"></div>
+      </div>
+      <div class="info-preview" id="contractCarPreview">اختر سيارة لعرض بياناتها</div>
+
+      <div class="form-section-title">مدة العقد والدفع</div>
+      <div class="form-row">
+        <div class="form-group"><label>تاريخ البداية</label><input type="date" id="contractStart"></div>
+        <div class="form-group"><label>المدة بالأشهر</label><input type="number" id="contractDuration" min="1" value="12"></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>تاريخ النهاية (تلقائي)</label><input type="date" id="contractEnd"></div>
+        <div class="form-group"><label>التاريخ الهجري لبداية العقد</label><input type="text" id="contractHijri" readonly></div>
+      </div>
+      <div class="form-row">
+        <div class="form-group"><label>نوع الدفع</label>
+          <select id="contractPaymentType">
+            <option value="شهري">شهري</option>
+            <option value="سنوي">سنوي</option>
+            <option value="مدة محددة">مدة محددة</option>
+          </select>
+        </div>
+        <div class="form-group"><label>القيمة الإيجارية الشهرية (ر.س)</label><input type="number" id="contractAmount" min="0"></div>
+      </div>
+      <div class="form-group"><label>إجمالي قيمة العقد (تلقائي)</label><input type="text" id="contractTotal" readonly></div>
+
+      <div class="form-section-title">بيانات الدفع البنكي</div>
+      <div class="form-row">
+        <div class="form-group"><label>اسم البنك</label><input type="text" id="contractBankName"></div>
+        <div class="form-group"><label>رقم الحساب البنكي (آيبان)</label><input type="text" id="contractBankAccount"></div>
+      </div>
+
+      <div class="form-section-title">شروط إضافية</div>
+      <div class="form-row">
+        <div class="form-group"><label>غرامة الإنهاء المبكر (%)</label><input type="number" id="contractPenalty" min="0" max="100" value="20"></div>
+        <div class="form-group"><label>موعد الصيانة كل (كم)</label><input type="number" id="contractMaintenance" min="0" value="4500"></div>
+      </div>
+      <div class="form-group"><label>مدينة إبرام العقد</label><input type="text" id="contractCity" value="مكة المكرمة"></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="saveContractBtn">حفظ</button>
+      <button class="btn btn-outline" data-close="contractModalOverlay">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Income Modal -->
+<div class="modal-overlay" id="incomeModalOverlay">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="incomeModalTitle">إضافة دخل</h3><button class="modal-close" data-close="incomeModalOverlay">×</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="incomeId">
+      <div class="form-group"><label>السيارة</label><select id="incomeCar"></select></div>
+      <div class="form-row">
+        <div class="form-group"><label>المبلغ</label><input type="number" id="incomeAmount" min="0"></div>
+        <div class="form-group"><label>التاريخ</label><input type="date" id="incomeDate"></div>
+      </div>
+      <div class="form-group"><label>ملاحظات</label><textarea id="incomeNotes" rows="3"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="saveIncomeBtn">حفظ</button>
+      <button class="btn btn-outline" data-close="incomeModalOverlay">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<!-- Expense Modal -->
+<div class="modal-overlay" id="expenseModalOverlay">
+  <div class="modal-box">
+    <div class="modal-head"><h3 id="expenseModalTitle">إضافة مصروف</h3><button class="modal-close" data-close="expenseModalOverlay">×</button></div>
+    <div class="modal-body">
+      <input type="hidden" id="expenseId">
+      <div class="form-group"><label>السيارة</label><select id="expenseCar"></select></div>
+      <div class="form-row">
+        <div class="form-group"><label>نوع المصروف</label>
+          <select id="expenseType"><option value="إصلاح">إصلاح</option><option value="تغيير زيت">تغيير زيت</option><option value="كفرات">كفرات</option><option value="أخرى">أخرى</option></select>
+        </div>
+        <div class="form-group"><label>المبلغ</label><input type="number" id="expenseAmount" min="0"></div>
+      </div>
+      <div class="form-group"><label>التاريخ</label><input type="date" id="expenseDate"></div>
+      <div class="form-group"><label>ملاحظات</label><textarea id="expenseNotes" rows="3"></textarea></div>
+    </div>
+    <div class="modal-foot">
+      <button class="btn btn-primary" id="saveExpenseBtn">حفظ</button>
+      <button class="btn btn-outline" data-close="expenseModalOverlay">إلغاء</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ====================================================================
+   PART 1: STORAGE LAYER + UTILITIES
+==================================================================== */
+const STORAGE_KEY = 'carRentalDB_v1';
+
+let DB = { cars: [], renters: [], contracts: [], income: [], expenses: [], providers: [] };
+
+function loadDB(){
+  const raw = localStorage.getItem(STORAGE_KEY);
+  if(raw){
+    try{ DB = JSON.parse(raw); }catch(e){ DB = { cars:[], renters:[], contracts:[], income:[], expenses:[], providers:[] }; }
+  }
+  DB.cars = DB.cars || [];
+  DB.renters = DB.renters || [];
+  DB.contracts = DB.contracts || [];
+  DB.income = DB.income || [];
+  DB.expenses = DB.expenses || [];
+  DB.providers = DB.providers || [];
+}
+
+function saveDB(){
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(DB));
+}
+
+function genId(){
+  return 'id_' + Date.now().toString(36) + '_' + Math.random().toString(36).slice(2,8);
+}
+
+function fmtCurrency(n){
+  n = Number(n) || 0;
+  return n.toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:2}) + ' ر.س';
+}
+
+function fmtDate(d){
+  if(!d) return '—';
+  const dt = new Date(d);
+  if(isNaN(dt.getTime())) return d;
+  return dt.toLocaleDateString('en-GB', {year:'numeric', month:'2-digit', day:'2-digit'});
+}
+
+function todayStr(){
+  const d = new Date();
+  return d.toISOString().slice(0,10);
+}
+
+function daysBetween(dateStr){
+  const d = new Date(dateStr);
+  const today = new Date();
+  today.setHours(0,0,0,0);
+  d.setHours(0,0,0,0);
+  return Math.round((d - today) / (1000*60*60*24));
+}
+
+function getCarById(id){ return DB.cars.find(c => c.id === id); }
+function getRenterById(id){ return DB.renters.find(r => r.id === id); }
+function getProviderById(id){ return DB.providers.find(p => p.id === id); }
+function getCarLabel(car){
+  if(!car) return '—';
+  return `${car.make} ${car.model} - ${car.plate}`;
+}
+function getProviderLabel(p){
+  if(!p) return '—';
+  return p.type === 'org' ? (p.orgName || '—') : (p.fullName || '—');
+}
+function getRenterLabel(r){
+  if(!r) return '—';
+  return r.type === 'company' ? (r.name || '—') + ' (شركة)' : (r.name || '—');
+}
+
+function addMonths(dateStr, months){
+  const d = new Date(dateStr);
+  if(isNaN(d.getTime())) return '';
+  const day = d.getDate();
+  d.setDate(1);
+  d.setMonth(d.getMonth() + Number(months || 0));
+  const lastDay = new Date(d.getFullYear(), d.getMonth() + 1, 0).getDate();
+  d.setDate(Math.min(day, lastDay));
+  return d.toISOString().slice(0,10);
+}
+
+function toHijriString(dateStr){
+  const d = new Date(dateStr);
+  if(isNaN(d.getTime())) return '—';
+  try{
+    return new Intl.DateTimeFormat('ar', {day:'numeric', month:'long', year:'numeric', calendar:'islamic-umalqura'}).format(d);
+  }catch(e){
+    try{ return new Intl.DateTimeFormat('ar', {day:'numeric', month:'long', year:'numeric', calendar:'islamic'}).format(d); }
+    catch(e2){ return '—'; }
+  }
+}
+
+function weekdayNameAr(dateStr){
+  const d = new Date(dateStr);
+  if(isNaN(d.getTime())) return '—';
+  return d.toLocaleDateString('ar-SA', {weekday:'long'});
+}
+
+function gregorianStringAr(dateStr){
+  const d = new Date(dateStr);
+  if(isNaN(d.getTime())) return '—';
+  return d.toLocaleDateString('en-GB', {year:'numeric', month:'2-digit', day:'2-digit'});
+}
+
+function contractStatus(contract){
+  const days = daysBetween(contract.endDate);
+  if(days < 0) return 'expired';
+  if(days <= 30) return 'expiring';
+  return 'active';
+}
+
+function showToast(msg, type){
+  const t = document.getElementById('toast');
+  t.textContent = msg;
+  t.className = 'toast show ' + (type || 'success');
+  clearTimeout(window._toastTimer);
+  window._toastTimer = setTimeout(()=>{ t.className = 'toast ' + (type || 'success'); }, 2600);
+}
+
+function openModal(id){ document.getElementById(id).classList.add('open'); }
+function closeModal(id){ document.getElementById(id).classList.remove('open'); }
+
+document.querySelectorAll('[data-close]').forEach(btn=>{
+  btn.addEventListener('click', ()=> closeModal(btn.getAttribute('data-close')));
+});
+document.querySelectorAll('.modal-overlay').forEach(ov=>{
+  ov.addEventListener('click', (e)=>{ if(e.target === ov) ov.classList.remove('open'); });
+});
+
+function seedSampleData(){
+  if(localStorage.getItem(STORAGE_KEY)) return; // only seed on very first run
+  const c1 = genId(), c2 = genId(), c3 = genId();
+  DB.cars = [
+    {id:c1, plate:'أ ب ج 1234', make:'تويوتا', model:'كامري', year:2022, chassisNumber:'JTNBE46K203123456', color:'أبيض', status:'مؤجرة'},
+    {id:c2, plate:'د هـ و 5678', make:'هيونداي', model:'سوناتا', year:2021, chassisNumber:'KMHL14JA1MA654321', color:'فضي', status:'متاحة'},
+    {id:c3, plate:'ز ح ط 9012', make:'نيسان', model:'التيما', year:2023, chassisNumber:'1N4AL3AP8JC789012', color:'أسود', status:'مؤجرة'},
+  ];
+  const r1 = genId(), r2 = genId();
+  DB.renters = [
+    {id:r1, type:'individual', name:'محمد العتيبي', phone:'0555111222', nationalId:'1012345678', email:'', nationality:'سعودي', address:'مكة المكرمة', notes:'مستأجر دائم'},
+    {id:r2, type:'individual', name:'سالم القحطاني', phone:'0555333444', nationalId:'1098765432', email:'', nationality:'سعودي', address:'جدة', notes:''},
+  ];
+  const p1 = genId(), p2 = genId();
+  DB.providers = [
+    {id:p1, type:'org', orgName:'مؤسسة الانطلاق لتأجير السيارات', crNumber:'4030123456', ownerName:'ياسين الحربي', ownerNationalId:'1055443322', mobile:'0566778899', email:'info@alentlaq.sa', address:'مكة المكرمة - حي العزيزية', signature:null},
+    {id:p2, type:'individual', fullName:'ياسين الحربي', nationalId:'1055443322', mobile:'0566778899', email:'yassin@example.com', address:'مكة المكرمة', signature:null},
+  ];
+  const today = new Date();
+  const plus10 = new Date(today); plus10.setDate(plus10.getDate()+10);
+  const plus60 = new Date(today); plus60.setDate(plus60.getDate()+60);
+  const minus5 = new Date(today); minus5.setDate(minus5.getDate()-300);
+  DB.contracts = [
+    {id:genId(), carId:c1, renterId:r1, providerId:p1, startDate:minus5.toISOString().slice(0,10), durationMonths:12, endDate:plus10.toISOString().slice(0,10), paymentType:'شهري', amount:1800, odometerAtDelivery:15000, bankName:'البنك الأهلي السعودي', bankAccount:'SA0010000012345678901234', penaltyPercent:20, maintenanceKm:4500, city:'مكة المكرمة'},
+    {id:genId(), carId:c3, renterId:r2, providerId:p1, startDate:minus5.toISOString().slice(0,10), durationMonths:12, endDate:plus60.toISOString().slice(0,10), paymentType:'سنوي', amount:1750, odometerAtDelivery:8200, bankName:'البنك الأهلي السعودي', bankAccount:'SA0010000012345678901234', penaltyPercent:20, maintenanceKm:4500, city:'مكة المكرمة'},
+  ];
+  DB.income = [
+    {id:genId(), carId:c1, amount:1800, date: today.toISOString().slice(0,10), notes:'دفعة شهرية'},
+    {id:genId(), carId:c3, amount:21000, date: today.toISOString().slice(0,10), notes:'دفعة سنوية'},
+    {id:genId(), carId:c2, amount:950, date: today.toISOString().slice(0,10), notes:'تأجير قصير'},
+  ];
+  DB.expenses = [
+    {id:genId(), carId:c1, type:'تغيير زيت', amount:150, date: today.toISOString().slice(0,10), notes:''},
+    {id:genId(), carId:c3, type:'كفرات', amount:900, date: today.toISOString().slice(0,10), notes:'4 كفرات جديدة'},
+    {id:genId(), carId:c2, type:'إصلاح', amount:400, date: today.toISOString().slice(0,10), notes:'إصلاح المكينة'},
+  ];
+  saveDB();
+}
+
+/* ====================================================================
+   PART 2: NAVIGATION
+==================================================================== */
+const PAGE_TITLES = {
+  dashboard:'الرئيسية', cars:'السيارات', renters:'المستأجرون', providers:'الموردون',
+  contracts:'العقود', income:'الدخل', expenses:'المصروفات', profit:'الأرباح'
+};
+
+const RENDER_FNS = {}; // filled in as each page's render function is defined below
+
+function goToPage(page){
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.nav-link').forEach(a => a.classList.toggle('active', a.dataset.page === page));
+  document.getElementById('pageTitle').textContent = PAGE_TITLES[page];
+  document.getElementById('sidebar').classList.remove('open');
+  if(typeof RENDER_FNS[page] === 'function') RENDER_FNS[page]();
+}
+
+document.querySelectorAll('.nav-link').forEach(a=>{
+  a.addEventListener('click', ()=> goToPage(a.dataset.page));
+});
+
+document.getElementById('menuToggle').addEventListener('click', ()=>{
+  document.getElementById('sidebar').classList.toggle('open');
+});
+
+/* ====================================================================
+   PART 3: DASHBOARD RENDER
+==================================================================== */
+function renderDashboard(){
+  const totalCars = DB.cars.length;
+  const activeContracts = DB.contracts.filter(c => contractStatus(c) !== 'expired').length;
+  const totalIncome = DB.income.reduce((s,i)=> s + Number(i.amount||0), 0);
+  const totalExpenses = DB.expenses.reduce((s,e)=> s + Number(e.amount||0), 0);
+  const netProfit = totalIncome - totalExpenses;
+
+  const stats = [
+    {label:'إجمالي السيارات', value: totalCars, icon:'🚗', cls:'stat-blue'},
+    {label:'العقود النشطة', value: activeContracts, icon:'📄', cls:'stat-purple'},
+    {label:'إجمالي الدخل', value: fmtCurrency(totalIncome), icon:'💰', cls:'stat-green'},
+    {label:'إجمالي المصروفات', value: fmtCurrency(totalExpenses), icon:'💸', cls:'stat-red'},
+  ];
+
+  document.getElementById('dashStats').innerHTML = stats.map(s => `
+    <div class="stat-card ${s.cls}">
+      <div class="stat-icon">${s.icon}</div>
+      <div class="stat-info">
+        <div class="stat-label">${s.label}</div>
+        <div class="stat-value">${s.value}</div>
+      </div>
+    </div>
+  `).join('') + `
+    <div class="stat-card ${netProfit >= 0 ? 'stat-green' : 'stat-red'}">
+      <div class="stat-icon">📈</div>
+      <div class="stat-info">
+        <div class="stat-label">صافي الربح</div>
+        <div class="stat-value ${netProfit >= 0 ? 'positive' : 'negative'}">${fmtCurrency(netProfit)}</div>
+      </div>
+    </div>
+  `;
+
+  const expiring = DB.contracts
+    .filter(c => contractStatus(c) === 'expiring')
+    .sort((a,b)=> daysBetween(a.endDate) - daysBetween(b.endDate));
+
+  const expiringHtml = expiring.map(c => {
+    const car = getCarById(c.carId), renter = getRenterById(c.renterId);
+    const days = daysBetween(c.endDate);
+    return `
+      <div class="alert-card ${days <= 7 ? 'danger' : ''}">
+        <div class="alert-icon">${days <= 7 ? '🛑' : '⚠️'}</div>
+        <div>
+          <div class="alert-title">${getCarLabel(car)} — ${renter ? renter.name : '—'}</div>
+          <div class="alert-sub">ينتهي العقد في ${fmtDate(c.endDate)} (بعد ${days} يوم)</div>
+        </div>
+      </div>`;
+  }).join('');
+
+  document.getElementById('dashExpiring').innerHTML = expiringHtml ||
+    `<div class="empty-note">لا توجد عقود تنتهي خلال 30 يوم 👍</div>`;
+}
+RENDER_FNS.dashboard = renderDashboard;
+
+/* ====================================================================
+   PART 4: CARS CRUD
+==================================================================== */
+function renderCars(){
+  const tbody = document.getElementById('carsTableBody');
+  if(DB.cars.length === 0){
+    tbody.innerHTML = `<tr><td colspan="7" class="empty-note">لا توجد سيارات مضافة بعد</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = DB.cars.map(car => `
+    <tr>
+      <td>${car.plate}</td>
+      <td>${car.make}</td>
+      <td>${car.model}</td>
+      <td>${car.year}</td>
+      <td>${car.chassisNumber || '—'}</td>
+      <td>${car.color}</td>
+      <td><span class="badge ${car.status === 'مؤجرة' ? 'badge-orange' : 'badge-green'}">${car.status}</span></td>
+      <td class="row-actions">
+        <button class="btn-icon" title="تعديل" onclick="openCarModal('${car.id}')">✏️</button>
+        <button class="btn-icon" title="حذف" onclick="deleteCar('${car.id}')">🗑️</button>
+      </td>
+    </tr>
+  `).join('');
+}
+RENDER_FNS.cars = renderCars;
+
+function openCarModal(id){
+  document.getElementById('carId').value = '';
+  document.getElementById('carPlate').value = '';
+  document.getElementById('carMake').value = '';
+  document.getElementById('carModel').value = '';
+  document.getElementById('carYear').value = new Date().getFullYear();
+  document.getElementById('carChassis').value = '';
+  document.getElementById('carColor').value = '';
+  document.getElementById('carStatus').value = 'متاحة';
+  document.getElementById('carModalTitle').textContent = 'إضافة سيارة';
+
+  if(id){
+    const car = getCarById(id);
+    if(car){
+      document.getElementById('carId').value = car.id;
+      document.getElementById('carPlate').value = car.plate;
+      document.getElementById('carMake').value = car.make;
+      document.getElementById('carModel').value = car.model;
+      document.getElementById('carYear').value = car.year;
+      document.getElementById('carChassis').value = car.chassisNumber || '';
+      document.getElementById('carColor').value = car.color;
+      document.getElementById('carStatus').value = car.status;
+      document.getElementById('carModalTitle').textContent = 'تعديل سيارة';
+    }
+  }
+  openModal('carModalOverlay');
+}
+
+function saveCar(){
+  const plate = document.getElementById('carPlate').value.trim();
+  const make = document.getElementById('carMake').value.trim();
+  const model = document.getElementById('carModel').value.trim();
+  const year = document.getElementById('carYear').value.trim();
+  const chassisNumber = document.getElementById('carChassis').value.trim();
+  const color = document.getElementById('carColor').value.trim();
+  const status = document.getElementById('carStatus').value;
+  const id = document.getElementById('carId').value;
+
+  if(!plate || !make || !model){
+    showToast('يرجى تعبئة رقم اللوحة والماركة والموديل', 'error');
+    return;
+  }
+
+  if(id){
+    const car = getCarById(id);
+    Object.assign(car, {plate, make, model, year, chassisNumber, color, status});
+  }else{
+    DB.cars.push({id: genId(), plate, make, model, year, chassisNumber, color, status});
+  }
+  saveDB();
+  closeModal('carModalOverlay');
+  renderCars();
+  showToast('تم حفظ السيارة بنجاح');
+}
+
+function deleteCar(id){
+  if(!confirm('هل تريد حذف هذه السيارة؟ سيتم حذف العقود والدخل والمصروفات المرتبطة بها.')) return;
+  DB.cars = DB.cars.filter(c => c.id !== id);
+  DB.contracts = DB.contracts.filter(c => c.carId !== id);
+  DB.income = DB.income.filter(i => i.carId !== id);
+  DB.expenses = DB.expenses.filter(e => e.carId !== id);
+  saveDB();
+  renderCars();
+  showToast('تم حذف السيارة');
+}
+
+document.getElementById('addCarBtn').addEventListener('click', ()=> openCarModal(null));
+document.getElementById('saveCarBtn').addEventListener('click', saveCar);
+
+/* ====================================================================
+   PART 5: RENTERS CRUD
+==================================================================== */
+function renderRenters(){
+  const tbody = document.getElementById('rentersTableBody');
+  if(DB.renters.length === 0){
+    tbody.innerHTML = `<tr><td colspan="5" class="empty-note">لا يوجد مستأجرون مضافون بعد</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = DB.renters.map(r => `
+    <tr>
+      <td>${r.name}</td>
+      <td><span class="badge ${r.type === 'company' ? 'badge-gray' : 'badge-green'}">${r.type === 'company' ? 'شركة' : 'فرد'}</span></td>
+      <td>${r.phone || '—'}</td>
+      <td>${r.nationalId || '—'}</td>
+      <td>${r.notes || '—'}</td>
+      <td class="row-actions">
+        <button class="btn-icon" title="تعديل" onclick="openRenterModal('${r.id}')">✏️</button>
+        <button class="btn-icon" title="حذف" onclick="deleteRenter('${r.id}')">🗑️</button>
+      </td>
+    </tr>
+  `).join('');
+}
+RENDER_FNS.renters = renderRenters;
+
+function openRenterModal(id){
+  document.getElementById('renterId').value = '';
+  document.getElementById('renterName').value = '';
+  document.getElementById('renterCrNumber').value = '';
+  document.getElementById('renterRepName').value = '';
+  document.getElementById('renterPhone').value = '';
+  document.getElementById('renterNationalId').value = '';
+  document.getElementById('renterEmail').value = '';
+  document.getElementById('renterNationality').value = 'سعودي';
+  document.getElementById('renterAddress').value = '';
+  document.getElementById('renterNotes').value = '';
+  document.getElementById('renterModalTitle').textContent = 'إضافة مستأجر';
+  setRenterType('individual');
+
+  if(id){
+    const r = getRenterById(id);
+    if(r){
+      document.getElementById('renterId').value = r.id;
+      document.getElementById('renterName').value = r.name;
+      document.getElementById('renterCrNumber').value = r.crNumber || '';
+      document.getElementById('renterRepName').value = r.repName || '';
+      document.getElementById('renterPhone').value = r.phone;
+      document.getElementById('renterNationalId').value = r.nationalId;
+      document.getElementById('renterEmail').value = r.email || '';
+      document.getElementById('renterNationality').value = r.nationality || 'سعودي';
+      document.getElementById('renterAddress').value = r.address || '';
+      document.getElementById('renterNotes').value = r.notes;
+      document.getElementById('renterModalTitle').textContent = 'تعديل مستأجر';
+      setRenterType(r.type || 'individual');
+    }
+  }
+  openModal('renterModalOverlay');
+}
+
+function saveRenter(){
+  const type = getRenterType();
+  const name = document.getElementById('renterName').value.trim();
+  const crNumber = document.getElementById('renterCrNumber').value.trim();
+  const repName = document.getElementById('renterRepName').value.trim();
+  const phone = document.getElementById('renterPhone').value.trim();
+  const nationalId = document.getElementById('renterNationalId').value.trim();
+  const email = document.getElementById('renterEmail').value.trim();
+  const nationality = document.getElementById('renterNationality').value.trim();
+  const address = document.getElementById('renterAddress').value.trim();
+  const notes = document.getElementById('renterNotes').value.trim();
+  const id = document.getElementById('renterId').value;
+
+  if(!name){
+    showToast('يرجى إدخال اسم المستأجر', 'error');
+    return;
+  }
+
+  const data = {type, name, crNumber, repName, phone, nationalId, email, nationality, address, notes};
+  if(id){
+    const r = getRenterById(id);
+    Object.assign(r, data);
+  }else{
+    DB.renters.push(Object.assign({id: genId()}, data));
+  }
+  saveDB();
+  closeModal('renterModalOverlay');
+  renderRenters();
+  showToast('تم حفظ المستأجر بنجاح');
+}
+
+function deleteRenter(id){
+  if(!confirm('هل تريد حذف هذا المستأجر؟ سيتم حذف العقود المرتبطة به.')) return;
+  DB.renters = DB.renters.filter(r => r.id !== id);
+  DB.contracts = DB.contracts.filter(c => c.renterId !== id);
+  saveDB();
+  renderRenters();
+  showToast('تم حذف المستأجر');
+}
+
+document.getElementById('addRenterBtn').addEventListener('click', ()=> openRenterModal(null));
+document.getElementById('saveRenterBtn').addEventListener('click', saveRenter);
+
+document.querySelectorAll('#renterTypeToggle label').forEach(lbl=>{
+  lbl.addEventListener('click', ()=> setRenterType(lbl.dataset.type));
+});
+function setRenterType(type){
+  document.querySelectorAll('#renterTypeToggle label').forEach(l=>{
+    const active = l.dataset.type === type;
+    l.classList.toggle('active', active);
+    l.querySelector('input').checked = active;
+  });
+  document.getElementById('renterCompanyFields').classList.toggle('hidden', type !== 'company');
+  document.getElementById('renterNameLabel').textContent = type === 'company' ? 'اسم الشركة' : 'الاسم الكامل';
+}
+function getRenterType(){ return document.querySelector('#renterTypeToggle input:checked').value; }
+
+/* ====================================================================
+   PART 5b: PROVIDERS CRUD + E-SIGNATURE PAD
+==================================================================== */
+let providerSigCanvas, providerSigCtx, providerSigHasDrawn = false;
+
+function clearSigPad(canvas){
+  const ctx = canvas.getContext('2d');
+  ctx.clearRect(0, 0, canvas.width, canvas.height);
+}
+
+function sigCanvasPos(canvas, e){
+  const rect = canvas.getBoundingClientRect();
+  const cx = e.touches ? e.touches[0].clientX : e.clientX;
+  const cy = e.touches ? e.touches[0].clientY : e.clientY;
+  return { x: (cx - rect.left) * (canvas.width / rect.width), y: (cy - rect.top) * (canvas.height / rect.height) };
+}
+
+function initSigPad(canvas, onDraw){
+  const ctx = canvas.getContext('2d');
+  ctx.lineWidth = 2.2;
+  ctx.lineCap = 'round';
+  ctx.strokeStyle = '#1a2436';
+  let drawing = false, lastX = 0, lastY = 0;
+  function start(e){
+    drawing = true;
+    const p = sigCanvasPos(canvas, e);
+    lastX = p.x; lastY = p.y;
+    if(onDraw) onDraw();
+    e.preventDefault();
+  }
+  function move(e){
+    if(!drawing) return;
+    const p = sigCanvasPos(canvas, e);
+    ctx.beginPath(); ctx.moveTo(lastX, lastY); ctx.lineTo(p.x, p.y); ctx.stroke();
+    lastX = p.x; lastY = p.y;
+    e.preventDefault();
+  }
+  function end(){ drawing = false; }
+  canvas.addEventListener('mousedown', start);
+  canvas.addEventListener('mousemove', move);
+  window.addEventListener('mouseup', end);
+  canvas.addEventListener('touchstart', start, {passive:false});
+  canvas.addEventListener('touchmove', move, {passive:false});
+  canvas.addEventListener('touchend', end);
+  return ctx;
+}
+
+providerSigCanvas = document.getElementById('providerSigPad');
+providerSigCtx = initSigPad(providerSigCanvas, ()=>{ providerSigHasDrawn = true; });
+
+document.getElementById('providerSigClearBtn').addEventListener('click', ()=>{
+  clearSigPad(providerSigCanvas);
+  providerSigHasDrawn = false;
+});
+
+document.querySelectorAll('#providerTypeToggle label').forEach(lbl=>{
+  lbl.addEventListener('click', ()=> setProviderType(lbl.dataset.type));
+});
+function setProviderType(type){
+  document.querySelectorAll('#providerTypeToggle label').forEach(l=>{
+    const active = l.dataset.type === type;
+    l.classList.toggle('active', active);
+    l.querySelector('input').checked = active;
+  });
+  document.getElementById('providerOrgFields').classList.toggle('hidden', type !== 'org');
+  document.getElementById('providerIndividualFields').classList.toggle('hidden', type !== 'individual');
+}
+function getProviderType(){ return document.querySelector('#providerTypeToggle input:checked').value; }
+
+function renderProviders(){
+  const tbody = document.getElementById('providersTableBody');
+  if(DB.providers.length === 0){
+    tbody.innerHTML = `<tr><td colspan="7" class="empty-note">لا يوجد موردون مضافون بعد</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = DB.providers.map(p => {
+    const name = getProviderLabel(p);
+    const idNum = p.type === 'org' ? (p.crNumber || '—') : (p.nationalId || '—');
+    const sig = p.signature ? `<img class="sig-thumb" src="${p.signature}" alt="توقيع">` : '—';
+    return `
+    <tr>
+      <td>${name}</td>
+      <td><span class="badge ${p.type === 'org' ? 'badge-gray' : 'badge-green'}">${p.type === 'org' ? 'مؤسسة' : 'فرد'}</span></td>
+      <td>${idNum}</td>
+      <td>${p.mobile || '—'}</td>
+      <td>${p.email || '—'}</td>
+      <td>${sig}</td>
+      <td class="row-actions">
+        <button class="btn-icon" title="تعديل" onclick="openProviderModal('${p.id}')">✏️</button>
+        <button class="btn-icon" title="حذف" onclick="deleteProvider('${p.id}')">🗑️</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+RENDER_FNS.providers = renderProviders;
+
+function openProviderModal(id){
+  document.getElementById('providerId').value = '';
+  document.getElementById('providerOrgName').value = '';
+  document.getElementById('providerCrNumber').value = '';
+  document.getElementById('providerOwnerName').value = '';
+  document.getElementById('providerOwnerNationalId').value = '';
+  document.getElementById('providerFullName').value = '';
+  document.getElementById('providerIndividualNationalId').value = '';
+  document.getElementById('providerMobile').value = '';
+  document.getElementById('providerEmail').value = '';
+  document.getElementById('providerAddress').value = '';
+  document.getElementById('providerModalTitle').textContent = 'إضافة مورد';
+  setProviderType('org');
+  clearSigPad(providerSigCanvas);
+  providerSigHasDrawn = false;
+
+  if(id){
+    const p = getProviderById(id);
+    if(p){
+      document.getElementById('providerId').value = p.id;
+      setProviderType(p.type);
+      if(p.type === 'org'){
+        document.getElementById('providerOrgName').value = p.orgName || '';
+        document.getElementById('providerCrNumber').value = p.crNumber || '';
+        document.getElementById('providerOwnerName').value = p.ownerName || '';
+        document.getElementById('providerOwnerNationalId').value = p.ownerNationalId || '';
+      }else{
+        document.getElementById('providerFullName').value = p.fullName || '';
+        document.getElementById('providerIndividualNationalId').value = p.nationalId || '';
+      }
+      document.getElementById('providerMobile').value = p.mobile || '';
+      document.getElementById('providerEmail').value = p.email || '';
+      document.getElementById('providerAddress').value = p.address || '';
+      document.getElementById('providerModalTitle').textContent = 'تعديل مورد';
+      if(p.signature){
+        const img = new Image();
+        img.onload = ()=>{ providerSigCtx.drawImage(img, 0, 0, providerSigCanvas.width, providerSigCanvas.height); };
+        img.src = p.signature;
+        providerSigHasDrawn = true;
+      }
+    }
+  }
+  openModal('providerModalOverlay');
+}
+
+function saveProvider(){
+  const type = getProviderType();
+  const id = document.getElementById('providerId').value;
+  const mobile = document.getElementById('providerMobile').value.trim();
+  const email = document.getElementById('providerEmail').value.trim();
+  const address = document.getElementById('providerAddress').value.trim();
+
+  const data = { type, mobile, email, address };
+  if(type === 'org'){
+    data.orgName = document.getElementById('providerOrgName').value.trim();
+    data.crNumber = document.getElementById('providerCrNumber').value.trim();
+    data.ownerName = document.getElementById('providerOwnerName').value.trim();
+    data.ownerNationalId = document.getElementById('providerOwnerNationalId').value.trim();
+    if(!data.orgName){ showToast('يرجى إدخال اسم المؤسسة', 'error'); return; }
+  }else{
+    data.fullName = document.getElementById('providerFullName').value.trim();
+    data.nationalId = document.getElementById('providerIndividualNationalId').value.trim();
+    if(!data.fullName){ showToast('يرجى إدخال اسم المورد', 'error'); return; }
+  }
+
+  let signature = null;
+  if(providerSigHasDrawn){
+    signature = providerSigCanvas.toDataURL('image/png');
+  }else if(id){
+    const existing = getProviderById(id);
+    signature = existing ? existing.signature : null;
+  }
+  data.signature = signature;
+
+  if(id){
+    const p = getProviderById(id);
+    Object.assign(p, data);
+  }else{
+    DB.providers.push(Object.assign({id: genId()}, data));
+  }
+  saveDB();
+  closeModal('providerModalOverlay');
+  renderProviders();
+  showToast('تم حفظ المورد بنجاح');
+}
+
+function deleteProvider(id){
+  if(!confirm('هل تريد حذف هذا المورد؟')) return;
+  DB.providers = DB.providers.filter(p => p.id !== id);
+  saveDB();
+  renderProviders();
+  showToast('تم حذف المورد');
+}
+
+document.getElementById('addProviderBtn').addEventListener('click', ()=> openProviderModal(null));
+document.getElementById('saveProviderBtn').addEventListener('click', saveProvider);
+
+/* ====================================================================
+   PART 6: CONTRACTS CRUD
+==================================================================== */
+function fillCarSelect(selectEl, selectedId){
+  selectEl.innerHTML = DB.cars.map(c => `<option value="${c.id}">${getCarLabel(c)}</option>`).join('')
+    || `<option value="">لا توجد سيارات</option>`;
+  if(selectedId) selectEl.value = selectedId;
+}
+function fillRenterSelect(selectEl, selectedId){
+  selectEl.innerHTML = DB.renters.map(r => `<option value="${r.id}">${getRenterLabel(r)}</option>`).join('')
+    || `<option value="">لا يوجد مستأجرون</option>`;
+  if(selectedId) selectEl.value = selectedId;
+}
+function fillProviderSelect(selectEl, selectedId){
+  selectEl.innerHTML = DB.providers.map(p => `<option value="${p.id}">${getProviderLabel(p)}</option>`).join('')
+    || `<option value="">لا يوجد موردون</option>`;
+  if(selectedId) selectEl.value = selectedId;
+}
+
+function statusBadge(contract){
+  const st = contractStatus(contract);
+  if(st === 'expired') return `<span class="badge badge-red">منتهي</span>`;
+  if(st === 'expiring') return `<span class="badge badge-orange">ينتهي قريباً (${daysBetween(contract.endDate)} يوم)</span>`;
+  return `<span class="badge badge-green">نشط</span>`;
+}
+
+function renderContracts(){
+  const tbody = document.getElementById('contractsTableBody');
+  if(DB.contracts.length === 0){
+    tbody.innerHTML = `<tr><td colspan="9" class="empty-note">لا توجد عقود مضافة بعد</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = DB.contracts.map(c => {
+    const car = getCarById(c.carId), renter = getRenterById(c.renterId), provider = getProviderById(c.providerId);
+    const st = contractStatus(c);
+    const rowStyle = st === 'expired' ? 'style="background:#fef2f2"' : (st === 'expiring' ? 'style="background:#fffbeb"' : '');
+    return `
+    <tr ${rowStyle}>
+      <td>${car ? getCarLabel(car) : '—'}</td>
+      <td>${renter ? getRenterLabel(renter) : '—'}</td>
+      <td>${provider ? getProviderLabel(provider) : '—'}</td>
+      <td>${fmtDate(c.startDate)}</td>
+      <td>${fmtDate(c.endDate)}</td>
+      <td>${c.paymentType}</td>
+      <td>${fmtCurrency(c.amount)}</td>
+      <td>${statusBadge(c)}</td>
+      <td class="row-actions">
+        <button class="btn-icon" title="طباعة العقد" onclick="printContract('${c.id}')">🖨️</button>
+        <button class="btn-icon" title="تعديل" onclick="openContractModal('${c.id}')">✏️</button>
+        <button class="btn-icon" title="حذف" onclick="deleteContract('${c.id}')">🗑️</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+RENDER_FNS.contracts = renderContracts;
+
+function updateContractProviderPreview(){
+  const p = getProviderById(document.getElementById('contractProvider').value);
+  const el = document.getElementById('contractProviderPreview');
+  if(!p){ el.innerHTML = 'اختر مورداً لعرض بياناته'; return; }
+  el.innerHTML = p.type === 'org'
+    ? `<b>${p.orgName || '—'}</b> — سجل تجاري: ${p.crNumber || '—'}<br>الممثل: ${p.ownerName || '—'} — هوية: ${p.ownerNationalId || '—'}<br>جوال: ${p.mobile || '—'} — بريد: ${p.email || '—'}<br>العنوان: ${p.address || '—'}`
+    : `<b>${p.fullName || '—'}</b> — هوية: ${p.nationalId || '—'}<br>جوال: ${p.mobile || '—'} — بريد: ${p.email || '—'}<br>العنوان: ${p.address || '—'}`;
+}
+
+function updateContractRenterPreview(){
+  const r = getRenterById(document.getElementById('contractRenter').value);
+  const el = document.getElementById('contractRenterPreview');
+  if(!r){ el.innerHTML = 'اختر مستأجراً لعرض بياناته'; return; }
+  el.innerHTML = r.type === 'company'
+    ? `<b>${r.name || '—'}</b> (شركة) — سجل تجاري: ${r.crNumber || '—'}<br>الممثل: ${r.repName || '—'} — هوية: ${r.nationalId || '—'}<br>جوال: ${r.phone || '—'} — بريد: ${r.email || '—'}<br>الجنسية: ${r.nationality || '—'} — العنوان: ${r.address || '—'}`
+    : `<b>${r.name || '—'}</b> — هوية: ${r.nationalId || '—'}<br>جوال: ${r.phone || '—'} — بريد: ${r.email || '—'}<br>الجنسية: ${r.nationality || '—'} — العنوان: ${r.address || '—'}`;
+}
+
+function updateContractCarPreview(){
+  const c = getCarById(document.getElementById('contractCar').value);
+  const el = document.getElementById('contractCarPreview');
+  if(!c){ el.innerHTML = 'اختر سيارة لعرض بياناتها'; return; }
+  el.innerHTML = `<b>${c.make} ${c.model}</b> (${c.year}) — لوحة: ${c.plate}<br>رقم الهيكل: ${c.chassisNumber || '—'} — اللون: ${c.color || '—'}`;
+}
+
+function recalcContractDates(){
+  const start = document.getElementById('contractStart').value;
+  const duration = document.getElementById('contractDuration').value;
+  if(start){
+    document.getElementById('contractHijri').value = `${weekdayNameAr(start)} - ${toHijriString(start)}`;
+    if(duration) document.getElementById('contractEnd').value = addMonths(start, duration);
+  }
+  recalcContractTotal();
+}
+
+function recalcContractTotal(){
+  const amount = Number(document.getElementById('contractAmount').value) || 0;
+  const duration = Number(document.getElementById('contractDuration').value) || 0;
+  document.getElementById('contractTotal').value = fmtCurrency(amount * duration);
+}
+
+function openContractModal(id){
+  if(DB.cars.length === 0 || DB.renters.length === 0){
+    showToast('أضف سيارة ومستأجر أولاً', 'error');
+    return;
+  }
+  fillCarSelect(document.getElementById('contractCar'));
+  fillRenterSelect(document.getElementById('contractRenter'));
+  fillProviderSelect(document.getElementById('contractProvider'));
+  document.getElementById('contractId').value = '';
+  document.getElementById('contractStart').value = todayStr();
+  document.getElementById('contractDuration').value = 12;
+  document.getElementById('contractEnd').value = '';
+  document.getElementById('contractPaymentType').value = 'شهري';
+  document.getElementById('contractAmount').value = '';
+  document.getElementById('contractOdometer').value = '';
+  document.getElementById('contractBankName').value = '';
+  document.getElementById('contractBankAccount').value = '';
+  document.getElementById('contractPenalty').value = 20;
+  document.getElementById('contractMaintenance').value = 4500;
+  document.getElementById('contractCity').value = 'مكة المكرمة';
+  document.getElementById('contractModalTitle').textContent = 'إضافة عقد';
+
+  if(id){
+    const c = DB.contracts.find(x => x.id === id);
+    if(c){
+      document.getElementById('contractId').value = c.id;
+      document.getElementById('contractCar').value = c.carId;
+      document.getElementById('contractRenter').value = c.renterId;
+      document.getElementById('contractProvider').value = c.providerId || '';
+      document.getElementById('contractStart').value = c.startDate;
+      document.getElementById('contractDuration').value = c.durationMonths || 12;
+      document.getElementById('contractEnd').value = c.endDate;
+      document.getElementById('contractPaymentType').value = c.paymentType;
+      document.getElementById('contractAmount').value = c.amount;
+      document.getElementById('contractOdometer').value = c.odometerAtDelivery || '';
+      document.getElementById('contractBankName').value = c.bankName || '';
+      document.getElementById('contractBankAccount').value = c.bankAccount || '';
+      document.getElementById('contractPenalty').value = (c.penaltyPercent != null ? c.penaltyPercent : 20);
+      document.getElementById('contractMaintenance').value = (c.maintenanceKm != null ? c.maintenanceKm : 4500);
+      document.getElementById('contractCity').value = c.city || 'مكة المكرمة';
+      document.getElementById('contractModalTitle').textContent = 'تعديل عقد';
+    }
+  }
+  updateContractProviderPreview();
+  updateContractRenterPreview();
+  updateContractCarPreview();
+  recalcContractDates();
+  openModal('contractModalOverlay');
+}
+
+function saveContract(){
+  const carId = document.getElementById('contractCar').value;
+  const renterId = document.getElementById('contractRenter').value;
+  const providerId = document.getElementById('contractProvider').value;
+  const startDate = document.getElementById('contractStart').value;
+  const durationMonths = document.getElementById('contractDuration').value;
+  const endDate = document.getElementById('contractEnd').value;
+  const paymentType = document.getElementById('contractPaymentType').value;
+  const amount = document.getElementById('contractAmount').value;
+  const odometerAtDelivery = document.getElementById('contractOdometer').value;
+  const bankName = document.getElementById('contractBankName').value.trim();
+  const bankAccount = document.getElementById('contractBankAccount').value.trim();
+  const penaltyPercent = document.getElementById('contractPenalty').value;
+  const maintenanceKm = document.getElementById('contractMaintenance').value;
+  const city = document.getElementById('contractCity').value.trim();
+  const id = document.getElementById('contractId').value;
+
+  if(!carId || !renterId || !startDate || !endDate || !amount){
+    showToast('يرجى تعبئة جميع الحقول المطلوبة', 'error');
+    return;
+  }
+  if(new Date(endDate) < new Date(startDate)){
+    showToast('تاريخ النهاية يجب أن يكون بعد تاريخ البداية', 'error');
+    return;
+  }
+
+  const data = {carId, renterId, providerId, startDate, durationMonths, endDate, paymentType, amount,
+    odometerAtDelivery, bankName, bankAccount, penaltyPercent, maintenanceKm, city};
+
+  if(id){
+    const c = DB.contracts.find(x => x.id === id);
+    Object.assign(c, data);
+  }else{
+    DB.contracts.push(Object.assign({id: genId()}, data));
+  }
+  saveDB();
+  closeModal('contractModalOverlay');
+  renderContracts();
+  showToast('تم حفظ العقد بنجاح');
+}
+
+function deleteContract(id){
+  if(!confirm('هل تريد حذف هذا العقد؟')) return;
+  DB.contracts = DB.contracts.filter(c => c.id !== id);
+  saveDB();
+  renderContracts();
+  showToast('تم حذف العقد');
+}
+
+/* ====================================================================
+   PART 6b: PRINTABLE ARABIC CONTRACT
+==================================================================== */
+function printContract(id){
+  const c = DB.contracts.find(x => x.id === id);
+  if(!c){ showToast('العقد غير موجود', 'error'); return; }
+  const car = getCarById(c.carId);
+  const renter = getRenterById(c.renterId);
+  const provider = getProviderById(c.providerId);
+
+  if(!provider){
+    showToast('يرجى اختيار مورد (مؤجر) لهذا العقد أولاً لإمكانية الطباعة', 'error');
+    return;
+  }
+
+  const totalValue = (Number(c.amount)||0) * (Number(c.durationMonths)||0);
+  const usageDescription = c.usageDescription || 'الأغراض المتفق عليها';
+
+  const partyOneHtml = provider.type === 'org' ? `
+    <p><b>الأسم:</b> ${provider.orgName || '—'}</p>
+    <p><b>رقم السجل التجاري:</b> ${provider.crNumber || '—'}</p>
+    <p><b>ويمثلها السيد:</b> ${provider.ownerName || '—'}</p>
+    <p><b>رقم الهوية الوطنية:</b> ${provider.ownerNationalId || '—'}</p>
+    <p><b>العنوان:</b> ${provider.address || '—'}</p>
+    <p><b>رقم الجوال:</b> ${provider.mobile || '—'}</p>
+    <p><b>البريد الإلكتروني:</b> ${provider.email || '—'}</p>` : `
+    <p><b>الأسم:</b> ${provider.fullName || '—'}</p>
+    <p><b>رقم الهوية الوطنية:</b> ${provider.nationalId || '—'}</p>
+    <p><b>العنوان:</b> ${provider.address || '—'}</p>
+    <p><b>رقم الجوال:</b> ${provider.mobile || '—'}</p>
+    <p><b>البريد الإلكتروني:</b> ${provider.email || '—'}</p>`;
+
+  const partyTwoHtml = renter && renter.type === 'company' ? `
+    <p><b>الاسم/اسم الشركة:</b> ${renter.name || '—'}</p>
+    <p><b>رقم السجل التجاري:</b> ${renter.crNumber || '—'}</p>
+    <p><b>ويمثلها السيد:</b> ${renter.repName || '—'}</p>
+    <p><b>رقم الهوية الوطنية:</b> ${renter.nationalId || '—'}</p>
+    <p><b>الجنسية:</b> ${renter.nationality || '—'}</p>
+    <p><b>العنوان:</b> ${renter.address || '—'}</p>
+    <p><b>رقم الجوال:</b> ${renter.phone || '—'}</p>
+    <p><b>البريد الإلكتروني:</b> ${renter.email || '—'}</p>` : `
+    <p><b>الاسم:</b> ${renter ? (renter.name || '—') : '—'}</p>
+    <p><b>رقم الهوية الوطنية:</b> ${renter ? (renter.nationalId || '—') : '—'}</p>
+    <p><b>الجنسية:</b> ${renter ? (renter.nationality || '—') : '—'}</p>
+    <p><b>العنوان:</b> ${renter ? (renter.address || '—') : '—'}</p>
+    <p><b>رقم الجوال:</b> ${renter ? (renter.phone || '—') : '—'}</p>
+    <p><b>البريد الإلكتروني:</b> ${renter ? (renter.email || '—') : '—'}</p>`;
+
+  const providerName = getProviderLabel(provider);
+  const renterName = renter ? (renter.name || '—') : '—';
+
+  const sigImg = provider.signature
+    ? `<img src="${provider.signature}" style="height:70px;max-width:180px;display:block;margin:10px auto;">`
+    : `<div style="height:70px;"></div>`;
+
+  const html = `<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="UTF-8"><title>عقد إيجار سيارة</title>
+<style>
+  body{font-family:'Tahoma','Segoe UI',Arial,sans-serif;color:#1a1a1a;max-width:820px;margin:30px auto;line-height:1.9;padding:0 20px;}
+  h1{text-align:center;font-size:26px;margin-bottom:6px;}
+  .sub{text-align:center;font-size:14px;color:#444;margin-bottom:26px;}
+  .section-title{font-size:16px;font-weight:700;background:#f1f4f9;padding:8px 12px;border-right:4px solid #2563eb;margin:22px 0 10px;}
+  p{margin:4px 0;font-size:14.5px;}
+  .print-bar{text-align:center;margin-bottom:20px;}
+  .article-title {
+    font-size: 15px;
+    font-weight: 700;
+    background: #f1f4f9;
+    padding: 8px 14px;
+    border-right: 4px solid #2563eb;
+    margin: 20px 0 8px;
+  }
+  .article-body {
+    font-size: 14px;
+    line-height: 2;
+    padding: 0 14px;
+    text-align: justify;
+  }
+  table.car-specs {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+    font-size: 14px;
+  }
+  table.car-specs td {
+    border: 1px solid #ddd;
+    padding: 7px 10px;
+    width: 25%;
+  }
+  table.car-specs td b {
+    color: #444;
+  }
+  .sig-section {
+    margin-top: 40px;
+  }
+  .sig-title {
+    font-size: 15px;
+    font-weight: 700;
+    background: #f1f4f9;
+    padding: 8px 14px;
+    border-right: 4px solid #2563eb;
+    margin-bottom: 30px;
+  }
+  .sig-row {
+    display: flex;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 20px;
+  }
+  .sig-box {
+    width: 45%;
+    text-align: center;
+  }
+  .sig-party-label {
+    font-weight: 700;
+    font-size: 15px;
+    margin-bottom: 8px;
+  }
+  .sig-name {
+    font-size: 13.5px;
+    margin-bottom: 16px;
+    color: #333;
+  }
+  .sig-line-label {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  .sig-underline {
+    border-top: 1px solid #333;
+    width: 80%;
+    margin: 0 auto 16px;
+  }
+  .stamp-label {
+    font-size: 13px;
+    color: #555;
+    margin-bottom: 6px;
+  }
+  .stamp-box {
+    width: 100px;
+    height: 100px;
+    border: 1px dashed #aaa;
+    border-radius: 50%;
+    margin: 0 auto;
+  }
+  @media print {
+    .print-bar { display: none; }
+    body { margin: 0; padding: 10px 20px; }
+  }
+</style></head>
+<body>
+  <div class="print-bar"><button onclick="window.print()" style="padding:10px 22px;font-size:14px;cursor:pointer;">🖨️ طباعة</button></div>
+  <h1>عقد إيجار سيارة</h1>
+  <p class="sub">انه في يوم ${weekdayNameAr(c.startDate)} الموافق ${toHijriString(c.startDate)} --- ${gregorianStringAr(c.startDate)} ميلادي بمدينة ${c.city || 'مكة المكرمة'}</p>
+  <p>تم ابرام هذا العقد بين كل من :</p>
+
+  <div class="section-title">الطرف الأول (المؤجر)</div>
+  ${partyOneHtml}
+
+  <div class="section-title">الطرف الثاني (المستأجر)</div>
+  ${partyTwoHtml}
+
+  <div class="article-title">تمهيد</div>
+  <p class="article-body">
+  لما كان الطرف الأول يمتلك مركبة مرخصة ومؤمن عليها، وحيث أن الطرف الثاني
+  لديه الرغبة في استئجار هذه المركبة لاستخدامها في ${usageDescription}،
+  فقد التقت إرادة الطرفين وتوافقا وهما بكامل أهليتهما المعتبرة شرعاً ونظاماً
+  على إبرام هذا العقد وفقاً للبنود التالية.
+  </p>
+
+  <div class="article-title">البند الأول : موضوع العقد</div>
+  <p class="article-body">
+  ١ - يقر الطرف الأول بأنه قام بتأجير الطرف الثاني المركبة بالمواصفات التالية:
+  </p>
+  <table class="car-specs">
+    <tr>
+      <td><b>النوع</b></td><td>${car ? car.make : '—'}</td>
+      <td><b>الموديل</b></td><td>${car ? car.model : '—'}</td>
+    </tr>
+    <tr>
+      <td><b>سنة الصنع</b></td><td>${car ? car.year : '—'}</td>
+      <td><b>رقم اللوحة</b></td><td>${car ? car.plate : '—'}</td>
+    </tr>
+    <tr>
+      <td><b>رقم الهيكل</b></td><td>${car ? (car.chassisNumber || '—') : '—'}</td>
+      <td><b>لون المركبة</b></td><td>${car ? car.color : '—'}</td>
+    </tr>
+    <tr>
+      <td><b>قراءة العداد عند التسليم</b></td><td>${c.odometerAtDelivery || '—'} كم</td>
+      <td></td><td></td>
+    </tr>
+  </table>
+  <p class="article-body">
+  حالة المركبة عند التسليم: تعمل بشكل سليم وخالية من أي عيوب ظاهرة.
+  <br>
+  ٢ - يقر الطرف الثاني بأنه عاين المركبة المعاينة النافية للجهالة،
+  وقبل استئجارها بحالتها الراهنة.
+  </p>
+
+  <div class="article-title">البند الثاني : مدة العقد</div>
+  <p class="article-body">
+  مدة هذا العقد ${c.durationMonths || '—'} أشهر، تبدأ من تاريخ ${gregorianStringAr(c.startDate)} م
+  وتنتهي بتاريخ ${gregorianStringAr(c.endDate)} م.
+  </p>
+
+  <div class="article-title">البند الثالث : القيمة الإيجارية وآلية السداد</div>
+  <p class="article-body">
+  ١ - اتفق الطرفان على أن تكون القيمة الإيجارية الشهرية مبلغاً وقدره
+  ${Number(c.amount||0).toLocaleString('en-US')} ريال سعودي، والقيمة الإجمالية للعقد ${Number(totalValue||0).toLocaleString('en-US')} ريال سعودي.
+  <br><br>
+  ٢ - في حال تأخر الطرف الثاني عن سداد دفعة الأجرة أكثر من خمسة (5) أيام،
+  يحق للطرف الأول سحب السيارة في أي وقت، ويحق له التصرف بالموجودات بداخلها،
+  ولا يحق للطرف الثاني الاعتراض.
+  <br><br>
+  ٣ - يلتزم الطرف الثاني بسداد الأجرة الشهرية مقدماً في بداية كل شهر ميلادي
+  عن طريق إيداع بنكي في حساب الطرف الأول
+  رقم: ${c.bankAccount || '—'} لدى ${c.bankName || '—'}.
+  </p>
+
+  <div class="article-title">البند الرابع : إنهاء العقد (الإنهاء المبكر)</div>
+  <p class="article-body">
+  ١ - لا يحق للطرف الثاني التخلف عن الالتزام بمدة العقد المتفق عليها،
+  وفي حال الإنهاء المبكر يلتزم الطرف الثاني بدفع ${c.penaltyPercent != null ? c.penaltyPercent : 20}%
+  من القيمة الإجمالية المتبقية حتى انتهاء مدة العقد.
+  </p>
+
+  <div class="article-title">البند الخامس : التزامات الطرف الأول (المؤجر)</div>
+  <p class="article-body">
+  ١ - تسليم المركبة للطرف الثاني في حالة صالحة للاستخدام المتفق عليه.
+  <br>
+  ٢ - التأكد من أن جميع التراخيص اللازمة للمركبة (رخصة السير، الفحص الدوري)
+  سارية المفعول.
+  <br>
+  ٣ - التأكد من وجود تغطية تأمينية سارية المفعول على المركبة تغطي المسؤولية
+  المدنية تجاه الغير كحد أدنى.
+  <br>
+  ٤ - تحمل تكاليف الصيانة الدورية والأساسية للمركبة، وتغيير الزيوت والفلاتر
+  وقطع الغيار الاستهلاكية الناتجة عن الاستخدام المعتاد، وذلك بعد قطع
+  مسافة ${c.maintenanceKm != null ? c.maintenanceKm : 4500} كم.
+  </p>
+
+  <div class="article-title">البند السادس : التزامات الطرف الثاني (المستأجر)</div>
+  <p class="article-body">
+  ١ - سداد القيمة الإيجارية في المواعيد المحددة.
+  <br>
+  ٢ - استخدام المركبة في الغرض المخصص لها وهو ${usageDescription}،
+  وعدم استخدامها في أغراض مخالفة للأنظمة.
+  <br>
+  ٣ - المحافظة على المركبة والعناية بها، وإعادتها عند انتهاء العقد بنفس الحالة
+  التي استلمها بها، مع الأخذ في الاعتبار الاستهلاك الطبيعي الناتج عن الاستعمال.
+  <br>
+  ٤ - يكون الطرف الثاني مسؤولاً أمام الجهات الحكومية عن أي مخالفات مرورية
+  أو جنائية من تاريخ العقد، عدا المخالفات المرورية التي تكون على المركبة
+  بسبب اختلاف مواصفاتها عن الاستمارة فيتحملها الطرف الأول.
+  </p>
+
+  <div class="article-title">البند السابع : القانون الواجب التطبيق والمحاكم المختصة</div>
+  <p class="article-body">
+  ١ - يخضع هذا العقد في تفسيره وتنفيذه للأنظمة واللوائح المعمول بها في
+  المملكة العربية السعودية، وفي حال نشوء أي نزاع بين الطرفين يتم حله ودياً،
+  فإن تعذر ذلك تكون المحاكم المختصة في مدينة ${c.city || 'مكة المكرمة'}
+  صاحبة الاختصاص للفصل في النزاع.
+  <br>
+  ٢ - حرر هذا العقد من نسختين أصليتين، بيد كل طرف نسخة للعمل بموجبها.
+  </p>
+
+  <div class="sig-section">
+    <div class="sig-title">التوقيعات</div>
+
+    <div class="sig-row">
+
+      <div class="sig-box">
+        <div class="sig-party-label">الطرف الأول : (المؤجر)</div>
+        <div class="sig-name">
+          الأسم : ${providerName}
+        </div>
+        <div class="sig-image-area">
+          ${sigImg}
+        </div>
+        <div class="sig-line-label">التوقيع</div>
+        <div class="sig-underline"></div>
+        <div class="stamp-label">الختم</div>
+        <div class="stamp-box"></div>
+      </div>
+
+      <div class="sig-box">
+        <div class="sig-party-label">الطرف الثاني : (المستأجر)</div>
+        <div class="sig-name">
+          الأسم : ${renterName}
+        </div>
+        <div style="height:70px;"></div>
+        <div class="sig-line-label">التوقيع</div>
+        <div class="sig-underline"></div>
+      </div>
+
+    </div>
+  </div>
+</body></html>`;
+
+  const win = window.open('', '_blank');
+  if(!win){ showToast('يرجى السماح بالنوافذ المنبثقة للطباعة', 'error'); return; }
+  win.document.open();
+  win.document.write(html);
+  win.document.close();
+}
+
+document.getElementById('addContractBtn').addEventListener('click', ()=> openContractModal(null));
+document.getElementById('saveContractBtn').addEventListener('click', saveContract);
+document.getElementById('contractProvider').addEventListener('change', updateContractProviderPreview);
+document.getElementById('contractRenter').addEventListener('change', updateContractRenterPreview);
+document.getElementById('contractCar').addEventListener('change', updateContractCarPreview);
+document.getElementById('contractStart').addEventListener('change', recalcContractDates);
+document.getElementById('contractDuration').addEventListener('input', recalcContractDates);
+document.getElementById('contractAmount').addEventListener('input', recalcContractTotal);
+
+/* ====================================================================
+   PART 7: INCOME CRUD
+==================================================================== */
+function renderIncome(){
+  const tbody = document.getElementById('incomeTableBody');
+  if(DB.income.length === 0){
+    tbody.innerHTML = `<tr><td colspan="5" class="empty-note">لا توجد سجلات دخل بعد</td></tr>`;
+    return;
+  }
+  const rows = [...DB.income].sort((a,b)=> new Date(b.date) - new Date(a.date));
+  tbody.innerHTML = rows.map(i => {
+    const car = getCarById(i.carId);
+    return `
+    <tr>
+      <td>${car ? getCarLabel(car) : '—'}</td>
+      <td><span class="profit-pos">${fmtCurrency(i.amount)}</span></td>
+      <td>${fmtDate(i.date)}</td>
+      <td>${i.notes || '—'}</td>
+      <td class="row-actions">
+        <button class="btn-icon" title="تعديل" onclick="openIncomeModal('${i.id}')">✏️</button>
+        <button class="btn-icon" title="حذف" onclick="deleteIncome('${i.id}')">🗑️</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+RENDER_FNS.income = renderIncome;
+
+function openIncomeModal(id){
+  fillCarSelect(document.getElementById('incomeCar'));
+  document.getElementById('incomeId').value = '';
+  document.getElementById('incomeAmount').value = '';
+  document.getElementById('incomeDate').value = todayStr();
+  document.getElementById('incomeNotes').value = '';
+  document.getElementById('incomeModalTitle').textContent = 'إضافة دخل';
+
+  if(id){
+    const i = DB.income.find(x => x.id === id);
+    if(i){
+      document.getElementById('incomeId').value = i.id;
+      document.getElementById('incomeCar').value = i.carId;
+      document.getElementById('incomeAmount').value = i.amount;
+      document.getElementById('incomeDate').value = i.date;
+      document.getElementById('incomeNotes').value = i.notes;
+      document.getElementById('incomeModalTitle').textContent = 'تعديل دخل';
+    }
+  }
+  if(DB.cars.length === 0){
+    showToast('أضف سيارة أولاً', 'error');
+    return;
+  }
+  openModal('incomeModalOverlay');
+}
+
+function saveIncome(){
+  const carId = document.getElementById('incomeCar').value;
+  const amount = document.getElementById('incomeAmount').value;
+  const date = document.getElementById('incomeDate').value;
+  const notes = document.getElementById('incomeNotes').value.trim();
+  const id = document.getElementById('incomeId').value;
+
+  if(!carId || !amount || !date){
+    showToast('يرجى تعبئة جميع الحقول المطلوبة', 'error');
+    return;
+  }
+
+  if(id){
+    const i = DB.income.find(x => x.id === id);
+    Object.assign(i, {carId, amount, date, notes});
+  }else{
+    DB.income.push({id: genId(), carId, amount, date, notes});
+  }
+  saveDB();
+  closeModal('incomeModalOverlay');
+  renderIncome();
+  showToast('تم حفظ الدخل بنجاح');
+}
+
+function deleteIncome(id){
+  if(!confirm('هل تريد حذف هذا السجل؟')) return;
+  DB.income = DB.income.filter(i => i.id !== id);
+  saveDB();
+  renderIncome();
+  showToast('تم حذف السجل');
+}
+
+document.getElementById('addIncomeBtn').addEventListener('click', ()=> openIncomeModal(null));
+document.getElementById('saveIncomeBtn').addEventListener('click', saveIncome);
+
+/* ====================================================================
+   PART 8: EXPENSES CRUD
+==================================================================== */
+function renderExpenses(){
+  const tbody = document.getElementById('expensesTableBody');
+  if(DB.expenses.length === 0){
+    tbody.innerHTML = `<tr><td colspan="6" class="empty-note">لا توجد مصروفات مضافة بعد</td></tr>`;
+    return;
+  }
+  const rows = [...DB.expenses].sort((a,b)=> new Date(b.date) - new Date(a.date));
+  tbody.innerHTML = rows.map(e => {
+    const car = getCarById(e.carId);
+    return `
+    <tr>
+      <td>${car ? getCarLabel(car) : '—'}</td>
+      <td><span class="badge badge-gray">${e.type}</span></td>
+      <td><span class="profit-neg">${fmtCurrency(e.amount)}</span></td>
+      <td>${fmtDate(e.date)}</td>
+      <td>${e.notes || '—'}</td>
+      <td class="row-actions">
+        <button class="btn-icon" title="تعديل" onclick="openExpenseModal('${e.id}')">✏️</button>
+        <button class="btn-icon" title="حذف" onclick="deleteExpense('${e.id}')">🗑️</button>
+      </td>
+    </tr>`;
+  }).join('');
+}
+RENDER_FNS.expenses = renderExpenses;
+
+function openExpenseModal(id){
+  fillCarSelect(document.getElementById('expenseCar'));
+  document.getElementById('expenseId').value = '';
+  document.getElementById('expenseType').value = 'إصلاح';
+  document.getElementById('expenseAmount').value = '';
+  document.getElementById('expenseDate').value = todayStr();
+  document.getElementById('expenseNotes').value = '';
+  document.getElementById('expenseModalTitle').textContent = 'إضافة مصروف';
+
+  if(id){
+    const e = DB.expenses.find(x => x.id === id);
+    if(e){
+      document.getElementById('expenseId').value = e.id;
+      document.getElementById('expenseCar').value = e.carId;
+      document.getElementById('expenseType').value = e.type;
+      document.getElementById('expenseAmount').value = e.amount;
+      document.getElementById('expenseDate').value = e.date;
+      document.getElementById('expenseNotes').value = e.notes;
+      document.getElementById('expenseModalTitle').textContent = 'تعديل مصروف';
+    }
+  }
+  if(DB.cars.length === 0){
+    showToast('أضف سيارة أولاً', 'error');
+    return;
+  }
+  openModal('expenseModalOverlay');
+}
+
+function saveExpense(){
+  const carId = document.getElementById('expenseCar').value;
+  const type = document.getElementById('expenseType').value;
+  const amount = document.getElementById('expenseAmount').value;
+  const date = document.getElementById('expenseDate').value;
+  const notes = document.getElementById('expenseNotes').value.trim();
+  const id = document.getElementById('expenseId').value;
+
+  if(!carId || !amount || !date){
+    showToast('يرجى تعبئة جميع الحقول المطلوبة', 'error');
+    return;
+  }
+
+  if(id){
+    const e = DB.expenses.find(x => x.id === id);
+    Object.assign(e, {carId, type, amount, date, notes});
+  }else{
+    DB.expenses.push({id: genId(), carId, type, amount, date, notes});
+  }
+  saveDB();
+  closeModal('expenseModalOverlay');
+  renderExpenses();
+  showToast('تم حفظ المصروف بنجاح');
+}
+
+function deleteExpense(id){
+  if(!confirm('هل تريد حذف هذا السجل؟')) return;
+  DB.expenses = DB.expenses.filter(e => e.id !== id);
+  saveDB();
+  renderExpenses();
+  showToast('تم حذف السجل');
+}
+
+document.getElementById('addExpenseBtn').addEventListener('click', ()=> openExpenseModal(null));
+document.getElementById('saveExpenseBtn').addEventListener('click', saveExpense);
+
+/* ====================================================================
+   PART 9: PROFIT PER CAR
+==================================================================== */
+function renderProfit(){
+  const tbody = document.getElementById('profitTableBody');
+  if(DB.cars.length === 0){
+    tbody.innerHTML = `<tr><td colspan="4" class="empty-note">لا توجد سيارات لعرض أرباحها</td></tr>`;
+    return;
+  }
+  tbody.innerHTML = DB.cars.map(car => {
+    const totalIncome = DB.income.filter(i => i.carId === car.id).reduce((s,i)=> s + Number(i.amount||0), 0);
+    const totalExpenses = DB.expenses.filter(e => e.carId === car.id).reduce((s,e)=> s + Number(e.amount||0), 0);
+    const net = totalIncome - totalExpenses;
+    return `
+    <tr>
+      <td>${getCarLabel(car)}</td>
+      <td><span class="profit-pos">${fmtCurrency(totalIncome)}</span></td>
+      <td><span class="profit-neg">${fmtCurrency(totalExpenses)}</span></td>
+      <td class="${net >= 0 ? 'profit-pos' : 'profit-neg'}">${fmtCurrency(net)}</td>
+    </tr>`;
+  }).join('');
+}
+RENDER_FNS.profit = renderProfit;
+
+/* ====================================================================
+   PART 10: INIT
+==================================================================== */
+function updateTopbarDate(){
+  const d = new Date();
+  document.getElementById('topbarDate').textContent = d.toLocaleDateString('ar-EG', {weekday:'long', year:'numeric', month:'long', day:'numeric'});
+}
+
+function init(){
+  loadDB();
+  seedSampleData();
+  loadDB();
+  updateTopbarDate();
+  renderDashboard();
+}
+
+init();
+</script>
+</body>
+</html>

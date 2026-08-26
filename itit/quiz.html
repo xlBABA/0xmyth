@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Practice Quiz — ITIT Study Notes</title>
+<meta name="description" content="Practice and mock exam questions for BIC1234 / CC106 Introduction to Internet Technologies.">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{if(localStorage.getItem('itit-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>ITIT<span style="color:var(--muted)">/</span>notes</a>
+    <div class="header-ctx">BIC1234 &mdash; <b>Practice quiz</b></div>
+    <div class="header-tools">
+      <a class="icon-btn" href="index.html">chapters</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" title="Switch to light mode">
+        <span data-theme-label>light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap quiz-shell">
+
+    <!-- ============================================================ SETUP -->
+    <section id="screen-setup" aria-labelledby="setup-title">
+
+      <div class="page-head" style="padding-top:6px">
+        <p class="eyebrow">Practice</p>
+        <h1 id="setup-title">Quiz</h1>
+        <p class="lede">
+          Pick what you want to be tested on. The multiple choice is for speed &mdash;
+          the written answer that appears underneath each question is the part worth
+          reading.
+        </p>
+      </div>
+
+      <div class="panel">
+        <form id="setup-form">
+
+          <div class="field">
+            <span class="field-label" id="lbl-chapter">Chapter</span>
+            <div class="seg" role="radiogroup" aria-labelledby="lbl-chapter">
+              <input type="radio" name="chapter" id="ch-all" value="all" checked><label for="ch-all">All</label>
+              <input type="radio" name="chapter" id="ch-1" value="1"><label for="ch-1">Ch 1</label>
+              <input type="radio" name="chapter" id="ch-2" value="2"><label for="ch-2">Ch 2</label>
+              <input type="radio" name="chapter" id="ch-3" value="3"><label for="ch-3">Ch 3</label>
+              <input type="radio" name="chapter" id="ch-4" value="4"><label for="ch-4">Ch 4</label>
+              <input type="radio" name="chapter" id="ch-5" value="5"><label for="ch-5">Ch 5</label>
+              <input type="radio" name="chapter" id="ch-6" value="6"><label for="ch-6">Ch 6</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="lbl-source">Source</span>
+            <div class="seg" role="radiogroup" aria-labelledby="lbl-source">
+              <input type="radio" name="source" id="src-all" value="all" checked><label for="src-all">All</label>
+              <input type="radio" name="source" id="src-tutorial" value="tutorial"><label for="src-tutorial">Tutorials</label>
+              <input type="radio" name="source" id="src-midterm" value="midterm"><label for="src-midterm">Midterm</label>
+              <input type="radio" name="source" id="src-final" value="final"><label for="src-final">Final</label>
+            </div>
+            <p class="field-hint" id="source-hint"></p>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="lbl-mode">Mode</span>
+            <div class="mode-cards" role="radiogroup" aria-labelledby="lbl-mode">
+              <input type="radio" name="mode" id="mode-practice" value="practice" checked>
+              <label for="mode-practice">
+                <span class="m-name">Practice</span>
+                <span class="m-desc">Immediate feedback and the full written answer after every question. No timer.</span>
+              </label>
+              <input type="radio" name="mode" id="mode-exam" value="exam">
+              <label for="mode-exam">
+                <span class="m-name">Mock exam</span>
+                <span class="m-desc">No feedback until the end. Optional timer, then a full results breakdown.</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field" id="timer-field" hidden>
+            <span class="field-label">Timer</span>
+            <div class="switch-row">
+              <input type="checkbox" id="opt-timer">
+              <label for="opt-timer">Time this mock exam</label>
+            </div>
+            <div class="seg" role="radiogroup" aria-label="Timer length" id="timer-lengths">
+              <input type="radio" name="minutes" id="min-15" value="15"><label for="min-15">15 min</label>
+              <input type="radio" name="minutes" id="min-30" value="30" checked><label for="min-30">30 min</label>
+              <input type="radio" name="minutes" id="min-45" value="45"><label for="min-45">45 min</label>
+              <input type="radio" name="minutes" id="min-60" value="60"><label for="min-60">60 min</label>
+            </div>
+            <p class="field-hint">When the timer runs out the paper is submitted automatically.</p>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="lbl-count">Number of questions</span>
+            <div class="seg" role="radiogroup" aria-labelledby="lbl-count">
+              <input type="radio" name="count" id="n-10" value="10"><label for="n-10">10</label>
+              <input type="radio" name="count" id="n-25" value="25" checked><label for="n-25">25</label>
+              <input type="radio" name="count" id="n-50" value="50"><label for="n-50">50</label>
+              <input type="radio" name="count" id="n-all" value="all"><label for="n-all">All</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Options</span>
+            <div class="switch-row">
+              <input type="checkbox" id="opt-shuffle-q" checked>
+              <label for="opt-shuffle-q">Shuffle questions</label>
+            </div>
+            <div class="switch-row">
+              <input type="checkbox" id="opt-shuffle-o" checked>
+              <label for="opt-shuffle-o">Shuffle answer options</label>
+            </div>
+          </div>
+
+          <p class="filter-summary" id="filter-summary" aria-live="polite"></p>
+
+          <button type="submit" class="btn btn-primary btn-block" id="btn-start">Start quiz</button>
+        </form>
+      </div>
+
+      <p class="field-hint" style="text-align:center">
+        Tip: chapter pages link straight in &mdash; <code>quiz.html?chapter=4</code>
+        or <code>quiz.html?source=final</code> pre-applies a filter.
+      </p>
+
+    </section>
+
+    <!-- ============================================================== RUN -->
+    <section id="screen-run" hidden aria-labelledby="run-title">
+      <h1 id="run-title" class="visually-hidden">Quiz in progress</h1>
+
+      <div class="quiz-bar">
+        <span class="quiz-count">Question <b id="q-now">1</b> of <b id="q-total">1</b></span>
+        <span class="quiz-timer" id="q-timer" role="timer" aria-live="off"></span>
+      </div>
+
+      <div class="progress-track">
+        <div class="progress-fill" id="q-progress"></div>
+      </div>
+
+      <div class="panel">
+        <div class="q-tags" id="q-tags"></div>
+        <p class="q-text" id="q-text"></p>
+        <div class="options" id="q-options" role="group" aria-label="Answer options"></div>
+        <div id="q-feedback" aria-live="polite"></div>
+
+        <div class="quiz-actions">
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-back">&larr; Back</button>
+          <button type="button" class="btn btn-ghost btn-sm" id="btn-skip">Skip</button>
+          <span class="spacer"></span>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-next">Next &rarr;</button>
+          <button type="button" class="btn btn-primary btn-sm" id="btn-finish" hidden>Finish</button>
+        </div>
+      </div>
+
+      <div style="text-align:center">
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-quit">End quiz and see results</button>
+      </div>
+    </section>
+
+    <!-- ========================================================== RESULTS -->
+    <section id="screen-results" hidden aria-labelledby="results-title">
+      <h1 id="results-title" class="visually-hidden">Results</h1>
+
+      <div class="score-hero">
+        <div class="score-pct" id="r-pct">0%</div>
+        <p class="score-sub" id="r-sub"></p>
+        <div class="score-stats" id="r-stats"></div>
+      </div>
+
+      <div class="quiz-actions" style="margin-bottom:20px">
+        <button type="button" class="btn btn-primary btn-sm" id="btn-retry-wrong">Retry incorrect only</button>
+        <button type="button" class="btn btn-sm" id="btn-again">Same quiz again</button>
+        <button type="button" class="btn btn-ghost btn-sm" id="btn-new">Change settings</button>
+      </div>
+
+      <div class="panel" id="r-breakdown-panel">
+        <h2 style="margin-top:0">Breakdown by chapter</h2>
+        <div id="r-breakdown"></div>
+      </div>
+
+      <h2>Review every question</h2>
+      <div id="r-review"></div>
+    </section>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="dua" lang="ar" dir="rtl">إن نفعك هذا الموقع، فلا تنسَ صاحبه من دعوة صالحة بظهر الغيب.</p>
+    <p class="dua-en">If this site helped you in your studies, please remember its author in your prayers.</p>
+    <p class="footer-fine">Personal study notes for BIC1234 &mdash; not official course material.</p>
+  </div>
+</footer>
+
+<script src="assets/data/questions-tutorials.js"></script>
+<script src="assets/data/questions-exams.js"></script>
+<script src="assets/main.js"></script>
+<script src="assets/quiz.js"></script>
+</body>
+</html>

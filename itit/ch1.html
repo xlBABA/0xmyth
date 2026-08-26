@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 1 &middot; Introduction to the Internet and the Web — ITIT Study Notes</title>
+<meta name="description" content="Internet vs. the web, TCP/IP, ARPANET, URLs, browsers and internet services — BIC1234 Chapter 1.">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{if(localStorage.getItem('itit-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>ITIT<span style="color:var(--muted)">/</span>notes</a>
+    <div class="header-ctx"><b>Chapter 1</b> &mdash; Introduction to the Internet and the Web</div>
+    <div class="header-tools">
+      <a class="icon-btn" href="quiz.html?chapter=1">quiz</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" title="Switch to light mode">
+        <span data-theme-label>light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="page-head">
+      <p class="eyebrow">Chapter 1</p>
+      <h1>Introduction to the Internet and the Web</h1>
+      <p class="lede">
+        Short chapter, and almost entirely definitions. The one idea that carries
+        through the whole module is the distinction between the <b>internet</b> (the
+        physical network) and the <b>web</b> (one of the services running on it).
+      </p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#internet-web">The internet and the web</a></li>
+        <li><a href="#difference">The difference between them</a></li>
+        <li><a href="#ownership">Who owns the internet?</a></li>
+        <li><a href="#origins">Origins and standards</a></li>
+        <li><a href="#core-terms">Core terms</a></li>
+        <li><a href="#services">Services on the internet</a></li>
+        <li><a href="#daily-life">Why internet technologies matter</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose">
+
+      <h2 id="internet-web">1. The internet and the web</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Internet</dt>
+          <dd>
+            The physical network that connects millions of computers together globally
+            and allows them to communicate.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>World Wide Web (WWW)</dt>
+          <dd>
+            A way of accessing information over the medium of the internet. A second,
+            equally acceptable definition: a collection of web pages available on the
+            internet.
+          </dd>
+        </div>
+      </dl>
+
+      <h2 id="difference">2. The difference between them</h2>
+
+      <p>
+        The internet is <b>infrastructure</b>. The web is <b>content delivered over that
+        infrastructure</b>. The internet is the physical network that lets computers in
+        different places communicate; the web is the collection of websites and web
+        pages that users reach through the internet using a web browser.
+      </p>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">The internet compared with the web</caption>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Internet</th><th scope="col">World Wide Web</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>What it is</td><td>A physical network of connected computers</td><td>A service that runs on top of that network</td></tr>
+            <tr><td>Made of</td><td>Cables, routers, servers, protocols</td><td>Web pages and websites linked by hypertext</td></tr>
+            <tr><td>Accessed with</td><td>Any networked application</td><td>A web browser</td></tr>
+            <tr><td>Came first</td><td>ARPANET, 1969</td><td>Invented by Tim Berners-Lee, 1989</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3 id="internet-without-web">Can you have the internet without the web?</h3>
+
+      <p>
+        <b>Yes.</b> The web is only one of the services that runs over the internet. We
+        reach websites through the internet, but the internet is used for plenty of
+        things that are not web browsing &mdash; messaging apps such as WhatsApp, email,
+        file transfer, online gaming and video calls all use the internet without
+        touching the web. Remove the web and the network underneath it still works.
+      </p>
+
+      <p>
+        The reverse is not true: you cannot have the web without the internet, because
+        the web has nothing to travel over.
+      </p>
+
+      <h2 id="ownership">3. Who owns the internet?</h2>
+
+      <p>
+        <b>No one owns the internet.</b> It is mostly funded by private and public IT
+        companies. There is no single owner, no single operator, and no central
+        authority that can switch it off.
+      </p>
+
+      <h2 id="origins">4. Origins and standards</h2>
+
+      <ul class="ticks">
+        <li>The internet began with the <b>ARPANET project in 1969</b>.</li>
+        <li>The standards and guidelines for the web are published by the
+            <b>World Wide Web Consortium (W3C)</b>.</li>
+      </ul>
+
+      <h2 id="core-terms">5. Core terms</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>TCP/IP &mdash; Transmission Control Protocol / Internet Protocol</dt>
+          <dd>
+            A set of protocols developed to allow cooperating computers to share
+            resources across a network.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>URL &mdash; Uniform Resource Locator</dt>
+          <dd>
+            The unique address of every web page on the internet.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Web browser</dt>
+          <dd>
+            Application software that allows us to view web pages.
+          </dd>
+        </div>
+      </dl>
+
+      <h2 id="services">6. Services on the internet</h2>
+
+      <p>The internet provides many services. Among them:</p>
+
+      <ul class="ticks">
+        <li><b>Communicating</b> &mdash; messaging, email, voice and video calls</li>
+        <li><b>Searching</b> &mdash; finding information through search engines</li>
+        <li><b>Education / e-learning</b></li>
+        <li><b>Online shopping</b></li>
+        <li><b>Digital banking</b></li>
+        <li><b>Social networking</b></li>
+      </ul>
+
+      <h2 id="daily-life">7. Why internet technologies matter</h2>
+
+      <p>
+        Internet technologies have become central to ordinary daily life. Almost
+        everyone now relies on them for work, study, messaging, phone calls, banking,
+        shopping, gaming and browsing. What was once a specialist research network is
+        now the default medium for communication and commerce &mdash; which is exactly
+        why the privacy and security material in
+        <a href="ch4.html">Chapter 4</a> matters so much.
+      </p>
+
+    </div>
+
+    <div class="test-cta">
+      <p>
+        <strong>Test this chapter</strong>
+        12 questions on the internet/web distinction, TCP/IP, ARPANET and the core definitions.
+      </p>
+      <a class="btn btn-primary" href="quiz.html?chapter=1">Start Chapter 1 quiz &rarr;</a>
+    </div>
+
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <a class="prev" href="index.html">
+        <span class="dir">&larr; Back</span>
+        <span class="name">All chapters</span>
+      </a>
+      <a class="next" href="ch2.html">
+        <span class="dir">Next &rarr;</span>
+        <span class="name">Ch2 &mdash; The World Wide Web</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="dua" lang="ar" dir="rtl">إن نفعك هذا الموقع، فلا تنسَ صاحبه من دعوة صالحة بظهر الغيب.</p>
+    <p class="dua-en">If this site helped you in your studies, please remember its author in your prayers.</p>
+    <p class="footer-fine">Personal study notes for BIC1234 &mdash; not official course material.</p>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

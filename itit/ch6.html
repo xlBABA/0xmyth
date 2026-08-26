@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 6 &middot; Cloud Computing, IoT and Emerging Technologies — ITIT Study Notes</title>
+<meta name="description" content="Cloud deployment models, SaaS/PaaS/IaaS, IoT, web analytics, blockchain, AI and big data — BIC1234 Chapter 6.">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{if(localStorage.getItem('itit-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>ITIT<span style="color:var(--muted)">/</span>notes</a>
+    <div class="header-ctx"><b>Chapter 6</b> &mdash; Cloud Computing, IoT and Emerging Technologies</div>
+    <div class="header-tools">
+      <a class="icon-btn" href="quiz.html?chapter=6">quiz</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" title="Switch to light mode">
+        <span data-theme-label>light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="page-head">
+      <p class="eyebrow">Chapter 6</p>
+      <h1>Cloud Computing, IoT and Emerging Technologies</h1>
+      <p class="lede">
+        Two lists carry this chapter: the <b>four deployment models</b> and the
+        <b>three service types</b>. They are different questions with different answers,
+        and mixing them up is the single most common mistake here.
+      </p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#cloud">Cloud services</a></li>
+        <li><a href="#components">The three basic components</a></li>
+        <li><a href="#factors">Two critical efficiency factors</a></li>
+        <li><a href="#deployment">Cloud deployment models</a></li>
+        <li><a href="#service-types">Types of cloud computing services</a></li>
+        <li><a href="#advantages">Advantages of cloud computing</a></li>
+        <li><a href="#disadvantages">Disadvantages of cloud computing</a></li>
+        <li><a href="#iot">Internet of Things</a></li>
+        <li><a href="#analytics">Web analytics</a></li>
+        <li><a href="#analytics-types">Descriptive, predictive and prescriptive analytics</a></li>
+        <li><a href="#blockchain">Blockchain</a></li>
+        <li><a href="#ai">Artificial intelligence</a></li>
+        <li><a href="#big-data">Big data</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose">
+
+      <h2 id="cloud">1. Cloud services</h2>
+
+      <div class="def">
+        <span class="def-term">Cloud services</span>
+        <p class="def-body">
+          Shift computing activities from the user's desktop to computers on the
+          internet. Cloud computing frees end users from owning, maintaining and storing
+          software and data, and gives them access to those services from anywhere with
+          an internet connection.
+        </p>
+      </div>
+
+      <h2 id="components">2. The three basic components</h2>
+
+      <p>The essential elements of cloud computing are:</p>
+
+      <ol class="steps">
+        <li><b>Clients</b> &mdash; the end users.</li>
+        <li><b>Service providers</b> &mdash; the companies operating the cloud.</li>
+        <li><b>The internet</b> &mdash; the medium connecting the two.</li>
+      </ol>
+
+      <h2 id="factors">3. Two critical efficiency factors</h2>
+
+      <p>Two factors determine how efficient cloud computing actually is:</p>
+
+      <ul class="ticks">
+        <li>The <b>speed and reliability of the user's internet connection</b>.</li>
+        <li>The <b>internet's capability to provide safe and reliable transmission</b> of the data.</li>
+      </ul>
+
+      <h2 id="deployment">4. Cloud deployment models</h2>
+
+      <p>
+        Deployment models answer <b>who the cloud is for</b> &mdash; not what it
+        provides.
+      </p>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">The four cloud deployment models</caption>
+          <thead>
+            <tr><th scope="col">Model</th><th scope="col">Who it serves</th><th scope="col">Who manages it</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Public cloud</td>
+              <td>The general public or large organisations.</td>
+              <td>Owned and managed by the cloud provider.</td>
+            </tr>
+            <tr>
+              <td>Private cloud</td>
+              <td>A single organisation, exclusively.</td>
+              <td>Managed by the organisation itself or by a third party.</td>
+            </tr>
+            <tr>
+              <td>Hybrid cloud</td>
+              <td>A mix of two or more types &mdash; both public and private.</td>
+              <td>Split between the parties involved.</td>
+            </tr>
+            <tr>
+              <td>Community cloud</td>
+              <td>Several organisations sharing a specific community, so they can share data and environments.</td>
+              <td>Shared between the participating organisations.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        The <b>private</b> model is the one preferred by organisations that need
+        exclusive control over sensitive data.
+      </p>
+
+      <h2 id="service-types">5. Types of cloud computing services</h2>
+
+      <div class="note note-info">
+        <div class="note-label">This is the answer to &ldquo;the three types&rdquo;</div>
+        <p>
+          The three types of cloud computing services are <b>SaaS</b>, <b>PaaS</b> and
+          <b>IaaS</b>. They are <i>not</i> AWS, Azure and Alibaba Cloud &mdash; those are
+          <b>providers</b>, which is a different question entirely. Tutorial 4 answers
+          this wrongly; the answer below is the correct one.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">SaaS, PaaS and IaaS compared</caption>
+          <thead>
+            <tr><th scope="col">Service</th><th scope="col">What the client gets</th><th scope="col">Examples</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>SaaS<br><span class="mono">Software as a Service</span></td>
+              <td>The ability to <b>use the provider's software application</b> over the internet by subscription, from anywhere via the web. The client manages nothing.</td>
+              <td>Google applications, Salesforce</td>
+            </tr>
+            <tr>
+              <td>PaaS<br><span class="mono">Platform as a Service</span></td>
+              <td>A <b>platform on which the client deploys and hosts their own applications</b>, without having to worry about infrastructure, storage, servers, network or hardware.</td>
+              <td>Amazon Web Services, Microsoft Azure</td>
+            </tr>
+            <tr>
+              <td>IaaS<br><span class="mono">Infrastructure as a Service</span></td>
+              <td><b>Just the hardware and the network.</b> The client installs and develops the software and applications themselves.</td>
+              <td>Amazon AWS, IBM</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        Read the table as a ladder of <b>how much the client still has to do</b>: with
+        SaaS, nothing but use it; with PaaS, build and deploy the application; with IaaS,
+        install everything on top of bare hardware.
+      </p>
+
+      <h2 id="advantages">6. Advantages of cloud computing</h2>
+
+      <ul class="ticks">
+        <li><b>Cost efficiency</b></li>
+        <li><b>Backup and recovery</b></li>
+        <li><b>Automated software updates</b> &mdash; the server regularly updates software, including security patches, with no user involvement in maintenance</li>
+        <li><b>24/7 availability</b></li>
+        <li><b>Security</b> &mdash; your data is not lost</li>
+        <li><b>Quick deployment</b></li>
+        <li><b>Easy access to information</b> &mdash; from any device with an internet connection</li>
+      </ul>
+
+      <p>
+        Two further advantages appear in the tutorial: <b>almost unlimited storage</b>,
+        and <b>flexibility or scalability</b> &mdash; companies can increase or decrease
+        their resources as their needs change. Cloud computing also contributes to
+        <b>environmental sustainability</b>, by reducing IT expenses and resource
+        footprint through shared physical hardware.
+      </p>
+
+      <div class="note">
+        <div class="note-label">Coverage Note</div>
+        <p>
+          Full definitions for each advantage of cloud computing are on <b>slide 15</b>.
+          Only the list is recorded here &mdash; if the exam asks you to explain each
+          one, go to that slide.
+        </p>
+      </div>
+
+      <h2 id="disadvantages">7. Disadvantages of cloud computing</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Technical issues</dt>
+          <dd>The service can go down, and you cannot fix it yourself.</dd>
+        </div>
+        <div class="def">
+          <dt>Security in the cloud</dt>
+          <dd>
+            You are surrendering your company's sensitive information to a third-party
+            provider, which can increase security risk.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Inflexibility</dt>
+          <dd>
+            Choosing a cloud provider locks you into their proprietary applications and
+            formats, making it hard to move later.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Prone to attack</dt>
+          <dd>
+            Storing information in the cloud leaves the client vulnerable to external
+            hacking attacks.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Legislation and regulation</dt>
+          <dd>Legal and regulatory constraints on where and how data may be stored.</dd>
+        </div>
+      </dl>
+
+      <p>The tutorial adds <b>possible downtime</b> to this list.</p>
+
+      <div class="note">
+        <div class="note-label">Coverage Note</div>
+        <p>
+          Full definitions for each disadvantage of cloud computing are on
+          <b>slide 16</b>.
+        </p>
+      </div>
+
+      <h2 id="iot">8. Internet of Things</h2>
+
+      <div class="def">
+        <span class="def-term">IoT &mdash; Internet of Things</span>
+        <p class="def-body">
+          Extending the power of the internet beyond computers and smartphones to a
+          whole range of other things, processes and environments. It is the idea of
+          connecting everyday devices to the internet so that they can collect and send
+          data over a wireless network <b>without needing a person to do it manually</b>.
+        </p>
+      </div>
+
+      <h3 id="iot-parts">How it works &mdash; three main parts</h3>
+
+      <ol class="steps">
+        <li>
+          <b>Sensors</b> &mdash; these act as a &ldquo;digital nervous system&rdquo;,
+          collecting data from the real world: GPS for location, cameras and microphones
+          for sight and sound, and sensors for temperature, motion and so on.
+        </li>
+        <li>
+          <b>Connectivity</b> &mdash; the collected data is turned into digital form and
+          sent over a network (Wi-Fi, cellular and so on).
+        </li>
+        <li>
+          <b>People and processes</b> &mdash; the data is used in systems where
+          information flows both ways, combining data, people and processes to make
+          better decisions.
+        </li>
+      </ol>
+
+      <p>
+        <b>Example:</b> a smart refrigerator senses that the milk is low, sends that data
+        over the network, and automatically adds milk to your shopping list &mdash; all
+        without you doing anything.
+      </p>
+
+      <p>
+        One of the standing concerns with IoT devices is the need for <b>robust security
+        protocols</b> to protect against unauthorised data access.
+      </p>
+
+      <h2 id="analytics">9. Web analytics</h2>
+
+      <div class="def">
+        <span class="def-term">Web analytics</span>
+        <p class="def-body">
+          The collection, reporting and analysis of website data. It matters because it
+          shows what users are actually doing on your site.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">The three types of web analytics data</caption>
+          <thead>
+            <tr><th scope="col">Type of data</th><th scope="col">What it tells you</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Audience data</td><td>Who is coming &mdash; for example the number of visits.</td></tr>
+            <tr><td>Audience behaviour</td><td>What they do &mdash; for example the most frequently visited pages.</td></tr>
+            <tr><td>Campaign data</td><td>Where they came from &mdash; which campaigns drove the most traffic.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>The standard tool is <b>Google Analytics</b>.</p>
+
+      <h2 id="analytics-types">10. Descriptive, predictive and prescriptive analytics</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Descriptive analytics</dt>
+          <dd>Looks at <b>historical data</b> to understand past performance. What happened?</dd>
+        </div>
+        <div class="def">
+          <dt>Predictive analytics</dt>
+          <dd>
+            Uses historical data, statistical models and machine learning to
+            <b>forecast future trends</b>. What is likely to happen?
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Prescriptive analytics</dt>
+          <dd>
+            Goes a step further, using algorithms and AI to <b>suggest specific actions</b>
+            to take advantage of those predictions. What should we do about it?
+          </dd>
+        </div>
+      </dl>
+
+      <h2 id="blockchain">11. Blockchain</h2>
+
+      <div class="def">
+        <span class="def-term">Blockchain</span>
+        <p class="def-body">
+          A system of recording information in a way that makes it difficult or
+          impossible to change, hack or cheat the system. It is a type of database.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Blockchain compared with a conventional database</caption>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Blockchain</th><th scope="col">Conventional database</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Data structure</td>
+              <td>Collects information together in groups known as <b>blocks</b>, each holding a set of information.</td>
+              <td>Structures its data into <b>tables</b>.</td>
+            </tr>
+            <tr>
+              <td>Consequence</td>
+              <td>Records are chained and effectively immutable.</td>
+              <td>Records can be edited by whoever holds the rights.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        The examinable difference is <b>the way the data is structured</b>: blocks versus
+        tables.
+      </p>
+
+      <h2 id="ai">12. Artificial intelligence</h2>
+
+      <div class="def">
+        <span class="def-term">Artificial intelligence (AI)</span>
+        <p class="def-body">
+          Intelligent systems with the ability to <b>think and learn</b>. AI can augment
+          human work, and includes natural language processing, machine learning and
+          machine vision.
+        </p>
+      </div>
+
+      <div class="def">
+        <span class="def-term">Neural networks</span>
+        <p class="def-body">
+          Machine learning and artificial intelligence models that simulate the way
+          biological neural networks in the human brain work, in order to model complex
+          problems.
+        </p>
+      </div>
+
+      <h2 id="big-data">13. Big data</h2>
+
+      <div class="def">
+        <span class="def-term">Big data</span>
+        <p class="def-body">
+          The term for a collection of data sets so large and complex that it becomes
+          difficult to process using on-hand database management tools or traditional
+          data processing applications.
+        </p>
+      </div>
+
+      <h3 id="big-data-challenges">Why it is hard to process</h3>
+
+      <p>
+        The challenges are in <b>capture, curation, storage, search, sharing, transfer,
+        analysis and visualisation</b>. Traditional tools were built for data that fits
+        on one machine and arrives at a manageable rate; big data breaks all of those
+        assumptions at once, so it fails on scale rather than on any single operation.
+      </p>
+
+      <h3 id="big-vs-small">How big data differs from small data</h3>
+
+      <p>
+        The difference follows directly from the definition. <b>Small data</b> is small
+        and simple enough to be handled by ordinary, on-hand database management tools
+        and traditional data processing applications &mdash; it fits on one machine, one
+        person can read and understand it, and a conventional table structure holds it
+        comfortably. <b>Big data</b> is defined by exceeding exactly those limits:
+      </p>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Big data compared with small data</caption>
+          <thead>
+            <tr><th scope="col"></th><th scope="col">Small data</th><th scope="col">Big data</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Size</td><td>Manageable volume</td><td>So large it becomes difficult to handle</td></tr>
+            <tr><td>Complexity</td><td>Simple, usually structured</td><td>Complex, and varied in form</td></tr>
+            <tr><td>Tools needed</td><td>On-hand database management tools are enough</td><td>Traditional tools cannot cope; specialised processing is required</td></tr>
+            <tr><td>Main difficulty</td><td>Ordinary querying and reporting</td><td>Capture, curation, storage, search, sharing, transfer, analysis and visualisation</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="note">
+        <div class="note-label">Coverage Note</div>
+        <p>
+          More detail on big data and related topics is on <b>slides 39&ndash;51</b>.
+          Only the definition and the challenge list were written up here &mdash; if big
+          data is weighted heavily on your paper, that slide range is where to go.
+        </p>
+      </div>
+
+    </div>
+
+    <div class="test-cta">
+      <p>
+        <strong>Test this chapter</strong>
+        31 questions on deployment models, SaaS/PaaS/IaaS, IoT, blockchain and big data.
+      </p>
+      <a class="btn btn-primary" href="quiz.html?chapter=6">Start Chapter 6 quiz &rarr;</a>
+    </div>
+
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <a class="prev" href="ch5.html">
+        <span class="dir">&larr; Previous</span>
+        <span class="name">Ch5 &mdash; Academic Research and Information Sources</span>
+      </a>
+      <a class="next" href="quiz.html">
+        <span class="dir">Next &rarr;</span>
+        <span class="name">Practice quiz &mdash; all chapters</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="dua" lang="ar" dir="rtl">إن نفعك هذا الموقع، فلا تنسَ صاحبه من دعوة صالحة بظهر الغيب.</p>
+    <p class="dua-en">If this site helped you in your studies, please remember its author in your prayers.</p>
+    <p class="footer-fine">Personal study notes for BIC1234 &mdash; not official course material.</p>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

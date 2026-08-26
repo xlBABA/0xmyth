@@ -1,0 +1,607 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 4 &middot; Privacy, Security and Ethics — ITIT Study Notes</title>
+<meta name="description" content="Privacy issues, cookies, cybercrime, hackers, social engineering, malware, encryption and computer ethics — BIC1234 Chapter 4.">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{if(localStorage.getItem('itit-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>ITIT<span style="color:var(--muted)">/</span>notes</a>
+    <div class="header-ctx"><b>Chapter 4</b> &mdash; Privacy, Security and Ethics</div>
+    <div class="header-tools">
+      <a class="icon-btn" href="quiz.html?chapter=4">quiz</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" title="Switch to light mode">
+        <span data-theme-label>light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="page-head">
+      <p class="eyebrow">Chapter 4</p>
+      <h1>Privacy, Security and Ethics</h1>
+      <p class="lede">
+        The biggest chapter in the module and the densest in list-based questions.
+        Almost everything here is examined as &ldquo;state the three&hellip;&rdquo;,
+        &ldquo;name the types of&hellip;&rdquo; or a short scenario you have to
+        classify. Learn the lists as lists.
+      </p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#concerns">The three main concerns</a></li>
+        <li><a href="#privacy">Privacy and the three privacy issues</a></li>
+        <li><a href="#gathering">How personal data is gathered</a></li>
+        <li><a href="#cookies">Cookies</a></li>
+        <li><a href="#stored">What your computer keeps about you</a></li>
+        <li><a href="#threats">Privacy threats</a></li>
+        <li><a href="#protect-privacy">Protecting your privacy online</a></li>
+        <li><a href="#security-issues">Computer security issues</a></li>
+        <li><a href="#cybercrime">Cybercrime</a></li>
+        <li><a href="#hackers">Types of hackers</a></li>
+        <li><a href="#social-engineering">Social engineering</a></li>
+        <li><a href="#malware">Malware</a></li>
+        <li><a href="#malicious-hardware">Malicious hardware</a></li>
+        <li><a href="#measures">Measures to protect computer security</a></li>
+        <li><a href="#encryption">Encryption</a></li>
+        <li><a href="#ethics">Ethics</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose">
+
+      <div class="note">
+        <div class="note-label">Coverage Note</div>
+        <p>
+          Slides <b>7, 8, 16, 39, 40 and 41</b> were skipped in these notes. They may
+          well be important &mdash; check the original slides for those before the exam.
+          Everything below is what was actually written up.
+        </p>
+      </div>
+
+      <h2 id="concerns">1. The three main concerns</h2>
+
+      <p>
+        When it comes to computer security, the three most significant concerns are
+        privacy, security and ethics. This is a favourite exam question, and it is
+        also the one people most often answer wrongly &mdash; see the warning under it.
+      </p>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Privacy</dt>
+          <dd>Threats to personal privacy, and the ways of protecting against them.</dd>
+        </div>
+        <div class="def">
+          <dt>Security</dt>
+          <dd>Access to sensitive information, and the control and securing of hardware and software.</dd>
+        </div>
+        <div class="def">
+          <dt>Ethics</dt>
+          <dd>The way the actions of individuals and companies affect society.</dd>
+        </div>
+      </dl>
+
+      <div class="note">
+        <div class="note-label">Do not confuse these two lists</div>
+        <p>
+          <b>The three main concerns</b> are Privacy, Security and Ethics.
+          <b>The three computer security issues</b> are Intrusion, Sabotage and Natural
+          disasters (<a href="#security-issues">section 8</a>). They are separate lists
+          answering separate questions, and swapping them is a very easy way to lose
+          marks. If the question says <i>concerns</i>, answer Privacy / Security / Ethics.
+        </p>
+      </div>
+
+      <h2 id="privacy">2. Privacy and the three privacy issues</h2>
+
+      <div class="def">
+        <span class="def-term">Privacy</span>
+        <p class="def-body">
+          An individual's ability to eliminate the collection, use and sale of
+          confidential personal information about them.
+        </p>
+      </div>
+
+      <p>There are <b>three primary privacy issues</b>:</p>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Accuracy</dt>
+          <dd>The responsibility of those who collect data to make sure it is correct.</dd>
+        </div>
+        <div class="def">
+          <dt>Property</dt>
+          <dd>Who owns the data, and who holds the rights to how software is used.</dd>
+        </div>
+        <div class="def">
+          <dt>Access</dt>
+          <dd>The control over who may reach the data &mdash; restricting it to authorised users.</dd>
+        </div>
+      </dl>
+
+      <h2 id="gathering">3. How personal data is gathered</h2>
+
+      <p>Personal data is collected in several different ways:</p>
+
+      <ul class="ticks">
+        <li><b>Large organisations</b> &mdash; the records companies and institutions hold on you</li>
+        <li><b>Use of cookies</b> &mdash; small files left in your browser by sites you visit</li>
+        <li><b>Information resellers and brokers</b> &mdash; companies whose business is buying and selling personal data</li>
+        <li><b>Private networks</b> &mdash; the network you sit on can see what you do</li>
+        <li><b>The internet and the web</b> &mdash; general browsing activity</li>
+        <li><b>Online identity</b> &mdash; whatever you post about yourself</li>
+        <li><b>Web bugs and spyware</b> &mdash; hidden trackers and installed monitoring software</li>
+      </ul>
+
+      <h3 id="employee-monitoring">Employee monitoring software</h3>
+
+      <p>
+        Many businesses search employees' email and computer files using employee
+        monitoring software &mdash; for example Flexi&shy;Server, InterGuard or Deputy.
+        The monitoring typically covers:
+      </p>
+
+      <ul class="ticks">
+        <li><b>Application usage</b> &mdash; which programs are opened and for how long</li>
+        <li><b>Internet activity and social media</b> &mdash; sites visited during work hours</li>
+        <li><b>Work-related activity</b> &mdash; general productivity and output</li>
+      </ul>
+
+      <h2 id="cookies">4. Cookies</h2>
+
+      <div class="def">
+        <span class="def-term">Cookie</span>
+        <p class="def-body">
+          A small data or text file deposited on your hard disk by websites you have
+          visited. Cookies are harmless in themselves, but because they store
+          information about your browsing habits and preferences, users are right to
+          worry that a third party could make use of them.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">First-party and third-party cookies compared</caption>
+          <thead>
+            <tr><th scope="col">Type</th><th scope="col">Who generates it</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>First-party cookie</td>
+              <td>Generated by the site you are currently visiting.</td>
+            </tr>
+            <tr>
+              <td>Third-party cookie</td>
+              <td>Generated by an advertising company working with the site you are visiting.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="stored">5. What your computer keeps about you</h2>
+
+      <p>Critical information about your activity is stored on the hard drive in these places:</p>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>History files</dt>
+          <dd>Include the locations or addresses of the sites you have visited.</dd>
+        </div>
+        <div class="def">
+          <dt>Temporary internet files</dt>
+          <dd>Saved files from websites you have visited (the browser cache).</dd>
+        </div>
+        <div class="def">
+          <dt>Cookies</dt>
+          <dd>Text files stored on your computer on behalf of the sites you visit.</dd>
+        </div>
+        <div class="def">
+          <dt>Search engines</dt>
+          <dd>Services such as Google can keep a record of your search history.</dd>
+        </div>
+        <div class="def">
+          <dt>Browsers</dt>
+          <dd>Keep track of all of your activity.</dd>
+        </div>
+      </dl>
+
+      <h2 id="threats">6. Privacy threats</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Computer monitoring software</dt>
+          <dd>The most dangerous category &mdash; software such as SpyAgent tracks email, chats and other activity.</dd>
+        </div>
+        <div class="def">
+          <dt>Keystroke loggers</dt>
+          <dd>Record activity and every keystroke typed, and can hijack the browser.</dd>
+        </div>
+        <div class="def">
+          <dt>Spyware</dt>
+          <dd>Records and reports your internet activity, and changes the browser to manipulate what you see.</dd>
+        </div>
+        <div class="def">
+          <dt>Web bugs</dt>
+          <dd>Invisible images or HTML code hidden inside an email message or a web page.</dd>
+        </div>
+        <div class="def">
+          <dt>Online identity</dt>
+          <dd>The information people post about themselves online &mdash; a threat you create yourself.</dd>
+        </div>
+      </dl>
+
+      <h2 id="protect-privacy">7. Protecting your privacy online</h2>
+
+      <ol class="steps">
+        <li><b>Use privacy modes</b> when browsing.</li>
+        <li><b>Install anti-spyware programs.</b></li>
+        <li><b>Use free web-based services</b> rather than handing over more than you need to.</li>
+        <li><b>Fill in information only when you actually need to.</b></li>
+        <li><b>Do not save account numbers or passwords</b> in the browser.</li>
+        <li><b>Turn off cookies.</b></li>
+      </ol>
+
+      <h2 id="security-issues">8. Computer security issues</h2>
+
+      <p>
+        These are the three <b>issues</b> &mdash; not the three <i>concerns</i> from
+        <a href="#concerns">section 1</a>.
+      </p>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Intrusion</dt>
+          <dd>Hackers gaining access to a system without permission.</dd>
+        </div>
+        <div class="def">
+          <dt>Sabotage</dt>
+          <dd>Using technology &mdash; viruses, zombies and the like &mdash; to crack or damage the network.</dd>
+        </div>
+        <div class="def">
+          <dt>Natural disasters</dt>
+          <dd>Acts of nature such as flood or fire.</dd>
+        </div>
+      </dl>
+
+      <div class="note note-info">
+        <div class="note-label">From Tutorial 3 Part 2</div>
+        <p>
+          The tutorial also asks for the <b>two possible security disasters</b> that
+          organisations worry about: <b>physical disasters</b> (natural events such as
+          floods and earthquakes) and <b>cyber attacks</b> (which are what lead to
+          unauthorised data access). This is a third, separate grouping &mdash; keep it
+          apart from the two lists above.
+        </p>
+      </div>
+
+      <h2 id="cybercrime">9. Cybercrime</h2>
+
+      <div class="def">
+        <span class="def-term">Cybercrime</span>
+        <p class="def-body">
+          A criminal offence that involves a computer and a network or the internet.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Types of computer crime and their descriptions</caption>
+          <thead>
+            <tr><th scope="col">Computer crime</th><th scope="col">Description</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Identity theft</td><td>Illegal assumption of a person's identity for financial or other gain.</td></tr>
+            <tr><td>Internet scams</td><td>Scams carried out over the internet.</td></tr>
+            <tr><td>Ransomware</td><td>Malicious software that encrypts your data and ransoms the password back to you.</td></tr>
+            <tr><td>Denial of service (DoS)</td><td>An attempt to slow down or stop a computer by flooding it with requests.</td></tr>
+            <tr><td>Distributed denial of service (DDoS)</td><td>Similar to DoS, but using several computers to make the repeated requests.</td></tr>
+            <tr><td>Data manipulation</td><td>Unauthorised access to a computer network in order to alter data.</td></tr>
+            <tr><td>Cyber&shy;bullying</td><td>Using the internet or any device to hurt or embarrass another person.</td></tr>
+            <tr><td>Sexual predator</td><td>A person seeking, or attempting to obtain, sexual contact with another person online.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="hackers">10. Types of hackers</h2>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">The three hacker types</caption>
+          <thead>
+            <tr><th scope="col">Type</th><th scope="col">Motive</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>White hat <span class="mono">(ethical)</span></td><td>Break into systems for non-malicious purposes, usually to find and report weaknesses.</td></tr>
+            <tr><td>Black hat</td><td>Break into systems in order to destroy or steal.</td></tr>
+            <tr><td>Grey hat</td><td>Break in illegally, but to flaunt their expertise or to try to sell their services afterwards.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="social-engineering">11. Social engineering</h2>
+
+      <div class="def">
+        <span class="def-term">Social engineering</span>
+        <p class="def-body">
+          The practice of manipulating people into divulging private data, through
+          acts such as identity theft, internet scams and data manipulation. The target
+          is the person, not the machine.
+        </p>
+      </div>
+
+      <h3 id="se-types">The four main types</h3>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Phishing</dt>
+          <dd>
+            A technique used by scammers to trick internet users with a fake but
+            official-looking site or message &mdash; typically an email that appears to
+            come from a reputable source and asks you to reveal personal information.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Pretexting</dt>
+          <dd>
+            The attacker focuses on creating a good pretext &mdash; a fabricated
+            scenario &mdash; and uses it to manipulate the victim into handing over
+            information.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Baiting</dt>
+          <dd>
+            Similar to phishing, but the lure is a <b>free gift or physical item</b>
+            rather than a message. The classic example is an infected USB drive left in
+            a car park for someone to pick up.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Quid Pro Quo</dt>
+          <dd>
+            Similar to baiting, but the attacker offers a <b>service</b> instead of a
+            good &mdash; for example someone posing as IT support offering to &ldquo;fix&rdquo;
+            your machine in exchange for your password.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="note note-info">
+        <div class="note-label">Spelling</div>
+        <p>
+          The term is <b>Quid Pro Quo</b> (Latin, &ldquo;something for something&rdquo;).
+          If you have seen it written &ldquo;Quad Pro Qua&rdquo; anywhere, that is a
+          typo &mdash; including in the original tutorial sheet.
+        </p>
+      </div>
+
+      <p>
+        There are further types worth knowing the concept of: <b>vishing</b> (voice
+        phishing, carried out over a phone call), <b>smishing</b> (phishing by SMS) and
+        <b>scareware</b>.
+      </p>
+
+      <div class="def">
+        <span class="def-term">Scareware</span>
+        <p class="def-body">
+          Software that pretends to be security software in order to frighten users
+          into buying it &mdash; typically a pop-up claiming your machine is infected
+          and urging you to download a removal tool, which then asks for payment details.
+        </p>
+      </div>
+
+      <h3 id="se-tell">How to tell them apart in a scenario question</h3>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Distinguishing the social engineering types by their lure</caption>
+          <thead>
+            <tr><th scope="col">Type</th><th scope="col">The lure</th><th scope="col">Typical scenario</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Phishing</td><td>A fake but official-looking message or site</td><td>An email from &ldquo;your bank&rdquo; linking to a lookalike login page</td></tr>
+            <tr><td>Pretexting</td><td>A detailed, invented story</td><td>A caller claiming to be IT, describing a system update in convincing detail</td></tr>
+            <tr><td>Baiting</td><td>A free gift or physical item</td><td>A USB drive left in the company car park</td></tr>
+            <tr><td>Quid Pro Quo</td><td>A service offered in exchange</td><td>&ldquo;Free tech support&rdquo; in return for your login</td></tr>
+            <tr><td>Scareware</td><td>Fear</td><td>A pop-up warning of a virus and selling you the &ldquo;cure&rdquo;</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="malware">12. Malware</h2>
+
+      <div class="def">
+        <span class="def-term">Malware</span>
+        <p class="def-body">
+          Software designed by crackers or computer criminals to damage a computer system.
+        </p>
+      </div>
+
+      <p>The three most common malicious programs:</p>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Virus, worm and Trojan horse compared</caption>
+          <thead>
+            <tr><th scope="col">Program</th><th scope="col">What it does</th><th scope="col">Key distinction</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Virus</td>
+              <td>Migrates through networks and attaches itself to different programs and files.</td>
+              <td><b>Requires a host program</b> to spread.</td>
+            </tr>
+            <tr>
+              <td>Worm</td>
+              <td>Fills the computer or server with self-replicating information.</td>
+              <td><b>Replicates autonomously</b>, with no host program and no user action.</td>
+            </tr>
+            <tr>
+              <td>Trojan horse</td>
+              <td>A program disguised as something else, or one that triggers a hidden action.</td>
+              <td><b>Embedded in a legitimate program</b>; relies on the user running it.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <p>
+        All three are malicious programs that spread and cause damage &mdash; that is
+        the &ldquo;how are they similar&rdquo; half of the question. The difference is
+        purely in <i>how they get there</i>: a virus needs a host, a worm needs nothing,
+        and a Trojan needs you to be fooled into running it.
+      </p>
+
+      <h2 id="malicious-hardware">13. Malicious hardware</h2>
+
+      <p>Criminals also use hardware to commit crimes. The most common ways are:</p>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Zombies</dt>
+          <dd>A computer connected to a network that has been compromised by a hacker or a virus, and is then controlled remotely.</dd>
+        </div>
+        <div class="def">
+          <dt>Rogue Wi-Fi hotspots</dt>
+          <dd>Networks imitating legitimate free Wi-Fi in order to capture the data passing through them.</dd>
+        </div>
+        <div class="def">
+          <dt>Virus-infected USB flash drives</dt>
+          <dd>Left lying around on purpose, in the hope that somebody will pick one up and plug it in.</dd>
+        </div>
+      </dl>
+
+      <h2 id="measures">14. Measures to protect computer security</h2>
+
+      <ol class="steps">
+        <li><b>Restrict access.</b> Use security guards, and require proper authentication.</li>
+        <li><b>Use firewalls.</b> Special hardware and software acting as a security buffer between a private network and all external networks.</li>
+        <li><b>Install security suites.</b> A collection of programs designed to protect your privacy and security while you are online.</li>
+        <li><b>Stay away from dodgy websites.</b> Sites served over plain <code>http://</code> and badly built commercial sites may record your activity.</li>
+        <li><b>Be alert to email scams.</b> Use an anti-spam program to filter incoming mail.</li>
+        <li><b>Back up your data and system</b> so that a disaster does not become a catastrophe.</li>
+      </ol>
+
+      <h2 id="encryption">15. Encryption</h2>
+
+      <div class="def">
+        <span class="def-term">Encryption</span>
+        <p class="def-body">
+          Coding information so that it is unreadable to everyone except those who are
+          permitted to read it and hold the key to decode the message.
+        </p>
+      </div>
+
+      <div class="def">
+        <span class="def-term">Encrypt</span>
+        <p class="def-body">
+          To change plain text into encrypted text (and, with the key, back again).
+        </p>
+      </div>
+
+      <p>Cases where encryption is used:</p>
+
+      <ul class="ticks">
+        <li>Email</li>
+        <li>Files</li>
+        <li>Websites</li>
+        <li>VPNs, to create an encrypted connection</li>
+        <li>Wireless network encryption, using WPA or WPA2</li>
+      </ul>
+
+      <h3 id="encryption-tradeoffs">Advantages and disadvantages</h3>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Advantages and disadvantages of data encryption</caption>
+          <thead>
+            <tr><th scope="col">Advantages</th><th scope="col">Disadvantages</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>People without permission cannot read or spy on your information.</td>
+              <td>Reduces the speed of data flow and consumes bandwidth while data is being encrypted.</td>
+            </tr>
+            <tr>
+              <td>Reduces hacking incidents and the damage done when data is intercepted.</td>
+              <td>Makes file sizes larger.</td>
+            </tr>
+            <tr>
+              <td>Protects data in transit, at rest, and across untrusted networks.</td>
+              <td>Adds complexity to the communication, and to key management.</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="ethics">16. Ethics</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Ethics</dt>
+          <dd>A standard of moral conduct.</dd>
+        </div>
+        <div class="def">
+          <dt>Computer ethics</dt>
+          <dd>Guidelines for the morally acceptable use of computers.</dd>
+        </div>
+        <div class="def">
+          <dt>Copyright and digital rights</dt>
+          <dd>Give content creators the right to control the use and distribution of their work.</dd>
+        </div>
+        <div class="def">
+          <dt>Plagiarism</dt>
+          <dd>Using someone else's work or ideas without giving credit to the original author.</dd>
+        </div>
+      </dl>
+
+    </div>
+
+    <div class="test-cta">
+      <p>
+        <strong>Test this chapter</strong>
+        41 questions covering privacy issues, cybercrime, the social engineering
+        scenarios and the malware distinctions.
+      </p>
+      <a class="btn btn-primary" href="quiz.html?chapter=4">Start Chapter 4 quiz &rarr;</a>
+    </div>
+
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <a class="prev" href="ch3.html">
+        <span class="dir">&larr; Previous</span>
+        <span class="name">Ch3 &mdash; Electronic Mail</span>
+      </a>
+      <a class="next" href="ch5.html">
+        <span class="dir">Next &rarr;</span>
+        <span class="name">Ch5 &mdash; Academic Research and Information Sources</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="dua" lang="ar" dir="rtl">إن نفعك هذا الموقع، فلا تنسَ صاحبه من دعوة صالحة بظهر الغيب.</p>
+    <p class="dua-en">If this site helped you in your studies, please remember its author in your prayers.</p>
+    <p class="footer-fine">Personal study notes for BIC1234 &mdash; not official course material.</p>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

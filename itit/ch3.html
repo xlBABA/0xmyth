@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 3 &middot; Electronic Mail — ITIT Study Notes</title>
+<meta name="description" content="How email works, SMTP / POP / IMAP / MIME, email addresses, CC vs BCC, etiquette and netiquette — BIC1234 Chapter 3.">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{if(localStorage.getItem('itit-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>ITIT<span style="color:var(--muted)">/</span>notes</a>
+    <div class="header-ctx"><b>Chapter 3</b> &mdash; Electronic Mail</div>
+    <div class="header-tools">
+      <a class="icon-btn" href="quiz.html?chapter=3">quiz</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" title="Switch to light mode">
+        <span data-theme-label>light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="page-head">
+      <p class="eyebrow">Chapter 3</p>
+      <h1>Electronic Mail</h1>
+      <p class="lede">
+        Four protocols, seven steps, and a set of small distinctions that examiners
+        love: SMTP against POP against IMAP, username against domain name, CC against
+        BCC. Get those three pairs right and most of the chapter is covered.
+      </p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#what-is-email">What email is</a></li>
+        <li><a href="#vs-postal">Email compared with postal mail</a></li>
+        <li><a href="#advantages">Advantages of email</a></li>
+        <li><a href="#how-sending-works">How sending an email works</a></li>
+        <li><a href="#protocols">The protocols</a></li>
+        <li><a href="#mail-server">Mail server and mail client</a></li>
+        <li><a href="#address">The email address</a></li>
+        <li><a href="#components">Email message components</a></li>
+        <li><a href="#etiquette">Email etiquette</a></li>
+        <li><a href="#netiquette">Email netiquette</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose">
+
+      <h2 id="what-is-email">1. What email is</h2>
+
+      <div class="def">
+        <span class="def-term">Email</span>
+        <p class="def-body">
+          A form of communication in which electronic messages are created and
+          transferred between two or more devices connected to a network.
+        </p>
+      </div>
+
+      <h2 id="vs-postal">2. Email compared with postal mail</h2>
+
+      <h3 id="similarities">Similarities</h3>
+
+      <ol class="steps">
+        <li>You put a message into an <b>electronic envelope</b> and place an electronic address on it.</li>
+        <li>Your message may <b>come back to you</b> if it cannot be delivered.</li>
+        <li>The sender has to <b>know your address</b> before anything can be sent.</li>
+        <li>You can <b>keep in touch with friends</b> through it.</li>
+        <li>Your mail <b>may be delivered to, and read by, someone else</b>.</li>
+        <li>Not every piece of mail you receive will be <b>pleasant and friendly</b>.</li>
+      </ol>
+
+      <h3 id="differences">Differences</h3>
+
+      <ul class="ticks">
+        <li>Email is <b>so easy to handle</b> that it has become an extremely useful tool for reaching people.</li>
+        <li>When there is a problem, your email may go to a <b>computer postmaster</b> rather than a human one.</li>
+        <li>Because email is <b>very easy to create</b>, it can lead to sending responses that you later regret.</li>
+      </ul>
+
+      <h2 id="advantages">3. Advantages of email over standard mail delivery</h2>
+
+      <ul class="ticks">
+        <li><b>Ease of handling.</b> Email is simple to write, send and file, whereas standard mail involves many physical steps before the message reaches the receiver.</li>
+        <li><b>Speed.</b> An email reaches its destination in seconds; standard mail can take days.</li>
+        <li><b>Reach and cost.</b> The same message can go to many recipients at once, at no extra cost per copy.</li>
+      </ul>
+
+      <h2 id="how-sending-works">4. How sending an email works</h2>
+
+      <p>Seven steps, from clicking send to the message being read:</p>
+
+      <ol class="steps">
+        <li>The <b>sender composes</b> an email in their email client and clicks send.</li>
+        <li>The <b>email client contacts the SMTP server</b> of the sender's email service provider.</li>
+        <li>The <b>SMTP server checks whether the recipient's domain is the same as the sender's</b>. If it is, the email is redirected internally.</li>
+        <li>If the <b>recipient's domain is different</b>, the SMTP server queries a <b>DNS server</b> to find the IP address of the recipient's mail server.</li>
+        <li>The email is then <b>sent to the recipient's SMTP server</b> over the internet.</li>
+        <li>On arrival, the <b>recipient's SMTP server passes the email to a mail delivery system</b>, which places it in the recipient's mailbox.</li>
+        <li>The <b>recipient's email client retrieves the message</b> from the mailbox using either POP3 or IMAP, so that it can be read.</li>
+      </ol>
+
+      <div class="note note-info">
+        <div class="note-label">Where each protocol appears</div>
+        <p>
+          <b>SMTP</b> does steps 2&ndash;6 &mdash; it is the sending protocol, and it is
+          used on both ends. <b>DNS</b> appears only at step 4. <b>POP3 or IMAP</b>
+          appear only at step 7, on the receiving side. If a question asks &ldquo;which
+          protocol retrieves mail&rdquo;, the answer is never SMTP.
+        </p>
+      </div>
+
+      <h2 id="protocols">5. The protocols</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Protocol</dt>
+          <dd>
+            The rules that determine how the internet will handle the message packets
+            flowing over it.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>SMTP &mdash; Simple Mail Transfer Protocol</dt>
+          <dd>
+            Decides which paths an email message will take on the internet when you
+            send it. It is the <b>outgoing</b> protocol.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>POP &mdash; Post Office Protocol</dt>
+          <dd>
+            Handles <b>incoming</b> messages, downloading them to the local device.
+            Little used nowadays.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>IMAP &mdash; Internet Message Access Protocol</dt>
+          <dd>
+            A protocol for <b>retrieving</b> mail messages from a server. Like POP, but
+            it lets the client read the mail <b>on the server</b> without downloading it
+            to the local device &mdash; which is why the same mailbox stays in sync
+            across your phone and laptop.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>MIME &mdash; Multipurpose Internet Mail Extensions</dt>
+          <dd>
+            A protocol that specifies how to encode <b>non-text data</b>, such as
+            graphics and sounds, so that it can travel over the internet.
+          </dd>
+        </div>
+      </dl>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">The four email protocols summarised</caption>
+          <thead>
+            <tr><th scope="col">Protocol</th><th scope="col">Direction</th><th scope="col">Job</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>SMTP</td><td>Outgoing</td><td>Chooses the path the message takes and delivers it to the recipient's server</td></tr>
+            <tr><td>POP</td><td>Incoming</td><td>Downloads messages to the local device</td></tr>
+            <tr><td>IMAP</td><td>Incoming</td><td>Reads messages on the server without downloading them</td></tr>
+            <tr><td>MIME</td><td>Neither &mdash; encoding</td><td>Encodes non-text attachments so they survive the journey</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="mail-server">6. Mail server and mail client</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Mail server</dt>
+          <dd>
+            A hardware and software system that determines, from the recipient's
+            address, which of several possible electronic routes to send the message on.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Mail client software</dt>
+          <dd>
+            Software that requests mail delivery from the mail server to your internet
+            device.
+          </dd>
+        </div>
+      </dl>
+
+      <h2 id="address">7. The email address</h2>
+
+      <div class="def">
+        <span class="def-term">Email address</span>
+        <p class="def-body">
+          Uniquely identifies an individual or organisation connected to the internet.
+          It has <b>two parts</b>, separated by an at sign (<code>@</code>).
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">The two parts of an email address</caption>
+          <thead>
+            <tr><th scope="col">Part</th><th scope="col">What it identifies</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Username</td><td>Identifies a <b>person</b> within an organisation.</td></tr>
+            <tr><td>Domain name</td><td>Specifies the <b>server</b> to which the email is to be delivered.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="components">8. Email message components</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>To</dt>
+          <dd>The field where the email address of the intended recipient is entered.</dd>
+        </div>
+        <div class="def">
+          <dt>Subject</dt>
+          <dd>Essentially a title, or a very short summary of the email.</dd>
+        </div>
+        <div class="def">
+          <dt>CC &mdash; Carbon Copy</dt>
+          <dd>
+            Sends someone a copy of the email even though they are not its intended
+            recipient. Everyone can see who was copied.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>BCC &mdash; Blind Carbon Copy</dt>
+          <dd>
+            Anyone on the BCC list receives a copy of the message, but their name is
+            <b>not included in the message headers</b>, and nobody else who received the
+            message knows they were sent a copy.
+          </dd>
+        </div>
+      </dl>
+
+      <p>
+        The difference between CC and BCC is entirely one of <b>visibility</b>: both
+        deliver a copy, but a CC recipient is visible to everyone and a BCC recipient is
+        hidden from everyone. BCC is the privacy option.
+      </p>
+
+      <h2 id="etiquette">9. Email etiquette</h2>
+
+      <ol class="steps">
+        <li>Include a <b>clear subject line</b>, and do not shout.</li>
+        <li>Always use an <b>appropriate greeting</b>.</li>
+        <li>Only use <b>shorthand</b> if you know the recipient well.</li>
+        <li><b>Think before you smile</b> &mdash; emoticons are not always appropriate.</li>
+        <li>Be <b>wary of using humour</b>; it travels badly in writing.</li>
+        <li>Always <b>spell check</b>.</li>
+      </ol>
+
+      <h3 id="why-etiquette">Why it matters</h3>
+
+      <p>
+        Email is the medium professional life runs on &mdash; you cannot deal with
+        colleagues, teammates or other organisations without it. Most people take email
+        seriously and judge you on it, so good etiquette protects your professional
+        reputation, prevents misunderstandings, and saves everyone the unnecessary
+        back-and-forth that a badly written message causes.
+      </p>
+
+      <h2 id="netiquette">10. Email netiquette</h2>
+
+      <ul class="ticks">
+        <li><b>Avoid writing in all capital letters</b> &mdash; it reads as shouting.</li>
+        <li>Keep your message <b>simple and short</b>.</li>
+        <li>Include a <b>descriptive subject line and a signature</b>.</li>
+        <li><b>Do not assume everyone likes to receive jokes.</b></li>
+        <li><b>Use a spell checker.</b></li>
+      </ul>
+
+    </div>
+
+    <div class="test-cta">
+      <p>
+        <strong>Test this chapter</strong>
+        24 questions on the protocols, the seven steps, address anatomy and CC vs BCC.
+      </p>
+      <a class="btn btn-primary" href="quiz.html?chapter=3">Start Chapter 3 quiz &rarr;</a>
+    </div>
+
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <a class="prev" href="ch2.html">
+        <span class="dir">&larr; Previous</span>
+        <span class="name">Ch2 &mdash; The World Wide Web</span>
+      </a>
+      <a class="next" href="ch4.html">
+        <span class="dir">Next &rarr;</span>
+        <span class="name">Ch4 &mdash; Privacy, Security and Ethics</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="dua" lang="ar" dir="rtl">إن نفعك هذا الموقع، فلا تنسَ صاحبه من دعوة صالحة بظهر الغيب.</p>
+    <p class="dua-en">If this site helped you in your studies, please remember its author in your prayers.</p>
+    <p class="footer-fine">Personal study notes for BIC1234 &mdash; not official course material.</p>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

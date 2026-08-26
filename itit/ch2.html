@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Chapter 2 &middot; The World Wide Web — ITIT Study Notes</title>
+<meta name="description" content="Web 1.0 to 3.0, HTTP, HTML, client/server architecture, how the internet works, domains and firewalls — BIC1234 Chapter 2.">
+<meta name="color-scheme" content="dark light">
+<link rel="stylesheet" href="assets/style.css">
+<script>try{if(localStorage.getItem('itit-theme')==='light'){document.documentElement.setAttribute('data-theme','light');}}catch(e){}</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header">
+  <div class="wrap">
+    <a class="brand" href="index.html"><span class="dot"></span>ITIT<span style="color:var(--muted)">/</span>notes</a>
+    <div class="header-ctx"><b>Chapter 2</b> &mdash; The World Wide Web</div>
+    <div class="header-tools">
+      <a class="icon-btn" href="quiz.html?chapter=2">quiz</a>
+      <button class="icon-btn" type="button" data-theme-toggle aria-pressed="false" title="Switch to light mode">
+        <span data-theme-label>light</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+  <div class="wrap">
+
+    <div class="page-head">
+      <p class="eyebrow">Chapter 2</p>
+      <h1>The World Wide Web &mdash; Generations, Protocols and Architecture</h1>
+      <p class="lede">
+        The three web generations and the client/server vocabulary are the two things
+        this chapter is examined on hardest. The seven-step walkthrough of a page
+        request ties every protocol in the chapter together &mdash; learn it as a story,
+        not as a list.
+      </p>
+    </div>
+
+    <nav class="toc" aria-label="On this page">
+      <h2>On this page</h2>
+      <ol>
+        <li><a href="#origin">Who invented the web</a></li>
+        <li><a href="#generations">The generations of the web</a></li>
+        <li><a href="#url">URL</a></li>
+        <li><a href="#http">HTTP</a></li>
+        <li><a href="#how-it-works">How the internet works, in 7 steps</a></li>
+        <li><a href="#html">HTML</a></li>
+        <li><a href="#client-server">Client and server</a></li>
+        <li><a href="#pages-sites">Web pages, sites and hosting</a></li>
+        <li><a href="#domain">Domains</a></li>
+        <li><a href="#ftp">FTP</a></li>
+        <li><a href="#protocol-tcpip">Protocols and TCP/IP</a></li>
+        <li><a href="#intranet-extranet">Intranet and extranet</a></li>
+        <li><a href="#access">How to access the internet and the web</a></li>
+        <li><a href="#firewall">Firewalls</a></li>
+      </ol>
+    </nav>
+
+    <div class="prose">
+
+      <h2 id="origin">1. Who invented the web</h2>
+
+      <p>
+        The World Wide Web was invented by <b>Sir Tim Berners-Lee in 1989</b>. He was
+        not trying to build a consumer product &mdash; he was looking for a new way for
+        scientists to share data with each other.
+      </p>
+
+      <h2 id="generations">2. The generations of the web</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Web 1.0 &mdash; 1991 to 2001</dt>
+          <dd>
+            The early stage of the World Wide Web, characterised by <b>static web
+            pages</b> with linear content, limited user interaction and one-way
+            communication.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Web 2.0 &mdash; post-2001</dt>
+          <dd>
+            Marked by the emergence of <b>dynamic web pages</b>, rich media content and
+            interactive platforms such as social media. Bandwidth improved over this
+            period as well.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Web 3.0 &mdash; the Semantic Web</dt>
+          <dd>
+            The evolution of the web into a semantic, interconnected data space, where
+            advanced algorithms and new standards allow <b>machine processing of
+            content</b> &mdash; leading to smarter search engines and similar
+            capabilities.
+          </dd>
+        </div>
+      </dl>
+
+      <h3 id="web1-limits">Limitations of Web 1.0</h3>
+
+      <ul class="ticks">
+        <li>Pages were <b>static</b> &mdash; the content did not change or respond.</li>
+        <li>Users <b>could not interact</b> with the sites; communication ran one way only.</li>
+        <li>Content was <b>linear</b>, with no user-generated contribution.</li>
+      </ul>
+
+      <h2 id="url">3. URL</h2>
+
+      <div class="def">
+        <span class="def-term">URL &mdash; Uniform Resource Locator</span>
+        <p class="def-body">
+          A standard way of easily expressing the location and data type of a resource.
+          It generally takes the form <code>protocol://address</code>, where the
+          protocol is something like HTTP, FTP or telnet, and the address is the server
+          name of the given resource.
+        </p>
+      </div>
+
+      <h2 id="http">4. HTTP</h2>
+
+      <div class="def">
+        <span class="def-term">HTTP &mdash; Hypertext Transfer Protocol</span>
+        <p class="def-body">
+          A set of rules for exchanging files &mdash; text, graphics, images, sound,
+          video and others &mdash; on the World Wide Web, connecting computers together
+          over the web.
+        </p>
+      </div>
+
+      <p>
+        In practice, HTTP is the protocol responsible for how the web server and the web
+        user communicate: it is the agreed set of rules for exchanging files between the
+        client and the server. The client sends a request, the server sends back a
+        response.
+      </p>
+
+      <div class="note note-info">
+        <div class="note-label">Spelling</div>
+        <p>
+          It is hypertext <b>transfer</b> protocol, not &ldquo;transform&rdquo;. Easy
+          mark to drop.
+        </p>
+      </div>
+
+      <h2 id="how-it-works">5. How the internet works, in 7 steps</h2>
+
+      <p>What happens between typing an address and seeing the page:</p>
+
+      <ol class="steps">
+        <li><b>You</b> &mdash; you type <code>www.google.com</code> into your browser.</li>
+        <li><b>DNS</b> &mdash; translates <code>www.google.com</code> into an IP address such as <code>100.120.12.3</code>.</li>
+        <li><b>ISP</b> &mdash; your internet service provider (such as STC) connects you to the web and sends the request onward.</li>
+        <li><b>NAP</b> &mdash; if needed, a network access point helps exchange traffic between ISPs, routing the data between your ISP and the web server.</li>
+        <li><b>HTTP</b> &mdash; your browser uses HTTP to request the Google homepage.</li>
+        <li><b>TCP/IP</b> &mdash; Google's server sends the page back in packets, and IP makes sure they reach you.</li>
+        <li><b>You</b> &mdash; the Google homepage appears on your screen.</li>
+      </ol>
+
+      <h2 id="html">6. HTML</h2>
+
+      <div class="def">
+        <span class="def-term">HTML &mdash; Hypertext Markup Language</span>
+        <p class="def-body">
+          A tagging language used to compose documents that will be viewed by a web
+          browser. It was adopted so that no matter which computer platform someone is
+          using, the browser knows how to display the web document.
+        </p>
+      </div>
+
+      <h2 id="client-server">7. Client and server</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Client</dt>
+          <dd>
+            The requesting program in a client/server relationship &mdash; for example,
+            the user of a web browser making a request.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Server</dt>
+          <dd>
+            In general, a computer program that provides a service to other computer
+            programs, on the same computer or on other computers.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Web server</dt>
+          <dd>
+            Stores and transmits web documents. It uses the HTTP protocol to connect to
+            other computers and distribute information. Examples: Apache, Nginx, IIS.
+          </dd>
+        </div>
+      </dl>
+
+      <h2 id="pages-sites">8. Web pages, sites and hosting</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Web page</dt>
+          <dd>
+            A mixture of text, graphics, sound and animation in HTML format, making
+            information accessible in an easy-to-understand form over the internet.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Website</dt>
+          <dd>
+            A collection of web pages connected by clickable hypertext links.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Website hosting</dt>
+          <dd>
+            After a website has been designed it must be stored on a computer that can
+            be reached through the internet and the World Wide Web. That storage and
+            service is hosting.
+          </dd>
+        </div>
+      </dl>
+
+      <h2 id="domain">9. Domains</h2>
+
+      <div class="def">
+        <span class="def-term">Domain</span>
+        <p class="def-body">
+          On the internet, a domain is a registration category identifying a geographic
+          area or a purpose.
+        </p>
+      </div>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">Common top-level domains</caption>
+          <thead>
+            <tr><th scope="col">Domain</th><th scope="col">Identifies</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="mono">.com</span></td><td>A commercial organisation</td></tr>
+            <tr><td><span class="mono">.edu</span></td><td>An educational organisation</td></tr>
+            <tr><td><span class="mono">.gov</span></td><td>A branch of the US government</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2 id="ftp">10. FTP</h2>
+
+      <div class="def">
+        <span class="def-term">FTP &mdash; File Transfer Protocol</span>
+        <p class="def-body">
+          The standard used to transfer files over the internet. It allows you to copy
+          any kind of computer file from one computer to another.
+        </p>
+      </div>
+
+      <h2 id="protocol-tcpip">11. Protocols and TCP/IP</h2>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Protocol</dt>
+          <dd>
+            A set of rules and standards governing how data is transported across a
+            network &mdash; the rules that determine how the internet handles the
+            message packets flowing over it.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>TCP/IP &mdash; Transmission Control Protocol / Internet Protocol</dt>
+          <dd>
+            A set of protocols developed to allow cooperating computers to share
+            resources across a network. It is the foundational suite of communication
+            protocols used to connect devices over the internet. <b>TCP</b> handles
+            breaking data into packets and reassembling them reliably;
+            <b>IP</b> is the addressing part &mdash; where the data is going.
+          </dd>
+        </div>
+      </dl>
+
+      <h2 id="intranet-extranet">12. Intranet and extranet</h2>
+
+      <div class="note">
+        <div class="note-label">Coverage Note</div>
+        <p>
+          Intranet and extranet appear in <b>Tutorial 2</b> but are <b>not covered in
+          these notes</b>. The definitions below come from the tutorial, not from the
+          summary &mdash; check the original slides if you want more detail.
+        </p>
+      </div>
+
+      <dl class="def-list">
+        <div class="def">
+          <dt>Intranet</dt>
+          <dd>
+            A <b>private internal network</b> belonging to an organisation, used by its
+            own employees. It is not open to the public.
+          </dd>
+        </div>
+        <div class="def">
+          <dt>Extranet</dt>
+          <dd>
+            A private network that the organisation <b>shares with third parties</b>
+            &mdash; clients or partners &mdash; for example in order to present its
+            products or services to them. It is an intranet that has been extended
+            outward to selected outsiders.
+          </dd>
+        </div>
+      </dl>
+
+      <p>
+        The distinction is simply <b>who is allowed in</b>: intranet = employees only;
+        extranet = employees plus selected external partners; internet = everyone.
+      </p>
+
+      <h2 id="access">13. How to access the internet and the web</h2>
+
+      <p>To get onto the internet you need three things:</p>
+
+      <ol class="steps">
+        <li><b>A device</b> &mdash; a computer, phone or similar.</li>
+        <li><b>An ISP</b> &mdash; an internet service provider, which supplies the physical connection.</li>
+        <li><b>A modem or router</b> at your location, connecting your device to the ISP.</li>
+      </ol>
+
+      <p>
+        To reach the web on top of that, you additionally need a <b>web browser</b> and
+        either the <b>domain name or the IP address</b> of the site you want to visit.
+      </p>
+
+      <h2 id="firewall">14. Firewalls</h2>
+
+      <div class="def">
+        <span class="def-term">Firewall</span>
+        <p class="def-body">
+          A program &mdash; usually running on an internet gateway server &mdash; that
+          protects the resources of one network from users on other networks. It is used
+          to prevent outsiders from reaching your own private data resources.
+        </p>
+      </div>
+
+      <p>
+        Firewalls can exist as <b>dedicated hardware</b>, as <b>software on a machine</b>,
+        or as a <b>managed service</b>.
+      </p>
+
+      <h3 id="firewall-types">The eight types of firewall</h3>
+
+      <div class="table-scroll">
+        <table>
+          <caption class="visually-hidden">The eight firewall types and what each one filters on</caption>
+          <thead>
+            <tr><th scope="col">Type</th><th scope="col">What it does</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Packet filtering</td><td>Depending on how the firewall is configured, you decide which packets of data are allowed to flow through the network.</td></tr>
+            <tr><td>Proxy</td><td>Acts as an intermediary between a recipient and an external system, which hides your system's IP address from attack.</td></tr>
+            <tr><td>Inspection</td><td>Inspects each packet flowing through it and decides whether to drop it.</td></tr>
+            <tr><td>IP addresses</td><td>Blocks particular machines based on their IP address.</td></tr>
+            <tr><td>Domain names</td><td>The administrator can block access to particular websites, or allow only certain ones.</td></tr>
+            <tr><td>Protocol</td><td>For each system on the network, you decide which services to permit.</td></tr>
+            <tr><td>Ports</td><td>A service can run on any port, so for tighter control you can restrict services to specified ports.</td></tr>
+            <tr><td>Keywords</td><td>Modern firewalls can sift through all the data flowing across the network and block particular keywords.</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+    </div>
+
+    <div class="test-cta">
+      <p>
+        <strong>Test this chapter</strong>
+        25 questions on the web generations, HTTP, the 7-step request, client/server terms and firewalls.
+      </p>
+      <a class="btn btn-primary" href="quiz.html?chapter=2">Start Chapter 2 quiz &rarr;</a>
+    </div>
+
+    <nav class="chapter-nav" aria-label="Chapter navigation">
+      <a class="prev" href="ch1.html">
+        <span class="dir">&larr; Previous</span>
+        <span class="name">Ch1 &mdash; Introduction to the Internet and the Web</span>
+      </a>
+      <a class="next" href="ch3.html">
+        <span class="dir">Next &rarr;</span>
+        <span class="name">Ch3 &mdash; Electronic Mail</span>
+      </a>
+    </nav>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <div class="footer-inner">
+    <p class="dua" lang="ar" dir="rtl">إن نفعك هذا الموقع، فلا تنسَ صاحبه من دعوة صالحة بظهر الغيب.</p>
+    <p class="dua-en">If this site helped you in your studies, please remember its author in your prayers.</p>
+    <p class="footer-fine">Personal study notes for BIC1234 &mdash; not official course material.</p>
+  </div>
+</footer>
+
+<script src="assets/main.js"></script>
+</body>
+</html>

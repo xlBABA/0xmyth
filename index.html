@@ -1,87 +1,246 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
-
-
-
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
-    <title>0xMYTH</title>
-    <link rel="stylesheet" href="1.css">
-
-<style>
-  .icons {
-    text-decoration: none;
-    color: #E6E6ED;
-    margin: 0 10px;
-    font-size: 30px;
-    transition: transform 0.2s;
-    margin-bottom: 30px;
-  }
-  .icons:hover {
-    transform: scale(1.2);
-    color: #A8274E; /* blue like X */
-  }
-  .url {
-    text-decoration: none;
-    color: #E6E6ED;
-    margin: 0 10px;
-    font-size: 30px;
-    transition: transform 0.2s;
-  }
-  .url:hover {
-    transform: scale(1.2);
-    color: #A8274E; /* blue like X */
-  }
-  
-  
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohammed Samir — 0xMYTH · web security</title>
+<meta name="description" content="First-year cybersecurity student and OffSec enthusiast. CTF placements, HTB Web PT progress, and autonomous exploitation agents built on the Pi framework.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#12141C">
+<meta property="og:title" content="Mohammed Samir — 0xMYTH">
+<meta property="og:description" content="Web security student · CTFs · AI exploitation agents · self-hosted infrastructure. Portfolio and project log.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://0xmyth.com">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312141C'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='700' fill='%23FF8B3D' text-anchor='middle'%3E0x%3C/text%3E%3C/svg%3E">
+<script>document.documentElement.classList.add('js')</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
 </head>
-<body>
+<body id="top">
 
-<header class ="navbar">
-    <h1>Mohammed Samir</h1>
-    <nav >
-        <a href="#home" class="url">Home</a>
-        <a href="#about" class="url">About</a>
-        <a href="#contact" class="url">Contact</a>
+<a class="skip" href="#main">skip to content</a>
 
+<!-- ══ BOOT SEQUENCE ══ plays once on load · skippable · reduced-motion: skipped -->
+<div id="boot" aria-hidden="true">
+  <div class="boot-inner">
+    <pre id="boot-lines"></pre>
+    <p class="boot-skip" id="boot-skip">press any key to skip</p>
+  </div>
+</div>
+
+<header class="nav" aria-label="Main navigation">
+  <div class="wrap nav-row">
+    <a class="brand" href="#top">0xMYTH</a>
+    <nav class="nav-links">
+      <a href="#now">now</a>
+      <a href="#projects">projects</a>
+      <a href="#ctf">ctf</a>
+      <a href="#certs">certs</a>
+      <a href="#writeups">writeups</a>
+      <a href="#contact">contact</a>
     </nav>
+  </div>
 </header>
 
-<section class = "sec1">
-    <img class="sec1-img"src="BHME2024.jpeg" alt="Black Hat 2024 badge"/>
-    <dev class = "sec1-txt">
-    <h2 id="home">WHOAMI ?</h2>
-    <p>An 18-year-old self-taught aspiring junior offensive security researcher</p>
-    <p>interested in web security and CTFs — known as 0xMYTH.</p>
-    </dev>
-</section>
+<main id="main" class="wrap">
 
+  <!-- ══ HERO ══ -->
+  <section class="hero" aria-label="Introduction">
+    <div class="hero-text">
+      <p class="kicker rise" style="--i:0">$ whoami</p>
+      <h1 class="rise" style="--i:1">Mohammed Samir</h1>
+      <p class="handle rise" style="--i:2">aka <b>0xMYTH</b></p>
+      <p class="oneliner rise" style="--i:3">First-year Cybersecurity student and OffSec enthusiast — web exploitation, CTFs, and building autonomous agents that hunt flags.</p>
+      <ul class="tags hero-tags rise" style="--i:4" aria-label="Focus areas">
+        <li>Web Exploitation</li><li>CTFs</li><li>AI Agents</li><li>Python</li><li>Linux</li><li>Docker</li>
+      </ul>
+      <p class="statusline rise" style="--i:5"><span class="pulse" aria-hidden="true"></span>Currently: HTB Web PT path — SQLMap Essentials</p>
+    </div>
+    <figure class="badge rise" style="--i:6">
+      <img src="pictures/BHME24.jpeg"
+           alt="Black Hat MEA 2024 attendee badge — Mohammed Samir"
+           onerror="this.closest('.badge').classList.add('missing')">
+      <div class="badge-fallback" aria-hidden="true">BHME24.jpeg<br>asset pending —<br>drop into /pictures/</div>
+      <figcaption>black hat mea 2024 — attended</figcaption>
+    </figure>
+  </section>
 
+  <!-- ══ NOW ══ -->
+  <section id="now" class="section reveal">
+    <h2><span class="h-mark">##</span> now</h2>
+    <div class="panel">
+      <div class="panel-head">
+        <span class="pulse" aria-hidden="true"></span>
+        <span class="panel-label">current focus — live</span>
+      </div>
+      <p class="path-name">HTB Web Penetration Tester path</p>
+      <ul class="modlist" aria-label="Module progress">
+        <li class="done"><span class="mk">[✓]</span> 01 &nbsp;Web Fuzzing</li>
+        <li class="done"><span class="mk">[✓]</span> 02 &nbsp;JavaScript Deobfuscation</li>
+        <li class="done"><span class="mk">[✓]</span> 03 &nbsp;Cross-Site Scripting (XSS)</li>
+        <li class="done"><span class="mk">[✓]</span> 04 &nbsp;SQL Injection Fundamentals</li>
+        <li class="cur"><span class="mk">[▸]</span> 05 &nbsp;SQLMap Essentials — in progress</li>
+        <li class="done"><span class="mk">[✓]</span> 06 &nbsp;Web Requests</li>
+        <li class="done"><span class="mk">[✓]</span> 07 &nbsp;Introduction to Web Applications</li>
+        <li class="done"><span class="mk">[✓]</span> 08 &nbsp;Web Proxies</li>
+        <li class="done"><span class="mk">[✓]</span> 09 &nbsp;Information Gathering — Web Edition</li>
+      </ul>
+      <p class="toolline"><span class="dt">tools in rotation:</span> ffuf · feroxbuster · gobuster · wfuzz · Burp Suite · sqlmap · nuclei · nikto</p>
+      <p class="goalline"><span class="h-mark">→</span> path completion by October 2026 · top 100 at Black Hat MEA</p>
+    </div>
+  </section>
 
+  <!-- ══ PROJECTS ══ -->
+  <section id="projects" class="section">
+    <h2 class="reveal"><span class="h-mark">##</span> projects</h2>
 
+    <article class="unit reveal">
+      <header class="unit-head">
+        <span class="unit-dot" aria-hidden="true"></span>
+        <h3 class="unit-name">ctf-agent.service</h3>
+        <span class="unit-state">active (in development)</span>
+      </header>
+      <p class="unit-title">Autonomous CTF Exploitation Agent</p>
+      <dl class="unit-meta">
+        <div><dt>Loaded:</dt><dd>pi (node/typescript) · docker · claude + openai apis · openrouter</dd></div>
+        <div><dt>Repo:</dt><dd><span class="pending">url pending — releasing after competition</span></dd></div>
+      </dl>
+      <p class="unit-desc">An autonomous agent that solves web-exploitation and binary-exploitation (pwn)
+      CTF challenges during live competition — no human in the loop on the day. Built on the Pi
+      coding-agent framework; the real engineering is a hand-authored AGENTS.md instruction set:
+      authorization framing, an evidence-gated methodology where every claim is either confirmed or
+      a guess, and pivot-on-failure logic to stop the model brute-forcing a dead approach — backed by
+      a pruned CTF skills stack, a Docker sandbox that runs x86-64 pwn on Apple Silicon, and a
+      dead-simple checkpoint file that survives a crash or restart.</p>
+      <ul class="tags"><li>ai agents</li><li>pi framework</li><li>llm tool-calling</li><li>web exploitation</li><li>pwn</li><li>docker</li></ul>
+    </article>
 
-<section class = "find">
-    <h2 id="Contact">Find me on </h2>
+    <article class="unit reveal">
+      <header class="unit-head">
+        <span class="unit-dot" aria-hidden="true"></span>
+        <h3 class="unit-name">car-rental.service</h3>
+        <span class="unit-state">active (live prototype)</span>
+      </header>
+      <p class="unit-title">Car Rental Management System</p>
+      <dl class="unit-meta">
+        <div><dt>Loaded:</dt><dd>flask · postgres (supabase) · hijri-converter</dd></div>
+        <div><dt>Docs:</dt><dd><a href="https://0xmyth.com/yassin" target="_blank" rel="noopener">0xmyth.com/yassin — live prototype</a></dd></div>
+      </dl>
+      <p class="unit-desc">Rebuilt from a single-file HTML prototype into a full Flask application for a
+      family car-rental business. Arabic RTL layout, printable legal contracts with Hijri date
+      support, and e-signature capture. Started on SQLite; migrated to Supabase Postgres for
+      hosted deployment.</p>
+      <ul class="tags"><li>flask</li><li>postgres</li><li>arabic rtl</li><li>hijri dates</li><li>e-signature</li></ul>
+    </article>
 
+    <article class="unit reveal">
+      <header class="unit-head">
+        <span class="unit-dot" aria-hidden="true"></span>
+        <h3 class="unit-name">tafweej.service</h3>
+        <span class="unit-state">active (production)</span>
+      </header>
+      <p class="unit-title">Tafweej Workforce Management System</p>
+      <dl class="unit-meta">
+        <div><dt>Loaded:</dt><dd>flask · sqlite · leaflet.js / openstreetmap</dd></div>
+        <div><dt>Client:</dt><dd>Al-Elyani Company — Hajj season operations</dd></div>
+      </dl>
+      <p class="unit-desc">Replaced 30+ disconnected Excel files used through Hajj season with one system:
+      employee management, daily deployment, fleet tracking for 40+ buses, equipment custody with
+      audit trails, Tafweej movement scheduling, a live operations map with Ministry-approved
+      routes, and Excel export.</p>
+      <ul class="tags"><li>flask</li><li>sqlite</li><li>leaflet.js</li><li>audit trails</li><li>excel export</li></ul>
+    </article>
 
-    <nav>
-    <a href="https://instagram.com/xlb.ba" target="_blank" class="icons">
-  <i class="fa-brands fa-instagram"></i>
-</a>
-    <a href="https://twitter.com/XlBaba2" target="_blank" class="icons">
-  <i class="fa-brands fa-twitter"></i>
-</a>
-<a href="https://www.tiktok.com/@rew" target="_blank" class="icons">
-  <i class="fa-brands fa-tiktok"></i>
-</a>
-<a href="https://github.com/xlbaba" target="_blank" class="icons">
-  <i class="fa-brands fa-github"></i>
-</a>
-</nav>
-</section>
+    <article class="unit reveal">
+      <header class="unit-head">
+        <span class="unit-dot" aria-hidden="true"></span>
+        <h3 class="unit-name">0xmyth-web.service</h3>
+        <span class="unit-state">active (running)</span>
+      </header>
+      <p class="unit-title">This site's infrastructure</p>
+      <dl class="unit-meta">
+        <div><dt>Loaded:</dt><dd>fedora · nginx · gunicorn · systemd · cloudflare</dd></div>
+      </dl>
+      <p class="unit-desc">Self-hosted on a box I administer: Flask apps served by Gunicorn behind Nginx
+      on Fedora, managed as systemd units, with Cloudflare in front. Listed here to show real
+      infrastructure ownership — not tutorial-following.</p>
+      <ul class="tags"><li>fedora</li><li>nginx</li><li>gunicorn</li><li>systemd</li><li>cloudflare</li></ul>
+    </article>
+  </section>
 
+  <!-- ══ CTF & ACHIEVEMENTS ══ -->
+  <section id="ctf" class="section reveal">
+    <h2><span class="h-mark">##</span> ctf &amp; achievements</h2>
 
+    <div class="panel record">
+      <div class="rec-row">
+        <code class="rec-key">ucsi26 · ai-driven ctf</code>
+        <span class="rec-val">1st place <span class="c-live">[university]</span></span>
+      </div>
+      <div class="rec-row">
+        <code class="rec-key">national ctf · malaysia</code>
+        <span class="rec-val">3rd place <span class="c-live">[top 3 national]</span></span>
+      </div>
+      <div class="rec-row">
+        <code class="rec-key">bhmea-2025 qualifiers</code>
+        <span class="rec-val">rank 120 <span class="c-err">[needed: top 100]</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CERTIFICATIONS ══ -->
+  <section id="certs" class="section reveal">
+    <h2><span class="h-mark">##</span> certifications</h2>
+    <figure class="badge badge-cert">
+      <img src="pictures/nnet.jpg"
+           alt="CompTIA Network+ certificate — Mohammed Samir"
+           onerror="this.closest('.badge').classList.add('missing')">
+      <div class="badge-fallback" aria-hidden="true">nnet.jpg<br>asset pending —<br>drop into /pictures/</div>
+      <figcaption>CompTIA Network+ — certified</figcaption>
+    </figure>
+  </section>
+
+  <!-- ══ WRITEUPS ══ -->
+  <section id="writeups" class="section reveal">
+    <h2><span class="h-mark">##</span> writeups</h2>
+    <div class="term">
+      <div class="term-head">~/writeups</div>
+      <pre class="term-body"><span class="c-acc">$</span> ls writeups/
+<span class="c-dim">no entries yet — first writeup in progress</span><span class="cursor" aria-hidden="true">▊</span></pre>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section id="contact" class="section reveal">
+    <h2><span class="h-mark">##</span> contact</h2>
+    <p class="avail">Open to CTF teams, security collaborations, and new opportunities — internships, freelance work, or interesting projects. Just as happy to talk shop about web exploitation, agents, and offensive security.</p>
+    <ul class="contact-list">
+      <li><span class="dt">gh:</span> <a href="https://github.com/xlbaba" target="_blank" rel="noopener">github.com/xlbaba</a></li>
+      <li><span class="dt">x:</span> <a href="https://x.com/JustxMyth" target="_blank" rel="noopener">@JustxMyth</a></li>
+      <li><span class="dt">mail:</span> <a href="mailto:me@0xmyth.com">me@0xmyth.com</a></li>
+    </ul>
+  </section>
+
+  <footer class="foot">
+    <p>© 2026 mohammed samir · 0xmyth</p>
+  </footer>
+
+</main>
+
+<!-- ══ STATUS BAR ══ signature element · fixed bottom · persistent -->
+<footer class="statusbar" aria-label="System status bar">
+  <span class="sb-session">[0xmyth@web:~]<b>$</b></span>
+  <span class="sb-segs">
+    <span class="sb-seg on" id="sb-uptime" title="since last deploy">up 0d 00:00:00</span>
+    <span class="sb-sep" aria-hidden="true">│</span>
+    <span class="sb-seg">htb: sqlmap_essentials <b class="c-live">in_progress</b></span>
+    <span class="sb-sep" aria-hidden="true">│</span>
+    <span class="sb-seg" id="sb-git">git: github.com/xlbaba</span>
+  </span>
+</footer>
+
+<script src="main.js" defer></script>
 </body>
 </html>

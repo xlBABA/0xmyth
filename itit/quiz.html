@@ -54,7 +54,12 @@
               <input type="radio" name="chapter" id="ch-4" value="4"><label for="ch-4">Ch 4</label>
               <input type="radio" name="chapter" id="ch-5" value="5"><label for="ch-5">Ch 5</label>
               <input type="radio" name="chapter" id="ch-6" value="6"><label for="ch-6">Ch 6</label>
+              <input type="radio" name="chapter" id="ch-7" value="7"><label for="ch-7">Ch 7</label>
+              <input type="radio" name="chapter" id="ch-8" value="8"><label for="ch-8">Ch 8 &middot; HTML</label>
+              <input type="radio" name="chapter" id="ch-9" value="9"><label for="ch-9">Ch 9 &middot; CSS</label>
+              <input type="radio" name="chapter" id="ch-10" value="10"><label for="ch-10">Ch 10 &middot; JS</label>
             </div>
+            <p class="field-hint">In this course HTML is Chapter 8, CSS is Chapter 9 and JavaScript is Chapter 10. Dimmed chapters have nothing in the bank yet.</p>
           </div>
 
           <div class="field">
@@ -66,6 +71,40 @@
               <input type="radio" name="source" id="src-final" value="final"><label for="src-final">Final</label>
             </div>
             <p class="field-hint" id="source-hint"></p>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="lbl-qtype">Question type</span>
+            <div class="seg" role="radiogroup" aria-labelledby="lbl-qtype">
+              <input type="radio" name="qtype" id="qt-all" value="all" checked><label for="qt-all">All</label>
+              <input type="radio" name="qtype" id="qt-mcq" value="mcq"><label for="qt-mcq">MCQ</label>
+              <input type="radio" name="qtype" id="qt-blank" value="blank"><label for="qt-blank">Fill in the blank</label>
+              <input type="radio" name="qtype" id="qt-open" value="open"><label for="qt-open">Open-ended</label>
+            </div>
+            <p class="field-hint">Open-ended questions are never marked right or wrong &mdash; you write an answer, then reveal a model answer to compare against.</p>
+          </div>
+
+          <div class="field">
+            <span class="field-label" id="lbl-paper">Source paper</span>
+            <div class="seg" role="radiogroup" aria-labelledby="lbl-paper">
+              <input type="radio" name="paper" id="pp-all" value="all" checked><label for="pp-all">All</label>
+              <input type="radio" name="paper" id="pp-tut" value="tutorial"><label for="pp-tut">Tutorials</label>
+              <input type="radio" name="paper" id="pp-a" value="paper-a"><label for="pp-a">Paper A</label>
+              <input type="radio" name="paper" id="pp-b" value="paper-b"><label for="pp-b">Paper B</label>
+              <input type="radio" name="paper" id="pp-c" value="paper-c"><label for="pp-c">Paper C</label>
+              <input type="radio" name="paper" id="pp-final" value="final-paper"><label for="pp-final">Final paper</label>
+              <input type="radio" name="paper" id="pp-rev" value="revision"><label for="pp-rev">Revision sheet</label>
+              <input type="radio" name="paper" id="pp-add" value="additional"><label for="pp-add">Additional task</label>
+            </div>
+          </div>
+
+          <div class="field">
+            <span class="field-label">Priority</span>
+            <div class="switch-row">
+              <input type="checkbox" id="opt-priority">
+              <label for="opt-priority">High priority only &mdash; questions asked in more than one paper</label>
+            </div>
+            <p class="field-hint">Repetition across papers is the strongest available signal about what gets asked again. These carry a &#9733; marker.</p>
           </div>
 
           <div class="field">
@@ -127,9 +166,19 @@
         </form>
       </div>
 
+      <div class="note">
+        <div class="note-label">Coverage Note &mdash; past papers</div>
+        <ul>
+          <li><b>Midterm Paper A</b> &mdash; questions 8&ndash;15 and 23&ndash;29 are on pages that were never photographed, so they are not here. Nothing has been invented to fill the gap.</li>
+          <li><b>Midterm Paper B</b> &mdash; page 4 is missing; there may be further subjective questions on it.</li>
+          <li><b>Open-ended answers</b> are written from the summary sheet and the tutorials, not from a marking scheme. Check them against your slides.</li>
+        </ul>
+      </div>
+
       <p class="field-hint" style="text-align:center">
-        Tip: chapter pages link straight in &mdash; <code>quiz.html?chapter=4</code>
-        or <code>quiz.html?source=final</code> pre-applies a filter.
+        Tip: chapter pages link straight in &mdash; <code>quiz.html?chapter=4</code>,
+        <code>quiz.html?source=final</code>, <code>quiz.html?type=blank</code> or
+        <code>quiz.html?priority=1</code> pre-applies a filter.
       </p>
 
     </section>
@@ -150,6 +199,7 @@
       <div class="panel">
         <div class="q-tags" id="q-tags"></div>
         <p class="q-text" id="q-text"></p>
+        <div id="q-code" hidden></div>
         <div class="options" id="q-options" role="group" aria-label="Answer options"></div>
         <div id="q-feedback" aria-live="polite"></div>
 
@@ -157,6 +207,7 @@
           <button type="button" class="btn btn-ghost btn-sm" id="btn-back">&larr; Back</button>
           <button type="button" class="btn btn-ghost btn-sm" id="btn-skip">Skip</button>
           <span class="spacer"></span>
+          <button type="button" class="btn btn-sm" id="btn-check" hidden>Check answer</button>
           <button type="button" class="btn btn-primary btn-sm" id="btn-next">Next &rarr;</button>
           <button type="button" class="btn btn-primary btn-sm" id="btn-finish" hidden>Finish</button>
         </div>
@@ -205,7 +256,8 @@
 </footer>
 
 <script src="assets/data/questions-tutorials.js"></script>
-<script src="assets/data/questions-exams.js"></script>
+<script src="assets/data/questions-midterm.js"></script>
+<script src="assets/data/questions-final.js"></script>
 <script src="assets/main.js"></script>
 <script src="assets/quiz.js"></script>
 </body>

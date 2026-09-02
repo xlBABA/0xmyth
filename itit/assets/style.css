@@ -559,6 +559,17 @@ a.card:hover {
   cursor: not-allowed;
 }
 .card.is-disabled .card-num { color: var(--muted); }
+/* A chapter whose write-up is still pending can still be drilled in the quiz,
+   so its link stays live and legible even though the card itself is dimmed. */
+.card.is-disabled.has-drill { opacity: .68; cursor: default; }
+.card.is-disabled .card-meta a {
+  color: var(--accent);
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--accent-line);
+  text-underline-offset: 2px;
+}
+.card.is-disabled .card-meta a:hover { color: var(--accent-strong); }
 
 .card-cta {
   background: linear-gradient(140deg, var(--accent-dim), transparent 65%), var(--surface);
@@ -1162,6 +1173,169 @@ a.card:hover {
 }
 .skip-link:focus { top: 8px; color: #06201d; }
 
+/* ------------------------------------------- 14b. Blank / open / code UI */
+
+/* Dimmed filter chips: the filter exists, but the bank has nothing for it. */
+.seg label.is-empty { opacity: .42; }
+.seg input:checked + label.is-empty { opacity: 1; }
+
+.tag-priority {
+  color: var(--amber);
+  border-color: var(--amber-line);
+  background: var(--amber-dim);
+}
+
+/* --- multi-select multiple choice --- */
+.multi-hint {
+  font-size: .84rem;
+  color: var(--amber);
+  margin: 0 0 4px;
+  font-weight: 560;
+}
+.opt-key.opt-check {
+  border-radius: var(--radius-sm);
+  font-size: .8rem;
+}
+.opt.selected .opt-key.opt-check {
+  background: var(--accent);
+  color: #06201d;
+  border-color: var(--accent);
+}
+[data-theme="light"] .opt.selected .opt-key.opt-check { color: #fff; }
+
+/* --- fill in the blank --- */
+.blank-wrap { display: block; margin-bottom: 18px; }
+.blank-sentence {
+  font-size: 1.02rem;
+  line-height: 2.35;
+  color: var(--text-strong);
+  margin: 0;
+}
+.blank-input {
+  font: inherit;
+  font-size: .95rem;
+  font-family: var(--font-mono);
+  color: var(--text-strong);
+  background: var(--bg-alt);
+  border: 0;
+  border-bottom: 2px solid var(--border-strong);
+  border-radius: var(--radius-sm) var(--radius-sm) 0 0;
+  padding: 4px 8px;
+  margin: 0 3px;
+  max-width: 100%;
+  min-width: 8ch;
+  vertical-align: baseline;
+}
+.blank-input::placeholder { color: var(--faint); }
+.blank-input:focus {
+  outline: none;
+  border-bottom-color: var(--accent);
+  background: var(--accent-dim);
+}
+.blank-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+.blank-input.correct {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+  background: var(--accent-dim);
+}
+.blank-input.incorrect {
+  color: var(--wrong);
+  border-bottom-color: var(--wrong);
+  background: var(--wrong-dim);
+}
+.blank-accepted {
+  font-size: .87rem;
+  color: var(--accent);
+  margin: 14px 0 0;
+  font-family: var(--font-mono);
+}
+
+/* --- open-ended --- */
+.open-wrap { display: block; margin-bottom: 18px; }
+.open-label {
+  display: block;
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--muted);
+  font-weight: 600;
+  margin-bottom: 7px;
+}
+.open-input {
+  width: 100%;
+  font-family: inherit;
+  font-size: .95rem;
+  line-height: 1.65;
+  color: var(--text);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 11px 13px;
+  resize: vertical;
+  min-height: 120px;
+}
+.open-input::placeholder { color: var(--faint); }
+.open-input:focus {
+  outline: none;
+  border-color: var(--accent-line);
+  background: var(--surface);
+}
+.open-input:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+
+/* The model answer sits under whatever the user wrote and is never a verdict. */
+.model-answer {
+  border: 1px solid var(--border);
+  border-left: 3px solid var(--accent-line);
+  background: var(--bg-alt);
+  border-radius: var(--radius);
+  padding: 15px 17px;
+  margin-top: 18px;
+}
+.model-label {
+  font-size: .78rem;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  font-weight: 640;
+  color: var(--accent);
+  margin-bottom: 9px;
+}
+.model-answer p { font-size: .94rem; line-height: 1.68; margin: 0 0 .8em; }
+.model-answer ul, .model-answer ol { margin: 0 0 .9em; padding-left: 1.2em; font-size: .93rem; }
+.model-answer li { margin-bottom: .35em; line-height: 1.6; }
+.model-answer li::marker { color: var(--accent); }
+.model-answer .kp-label { margin-bottom: .4em; }
+.model-note {
+  font-size: .82rem !important;
+  line-height: 1.55 !important;
+  color: var(--faint);
+  border-top: 1px dashed var(--faint-line);
+  padding-top: 10px;
+  margin: 14px 0 0 !important;
+  font-style: italic;
+}
+
+/* --- code samples: always plain text, never parsed --- */
+.code-block {
+  font-family: var(--font-mono);
+  font-size: .82rem;
+  line-height: 1.6;
+  color: var(--text);
+  background: var(--bg-alt);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  padding: 12px 14px;
+  margin: 0 0 14px;
+  overflow-x: auto;
+  white-space: pre;
+  tab-size: 2;
+}
+.code-block code { font-size: inherit; font-family: inherit; }
+.model-answer .code-block { background: var(--surface); margin-bottom: 1em; }
+
+.review-item.open { border-left-color: var(--accent-line); }
+.review-item .model-answer { margin-top: 12px; }
+.score-pct.unscored { color: var(--muted); }
+
 /* --------------------------------------------------------- 15. Responsive */
 
 @media (max-width: 720px) {
@@ -1179,6 +1353,10 @@ a.card:hover {
   .quiz-shell { padding-top: 18px; }
   .panel { padding: 17px; }
   .mode-cards { grid-template-columns: 1fr; }
+  /* 44px tap targets for the inline gaps and the reveal button. */
+  .blank-input { padding: 7px 9px; }
+  .open-input { font-size: 16px; }
+  #btn-check { flex: 1 1 100%; }
   .score-stats { gap: 18px; }
   ol.steps > li { padding-left: 40px; }
   ol.steps > li::before { width: 26px; height: 26px; font-size: .76rem; }
@@ -1192,6 +1370,10 @@ a.card:hover {
 
 @media (max-width: 420px) {
   .quiz-actions .btn { flex: 1 1 auto; }
+  .blank-sentence { font-size: .97rem; line-height: 2.3; }
+  .blank-input { min-width: 7ch; font-size: .9rem; padding: 4px 6px; }
+  .code-block { font-size: .76rem; padding: 10px 11px; }
+  .model-answer { padding: 13px 14px; }
   .opt { padding: 12px 13px; gap: 10px; font-size: .93rem; }
   .review-line { flex-direction: column; gap: 1px; }
   .review-line .rl-k { width: auto; padding-top: 0; }
@@ -1212,6 +1394,22 @@ a.card:hover {
   body { background: #fff; color: #000; font-size: 11pt; line-height: 1.5; }
   .site-header, .chapter-nav, .test-cta, .header-tools, .skip-link,
   .toc, .quiz-actions, .anchor { display: none !important; }
+  .model-answer {
+    border: 1px solid #999; border-left: 3px solid #666; background: #fafafa;
+  }
+  .model-label { color: #05655a; }
+  .model-note { color: #555; }
+  .code-block {
+    border: 1px solid #bbb; background: #f6f6f6; color: #000;
+    white-space: pre-wrap; overflow: visible; font-size: 9pt;
+  }
+  .open-input, .blank-input {
+    border: 0; border-bottom: 1px solid #666; background: transparent; color: #000;
+  }
+  .open-input { border: 1px solid #999; }
+  .model-answer, .code-block, .review-item, .answer-box {
+    page-break-inside: avoid; break-inside: avoid;
+  }
   main { padding-bottom: 0; }
   .wrap { max-width: none; padding: 0; }
   .prose { max-width: none; }

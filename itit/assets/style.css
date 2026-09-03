@@ -1,6 +1,8 @@
 /* ==========================================================================
    ITIT Study Site — BIC1234 / CC106
-   Design system: dark by default, light via [data-theme="light"]
+   Design system: light is the default theme (every page ships with
+   data-theme="light" on <html>); the dark tokens live in :root and apply
+   when data-theme="dark" is set by the toggle.
    ========================================================================== */
 
 /* --------------------------------------------------------------- 1. Tokens */
@@ -727,18 +729,22 @@ a.card:hover {
 .footer-fine a { color: inherit; }
 
 /* Tier 2 of the footer: a quiet author signature sitting between the dua
-   and the disclaimer. Deliberately the least prominent interactive thing
-   on the page — muted at rest, accent only on hover/focus. */
+   and the disclaimer. The surrounding "Built by" stays faint; the link
+   itself sits one step up at --muted so it reads as a link and clears
+   WCAG AA (5.3:1 light, 6.7:1 dark) — still quieter than the dua above it.
+   The paragraph carries no opacity, because opacity on the parent would
+   cap the link's contrast no matter what colour it is given. */
 .footer-author {
   font-size: .78rem;
   line-height: 1.6;
   color: var(--faint);
-  opacity: .85;
   margin: 0 0 12px;
 }
 .author-link {
   display: inline-block;
-  color: inherit;
+  color: var(--muted);
+  font-size: .82rem;
+  font-weight: 500;
   padding: 6px 4px;
   text-decoration: underline;
   text-decoration-thickness: 1px;
@@ -755,7 +761,7 @@ a.card:hover {
 .author-arrow {
   display: inline-block;
   margin-left: .3em;
-  opacity: .5;
+  opacity: .65;
   transition: transform .15s ease, opacity .15s ease;
 }
 .author-link:hover .author-arrow,

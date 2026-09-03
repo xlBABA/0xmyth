@@ -22,13 +22,17 @@
   /* ---------------------------------------------------------------- theme */
   var THEME_KEY = 'itit-theme';
 
+  var THEME_COLOR = { light: '#fbfbfa', dark: '#0e1116' };
+
   function applyTheme(theme) {
     var root = document.documentElement;
-    if (theme === 'light') {
-      root.setAttribute('data-theme', 'light');
-    } else {
-      root.removeAttribute('data-theme'); // dark is the default
-    }
+    /* Light is the default, so the attribute is always written explicitly:
+       the light tokens live under [data-theme="light"] and the dark ones in
+       :root, and every page ships with data-theme="light" already on <html>
+       so there is no flash and no-JS visitors still get light. */
+    root.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
+    var meta = document.querySelector('meta[name="theme-color"]');
+    if (meta) { meta.setAttribute('content', THEME_COLOR[theme] || THEME_COLOR.light); }
     var btns = document.querySelectorAll('[data-theme-toggle]');
     for (var i = 0; i < btns.length; i++) {
       var b = btns[i];
@@ -40,11 +44,11 @@
   }
 
   function currentTheme() {
-    return document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
+    return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
   }
 
   // Applied as early as possible by an inline snippet in <head>; re-sync here.
-  applyTheme(store.get(THEME_KEY) === 'light' ? 'light' : 'dark');
+  applyTheme(store.get(THEME_KEY) === 'dark' ? 'dark' : 'light');
 
   document.addEventListener('click', function (e) {
     var btn = e.target.closest ? e.target.closest('[data-theme-toggle]') : null;

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mohammed Samir — 0xMYTH · web security</title>
+<meta name="description" content="First-year cybersecurity student and OffSec enthusiast. CTF placements, HTB Web PT progress, and autonomous exploitation agents built on the Pi framework.">
+<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="#08090D">
+<meta property="og:title" content="Mohammed Samir — 0xMYTH">
+<meta property="og:description" content="Web security student · CTFs · AI exploitation agents · self-hosted infrastructure. Portfolio and project log.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://0xmyth.com">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%2312141C'/%3E%3Ctext x='32' y='42' font-family='monospace' font-size='26' font-weight='700' fill='%23FF8B3D' text-anchor='middle'%3E0x%3C/text%3E%3C/svg%3E">
+<script>
+  (function (d) {
+    d.classList.add('js');
+    if (!matchMedia('(prefers-reduced-motion: reduce)').matches) d.classList.add('intro-on');
+    // failsafe: never leave the page locked behind the intro if a script fails
+    setTimeout(function () { if (!d.classList.contains('booted')) d.classList.remove('intro-on'); }, 12000);
+  })(document.documentElement);
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<a class="skip" href="#main">skip to content</a>
+
+<!-- ══ INTRO ══ boot lines type out, then the wordmark decrypts · skippable · reduced motion: skipped -->
+<div class="intro" id="intro" aria-hidden="true">
+  <pre class="boot-lines" id="boot-lines"></pre>
+  <p class="intro-skip" id="intro-skip">press any key to skip</p>
+</div>
+
+<!-- ══ NAV ══ -->
+<header class="nav" id="nav">
+  <div class="nav-row">
+    <a class="brand" href="#top" aria-label="0xMYTH — back to top"><span class="brand-0x">0x</span>MYTH<span class="brand-rule" aria-hidden="true"></span></a>
+    <nav class="nav-links" aria-label="Main">
+      <a href="#whoami">whoami</a>
+      <a href="#now">now</a>
+      <a href="#projects">projects</a>
+      <a href="#ctf">ctf</a>
+      <a href="#certs">certs</a>
+      <a href="#writeups">writeups</a>
+      <a href="#contact">contact</a>
+    </nav>
+    <button class="menu-btn" id="menu-btn" type="button" aria-label="Open menu" aria-expanded="false" aria-controls="mobile-menu">
+      <span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-progress" id="nav-progress" aria-hidden="true"></div>
+</header>
+
+<div class="mobile-menu" id="mobile-menu" aria-hidden="true">
+  <ul>
+    <li><a href="#whoami">whoami</a></li>
+    <li><a href="#now">now</a></li>
+    <li><a href="#projects">projects</a></li>
+    <li><a href="#ctf">ctf</a></li>
+    <li><a href="#certs">certs</a></li>
+    <li><a href="#writeups">writeups</a></li>
+    <li><a href="#contact">contact</a></li>
+  </ul>
+</div>
+
+<main id="main">
+
+  <!-- ══ HERO ══ -->
+  <section class="hero" id="top" aria-label="Introduction">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="hero-anchor-wrap" aria-hidden="true">
+      <img class="hero-anchor" id="portrait-anchor" src="assets/mee-cutout.png" alt="">
+    </div>
+    <canvas class="portrait" id="portrait" role="img" aria-label="Portrait of Mohammed Samir assembled from hexadecimal glyphs"></canvas>
+
+    <div class="hero-mark" id="hero-mark">
+      <h1 class="wordmark" aria-label="0xMYTH, Mohammed Samir">
+        <span class="wm-half wm-a" aria-hidden="true"><span class="wm-ch">0</span><span class="wm-ch">x</span></span><span class="wm-half wm-b" aria-hidden="true"><span class="wm-ch">M</span><span class="wm-ch">Y</span><span class="wm-ch">T</span><span class="wm-ch">H</span></span>
+        <span class="wm-scan" aria-hidden="true"></span>
+      </h1>
+      <p class="hero-name" data-hero-rise><b>Mohammed Samir</b> <em>web security</em></p>
+      <div class="hero-cta" data-hero-rise>
+        <a class="round-btn" href="#contact" aria-label="Jump to contact">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" aria-hidden="true"><path stroke-linecap="round" stroke-linejoin="round" d="M17 7L7 17M7 17h9M7 17V8"/></svg>
+        </a>
+        <a class="pill-btn" href="#contact">contact</a>
+      </div>
+    </div>
+
+    <p class="hero-status" data-hero-rise><span class="pulse" aria-hidden="true"></span>Currently: HTB Web PT path — SQLMap Essentials</p>
+    <p class="scroll-cue" data-hero-rise aria-hidden="true"><span>scroll</span></p>
+  </section>
+
+  <!-- ══ WHOAMI ══ -->
+  <section class="sec about" id="whoami">
+    <div class="wrap about-grid">
+      <div class="about-left">
+        <p class="kicker" data-reveal>$ whoami</p>
+        <h2 class="giant" data-reveal-lines aria-label="whoami">
+          <span class="mask"><span class="line">who</span></span>
+          <span class="mask"><span class="line">ami<span class="caret">_</span></span></span>
+        </h2>
+        <figure class="photo-card" data-reveal="left" data-parallax-frame>
+          <div class="photo-clip"><img data-parallax="60" src="assets/bhmea24.jpg" alt="Black Hat MEA 2024 attendee badge — Mohammed Samir" loading="lazy" decoding="async"></div>
+          <figcaption>black hat mea 2024 — attended</figcaption>
+        </figure>
+      </div>
+      <div class="about-right">
+        <p class="fill-text" id="fill-text">I'm <b>Mohammed Samir</b>, aka <b>0xMYTH</b>. First-year <b>Cybersecurity</b> student and <b>OffSec</b> enthusiast — <b>web exploitation</b>, <b>CTFs</b>, and building <b>autonomous agents</b> that hunt flags.</p>
+        <dl class="facts" data-reveal-group="0.08">
+          <div><dt>handle</dt><dd>0xMYTH</dd></div>
+          <div><dt>currently</dt><dd>HTB Web PT path — SQLMap Essentials</dd></div>
+          <div><dt>attended</dt><dd>Black Hat MEA 2024</dd></div>
+          <div><dt>certified</dt><dd>CompTIA Network+</dd></div>
+          <div><dt>goal</dt><dd>path completion by October 2026 · top 100 at Black Hat MEA</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="stack" aria-label="Focus areas, tools and stack">
+      <div class="stack-head wrap"><span class="kicker">the stack</span><span class="stack-rule" aria-hidden="true"></span></div>
+      <ul class="sr-only">
+        <li>Focus: Web Exploitation, CTFs, AI Agents, Python, Linux, Docker</li>
+        <li>Tools in rotation: ffuf, feroxbuster, gobuster, wfuzz, Burp Suite, sqlmap, nuclei, nikto</li>
+        <li>Infrastructure: fedora, nginx, gunicorn, systemd, cloudflare</li>
+        <li>Built with: flask, postgres (supabase), sqlite, leaflet.js / openstreetmap, pi (node/typescript), claude + openai apis, openrouter, docker</li>
+      </ul>
+      <div class="marquee" aria-hidden="true" data-label="focus" style="--dur:44s">
+        <div class="marquee-track"><span>Web Exploitation</span><span>CTFs</span><span>AI Agents</span><span>Python</span><span>Linux</span><span>Docker</span></div>
+      </div>
+      <div class="marquee" aria-hidden="true" data-label="tools" style="--dur:52s;--dir:reverse">
+        <div class="marquee-track"><span>ffuf</span><span>feroxbuster</span><span>gobuster</span><span>wfuzz</span><span>Burp Suite</span><span>sqlmap</span><span>nuclei</span><span>nikto</span></div>
+      </div>
+      <div class="marquee" aria-hidden="true" data-label="infra" style="--dur:40s">
+        <div class="marquee-track"><span>fedora</span><span>nginx</span><span>gunicorn</span><span>systemd</span><span>cloudflare</span></div>
+      </div>
+      <div class="marquee" aria-hidden="true" data-label="built with" style="--dur:58s;--dir:reverse">
+        <div class="marquee-track"><span>flask</span><span>postgres (supabase)</span><span>sqlite</span><span>leaflet.js / openstreetmap</span><span>pi (node/typescript)</span><span>claude + openai apis</span><span>openrouter</span><span>docker</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ NOW ══ -->
+  <section class="sec now" id="now">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker" data-reveal><span class="h-mark">##</span> now</p>
+        <h2 class="big" data-reveal-lines>
+          <span class="mask"><span class="line">current</span></span>
+          <span class="mask"><span class="line">focus<span class="live-tag"><span class="pulse" aria-hidden="true"></span>live</span></span></span>
+        </h2>
+      </div>
+
+      <div class="path" id="path">
+        <div class="path-top">
+          <p class="path-name">HTB Web Penetration Tester path</p>
+          <p class="path-count"><span class="num" id="mod-count" data-to="8">8</span><span class="of">/ 9 modules</span></p>
+        </div>
+        <div class="path-bar" aria-hidden="true"><span id="path-fill"></span></div>
+
+        <ol class="mods" aria-label="Module progress">
+          <li class="mod done" data-mod><span class="mk">[✓]</span><span class="mod-n">01</span><span class="mod-name">Web Fuzzing</span></li>
+          <li class="mod done" data-mod><span class="mk">[✓]</span><span class="mod-n">02</span><span class="mod-name">JavaScript Deobfuscation</span></li>
+          <li class="mod done" data-mod><span class="mk">[✓]</span><span class="mod-n">03</span><span class="mod-name">Cross-Site Scripting (XSS)</span></li>
+          <li class="mod done" data-mod><span class="mk">[✓]</span><span class="mod-n">04</span><span class="mod-name">SQL Injection Fundamentals</span></li>
+          <li class="mod cur" data-mod><span class="mk">[▸]</span><span class="mod-n">05</span><span class="mod-name">SQLMap Essentials <em>— in progress</em></span></li>
+          <li class="mod done" data-mod><span class="mk">[✓]</span><span class="mod-n">06</span><span class="mod-name">Web Requests</span></li>
+          <li class="mod done" data-mod><span class="mk">[✓]</span><span class="mod-n">07</span><span class="mod-name">Introduction to Web Applications</span></li>
+          <li class="mod done" data-mod><span class="mk">[✓]</span><span class="mod-n">08</span><span class="mod-name">Web Proxies</span></li>
+          <li class="mod done" data-mod><span class="mk">[✓]</span><span class="mod-n">09</span><span class="mod-name">Information Gathering — Web Edition</span></li>
+        </ol>
+
+        <div class="path-foot" data-reveal-group="0.1">
+          <p><span class="dt">tools in rotation:</span> ffuf · feroxbuster · gobuster · wfuzz · Burp Suite · sqlmap · nuclei · nikto</p>
+          <p><span class="h-mark">→</span> path completion by October 2026 · top 100 at Black Hat MEA</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ PROJECTS ══ pinned shelf on desktop, swipe/drag shelf on touch -->
+  <section class="sec projects" id="projects">
+    <div class="proj-pin" id="proj-pin">
+      <div class="wrap proj-head">
+        <p class="kicker" data-reveal><span class="h-mark">##</span> projects</p>
+        <p class="proj-cmd" data-reveal data-reveal-delay="0.1"><span class="c-acc">$</span> systemctl status 0xmyth-*</p>
+      </div>
+
+      <div class="proj-viewport" id="proj-viewport">
+        <div class="proj-track" id="proj-track" role="group" aria-roledescription="carousel" aria-label="Projects" tabindex="0">
+
+          <article class="unit">
+            <header class="unit-head">
+              <span class="unit-dot" aria-hidden="true"></span>
+              <h3 class="unit-name">ctf-agent.service</h3>
+              <span class="unit-state">active (in development)</span>
+            </header>
+            <p class="unit-title">Autonomous CTF Exploitation Agent</p>
+            <dl class="unit-meta">
+              <div><dt>Loaded:</dt><dd>pi (node/typescript) · docker · claude + openai apis · openrouter</dd></div>
+              <div><dt>Repo:</dt><dd><span class="pending">url pending — releasing after competition</span></dd></div>
+            </dl>
+            <p class="unit-desc">An autonomous agent that solves web-exploitation and binary-exploitation (pwn) CTF challenges during live competition — no human in the loop on the day. Built on the Pi coding-agent framework; the real engineering is a hand-authored AGENTS.md instruction set: authorization framing, an evidence-gated methodology where every claim is either confirmed or a guess, and pivot-on-failure logic to stop the model brute-forcing a dead approach — backed by a pruned CTF skills stack, a Docker sandbox that runs x86-64 pwn on Apple Silicon, and a dead-simple checkpoint file that survives a crash or restart.</p>
+            <ul class="tags"><li>ai agents</li><li>pi framework</li><li>llm tool-calling</li><li>web exploitation</li><li>pwn</li><li>docker</li></ul>
+          </article>
+
+          <article class="unit">
+            <header class="unit-head">
+              <span class="unit-dot" aria-hidden="true"></span>
+              <h3 class="unit-name">car-rental.service</h3>
+              <span class="unit-state">active (live prototype)</span>
+            </header>
+            <p class="unit-title">Car Rental Management System</p>
+            <dl class="unit-meta">
+              <div><dt>Loaded:</dt><dd>flask · postgres (supabase) · hijri-converter</dd></div>
+              <div><dt>Docs:</dt><dd><a href="https://0xmyth.com/yassin" target="_blank" rel="noopener">0xmyth.com/yassin — live prototype</a></dd></div>
+            </dl>
+            <p class="unit-desc">Rebuilt from a single-file HTML prototype into a full Flask application for a family car-rental business. Arabic RTL layout, printable legal contracts with Hijri date support, and e-signature capture. Started on SQLite; migrated to Supabase Postgres for hosted deployment.</p>
+            <ul class="tags"><li>flask</li><li>postgres</li><li>arabic rtl</li><li>hijri dates</li><li>e-signature</li></ul>
+          </article>
+
+          <article class="unit">
+            <header class="unit-head">
+              <span class="unit-dot" aria-hidden="true"></span>
+              <h3 class="unit-name">tafweej.service</h3>
+              <span class="unit-state">active (production)</span>
+            </header>
+            <p class="unit-title">Tafweej Workforce Management System</p>
+            <dl class="unit-meta">
+              <div><dt>Loaded:</dt><dd>flask · sqlite · leaflet.js / openstreetmap</dd></div>
+              <div><dt>Client:</dt><dd>Al-Elyani Company — Hajj season operations</dd></div>
+            </dl>
+            <p class="unit-desc">Replaced 30+ disconnected Excel files used through Hajj season with one system: employee management, daily deployment, fleet tracking for 40+ buses, equipment custody with audit trails, Tafweej movement scheduling, a live operations map with Ministry-approved routes, and Excel export.</p>
+            <ul class="tags"><li>flask</li><li>sqlite</li><li>leaflet.js</li><li>audit trails</li><li>excel export</li></ul>
+          </article>
+
+          <article class="unit">
+            <header class="unit-head">
+              <span class="unit-dot" aria-hidden="true"></span>
+              <h3 class="unit-name">0xmyth-web.service</h3>
+              <span class="unit-state">active (running)</span>
+            </header>
+            <p class="unit-title">This site's infrastructure</p>
+            <dl class="unit-meta">
+              <div><dt>Loaded:</dt><dd>fedora · nginx · gunicorn · systemd · cloudflare</dd></div>
+            </dl>
+            <p class="unit-desc">Self-hosted on a box I administer: Flask apps served by Gunicorn behind Nginx on Fedora, managed as systemd units, with Cloudflare in front. Listed here to show real infrastructure ownership — not tutorial-following.</p>
+            <ul class="tags"><li>fedora</li><li>nginx</li><li>gunicorn</li><li>systemd</li><li>cloudflare</li></ul>
+          </article>
+
+        </div>
+      </div>
+
+      <div class="wrap proj-foot">
+        <div class="proj-dots" id="proj-dots"></div>
+        <span class="proj-hint" id="proj-hint">→ drag to browse units</span>
+        <div class="proj-meter" aria-hidden="true"><span id="proj-meter-fill"></span></div>
+        <span class="proj-index" id="proj-index">01 / 04</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CTF ══ placements drawn in a 5×7 pixel font on canvas -->
+  <section class="sec ctf" id="ctf">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker" data-reveal><span class="h-mark">##</span> ctf &amp; achievements</p>
+      </div>
+      <div class="records">
+        <div class="rec" data-rec>
+          <canvas class="pixnum" data-text="1ST" role="img" aria-label="1st place"></canvas>
+          <div class="rec-body">
+            <code class="rec-key">ucsi26 · ai-driven ctf</code>
+            <p class="rec-val">1st place <span class="c-live">[university]</span></p>
+          </div>
+        </div>
+        <div class="rec" data-rec>
+          <canvas class="pixnum" data-text="3RD" role="img" aria-label="3rd place"></canvas>
+          <div class="rec-body">
+            <code class="rec-key">national ctf · malaysia</code>
+            <p class="rec-val">3rd place <span class="c-live">[top 3 national]</span></p>
+          </div>
+        </div>
+        <div class="rec" data-rec>
+          <canvas class="pixnum" data-text="#120" data-tone="dim" role="img" aria-label="rank 120"></canvas>
+          <div class="rec-body">
+            <code class="rec-key">bhmea-2025 qualifiers</code>
+            <p class="rec-val">rank 120 <span class="c-err">[needed: top 100]</span></p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CERTIFICATIONS ══ -->
+  <section class="sec certs" id="certs">
+    <div class="wrap certs-grid">
+      <div class="sec-head">
+        <p class="kicker" data-reveal><span class="h-mark">##</span> certifications</p>
+        <h2 class="big" data-reveal-lines>
+          <span class="mask"><span class="line">network+</span></span>
+        </h2>
+        <p class="cert-cap" data-reveal data-reveal-delay="0.15">CompTIA Network+ — certified</p>
+      </div>
+      <figure class="cert" id="cert" data-parallax-frame>
+        <div class="cert-clip"><img data-parallax="30" src="assets/network-plus.jpg" alt="CompTIA Network+ certificate — Mohammed Samir" loading="lazy" decoding="async"></div>
+      </figure>
+    </div>
+  </section>
+
+  <!-- ══ WRITEUPS ══ -->
+  <section class="sec writeups" id="writeups">
+    <div class="wrap">
+      <div class="sec-head">
+        <p class="kicker" data-reveal><span class="h-mark">##</span> writeups</p>
+      </div>
+      <div class="term" data-reveal="scale">
+        <div class="term-head"><span class="term-dots" aria-hidden="true"><i></i><i></i><i></i></span>~/writeups</div>
+        <pre class="term-body" id="term-body"><span class="c-acc">$</span> <span id="term-cmd">ls writeups/</span>
+<span class="c-dim" id="term-out">no entries yet — first writeup in progress</span><span class="cursor" aria-hidden="true">▊</span></pre>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ CONTACT ══ -->
+  <section class="sec contact" id="contact">
+    <div class="contact-bg" aria-hidden="true"><div class="contact-grid" data-parallax="40"></div></div>
+    <div class="wrap contact-inner">
+      <p class="kicker" data-reveal><span class="h-mark">##</span> contact</p>
+      <h2 class="giant" data-reveal-lines aria-label="talk shop">
+        <span class="mask"><span class="line">talk</span></span>
+        <span class="mask"><span class="line">shop<span class="c-acc">.</span></span></span>
+      </h2>
+      <div class="contact-panel" id="contact-panel">
+        <p class="avail" data-row>Open to CTF teams, security collaborations, and new opportunities — internships, freelance work, or interesting projects. Just as happy to talk shop about web exploitation, agents, and offensive security.</p>
+        <ul class="contact-list">
+          <li data-row><a href="https://github.com/xlbaba" target="_blank" rel="noopener" data-magnetic="0.18"><span class="dt">gh:</span><span class="cv">github.com/xlbaba</span><span class="arrow" aria-hidden="true">↗</span></a></li>
+          <li data-row><a href="https://x.com/JustxMyth" target="_blank" rel="noopener" data-magnetic="0.18"><span class="dt">x:</span><span class="cv">@JustxMyth</span><span class="arrow" aria-hidden="true">↗</span></a></li>
+          <li data-row><a href="mailto:me@0xmyth.com" data-magnetic="0.18"><span class="dt">mail:</span><span class="cv">me@0xmyth.com</span><span class="arrow" aria-hidden="true">↗</span></a></li>
+        </ul>
+      </div>
+    </div>
+    <footer class="foot wrap">
+      <p>© 2026 mohammed samir · 0xmyth</p>
+      <a href="#top" class="to-top" data-magnetic="0.3">back to top ↑</a>
+    </footer>
+  </section>
+
+</main>
+
+<!-- ══ STATUS BAR ══ fixed bottom · persistent -->
+<footer class="statusbar" id="statusbar" aria-label="System status bar">
+  <span class="sb-session">[0xmyth@web:~]<b>$</b></span>
+  <span class="sb-segs">
+    <span class="sb-seg on" id="sb-uptime" title="since last deploy">up 0d 00:00:00</span>
+    <span class="sb-sep" aria-hidden="true">│</span>
+    <span class="sb-seg">htb: sqlmap_essentials <b class="c-live">in_progress</b></span>
+    <span class="sb-sep" aria-hidden="true">│</span>
+    <span class="sb-seg" id="sb-git">git: github.com/xlbaba</span>
+  </span>
+</footer>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/portrait.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>

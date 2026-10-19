@@ -1,0 +1,78 @@
+{
+  "sha256": "c8580a4fb34a9c8b0311a1f7a995558c11b941675de7011619492840a5cc3495",
+  "source_url": "https://demo.codeandchill.store/portfolio/assets/index-BJNuUqxu.js",
+  "excerpts": [
+    {
+      "feature": "Reveal groups",
+      "needle": "function Wc(e)",
+      "char_offset": 360873,
+      "byte_offset": 360873,
+      "line": 115,
+      "excerpt": "reveal]??Vc.up;G.from(e,{...t,opacity:0,duration:zc,delay:parseFloat(e.dataset.revealDelay)||0,ease:Rc,scrollTrigger:{trigger:e,start:Bc,once:!0}})})}function Wc(e){G.utils.toArray(`[data-reveal-group]`,e).forEach(e=>{let t=G.utils.toArray(`:scope > *`,e);t.length&&G.from(t,{y:32,opacity:0,duration:zc,ease:Rc,stagger:parseFloat(e.dataset.revealGroup)||.08,scrollTrigger:{trigger:e,start:Bc,once:!0}})})}function Gc(e){G.utils.toArray(`[data-reveal-lines]`,e).forEach(e=>{let t=G.utils.toArray(`.line`,e);t.length&&G.from(t,{yPercent:110,duration:1.1,ease:Rc,stagger:.12,scrollTrigger:{trigger:e,start:`top 90%`,once:!0}})})}function Kc(e){G.utils.toArray(`[data-parallax]`,e).forEach(e=>{let t=parseFloat(e.dataset.parallax)||40;G.fromTo(e,{yPercent:-t/10},{yPercent:t/10,ease:`none`,scrollTrigger:"
+    },
+    {
+      "feature": "Clipped line reveals",
+      "needle": "function Gc(e)",
+      "char_offset": 361128,
+      "byte_offset": 361128,
+      "line": 115,
+      "excerpt": ";t.length&&G.from(t,{y:32,opacity:0,duration:zc,ease:Rc,stagger:parseFloat(e.dataset.revealGroup)||.08,scrollTrigger:{trigger:e,start:Bc,once:!0}})})}function Gc(e){G.utils.toArray(`[data-reveal-lines]`,e).forEach(e=>{let t=G.utils.toArray(`.line`,e);t.length&&G.from(t,{yPercent:110,duration:1.1,ease:Rc,stagger:.12,scrollTrigger:{trigger:e,start:`top 90%`,once:!0}})})}function Kc(e){G.utils.toArray(`[data-parallax]`,e).forEach(e=>{let t=parseFloat(e.dataset.parallax)||40;G.fromTo(e,{yPercent:-t/10},{yPercent:t/10,ease:`none`,scrollTrigger:{trigger:e.closest(`[data-parallax-frame]`)||e,start:`top bottom`,end:`bottom top`,scrub:!0}})})}var qc=[{label:`Frontend`,items:[`React Native`,`Expo`,`React.js`,`TypeScript`,`JavaScript`,`Expo Router`,`React Navigation`,`Reanimated`,`Gesture Handler`,`T"
+    },
+    {
+      "feature": "Parallax",
+      "needle": "function Kc(e)",
+      "char_offset": 361349,
+      "byte_offset": 361349,
+      "line": 115,
+      "excerpt": " t=G.utils.toArray(`.line`,e);t.length&&G.from(t,{yPercent:110,duration:1.1,ease:Rc,stagger:.12,scrollTrigger:{trigger:e,start:`top 90%`,once:!0}})})}function Kc(e){G.utils.toArray(`[data-parallax]`,e).forEach(e=>{let t=parseFloat(e.dataset.parallax)||40;G.fromTo(e,{yPercent:-t/10},{yPercent:t/10,ease:`none`,scrollTrigger:{trigger:e.closest(`[data-parallax-frame]`)||e,start:`top bottom`,end:`bottom top`,scrub:!0}})})}var qc=[{label:`Frontend`,items:[`React Native`,`Expo`,`React.js`,`TypeScript`,`JavaScript`,`Expo Router`,`React Navigation`,`Reanimated`,`Gesture Handler`,`Tailwind CSS`],copies:2,duration:54},{label:`Backend`,items:[`Firebase`,`Firestore`,`Supabase`,`PostgreSQL`,`Node.js`,`Express.js`,`Python`,`Django`,`REST APIs`],copies:3,duration:46,reverse:!0},{label:`Platform`,items:[`G"
+    },
+    {
+      "feature": "Pinned horizontal projects",
+      "needle": "scrollLeft:i",
+      "char_offset": 392745,
+      "byte_offset": 392771,
+      "line": 115,
+      "excerpt": "),(0,_.useEffect)(()=>{if(!p)return;let n=e.current,r=t.current;if(!n||!r)return;let i=()=>r.scrollWidth-r.clientWidth;if(i()<=0)return;let a=G.to(r,{scrollLeft:i,ease:`none`,scrollTrigger:{trigger:n,start:`top top`,end:()=>`+=${i()}`,pin:!0,scrub:1,onUpdate:e=>u(e.progress),anticipatePin:1,invalidateOnRefresh:!0}}),o=()=>$.refresh(),s=setTimeout(o,300);return window.addEventListener(`load`,o),()=>{clearTimeout(s),window.removeEventListener(`load`,o),a.scrollTrigger?.kill(),a.kill(),G.set(r,{clearProps:`scrollLeft`})}},[p]);let h=(0,_.useCallback)(e=>{let n=t.current;if(!n)return;let r=n.children[Math.max(0,Math.min(n.children.length-1,e))];r&&n.scrollTo({left:r.offsetLeft-n.offsetLeft,behavior:a?`auto`:`smooth`})},[a]),g=(0,_.useRef)({active:!1,startX:0,startScroll:0,moved:0}),v=e=>{if(e."
+    },
+    {
+      "feature": "Magnetic buttons",
+      "needle": "quickTo(e,`x`",
+      "char_offset": 412185,
+      "byte_offset": 412217,
+      "line": 116,
+      "excerpt": "rub:1}}),window.matchMedia(`(pointer: fine)`).matches&&e.querySelectorAll(`[data-magnetic]`).forEach(e=>{let t=parseFloat(e.dataset.magnetic)||.3,n=G.quickTo(e,`x`,{duration:.55,ease:`power3.out`}),i=G.quickTo(e,`y`,{duration:.55,ease:`power3.out`}),a=r=>{let a=e.getBoundingClientRect();n((r.clientX-(a.left+a.width/2))*t),i((r.clientY-(a.top+a.height/2))*t)},o=()=>{n(0),i(0)};e.addEventListener(`pointermove`,a),e.addEventListener(`pointerleave`,o),e.addEventListener(`blur`,o),r.push(()=>{e.removeEventListener(`pointermove`,a),e.removeEventListener(`pointerleave`,o),e.removeEventListener(`blur`,o)})}),()=>r.forEach(e=>e())}),id:`contact`,className:`relative min-h-screen text-white font-sans flex flex-col overflow-hidden [clip-path:inset(0)]`,children:[(0,K.jsx)(`video`,{autoPlay:!0,loop:!0,"
+    },
+    {
+      "feature": "WebGL portrait",
+      "needle": "getContext(`webgl2`",
+      "char_offset": 302734,
+      "byte_offset": 302734,
+      "line": 115,
+      "excerpt": "-motion: reduce)`).matches;s.current=performance.now()/1e3-(e?100:0)}},[r]),(0,_.useEffect)(()=>{let r=o.current,i=n.current;if(!r||!i)return;let a=r.getContext(`webgl2`,{alpha:!0,premultipliedAlpha:!0,antialias:!1}),c=()=>{i.style.visibility=`visible`,r.style.display=`none`};if(!a)return c();let l=!1,u=!1,d=!0,f=0,p=6,m=0,h=e=>{r.dataset.state!==e&&(r.dataset.state=e)};h(`idle`);let g=-1,_=null,v=performance.now()/1e3,y=window.matchMedia(`(prefers-reduced-motion: reduce)`).matches,b=window.matchMedia(`(pointer: fine)`).matches,x;try{if(x=a.createProgram(),a.attachShader(x,Xi(a,a.VERTEX_SHADER,qi)),a.attachShader(x,Xi(a,a.FRAGMENT_SHADER,Ji)),a.linkProgram(x),!a.getProgramParameter(x,a.LINK_STATUS))throw Error(a.getProgramInfoLog(x)??`link`)}catch(e){return console.error(e),c()}a.useProgra"
+    },
+    {
+      "feature": "Canvas game timestep",
+      "needle": "E=1/120",
+      "char_offset": 405148,
+      "byte_offset": 405178,
+      "line": 116,
+      "excerpt": "=Math.sin(e)*a,n.vy=-Math.cos(e)*a,n.y=r.y-i-.5}n.y-i>t.height&&(a?C():(--t.lives,y(t.lives),t.lives<=0?w(`over`):C())),!a&&t.standing===0&&w(`won`)},E=1/120,D=e=>{o=requestAnimationFrame(D);let t=d.current;if(!t)return;let n=t.last?Math.min((e-t.last)/1e3,4*E):0;if(t.last=e,t.phase===`playing`||t.phase===`attract`){t.acc+=n;let e=0;for(;t.acc>=E&&e<4;)T(E),t.acc-=E,e+=1;e===4&&(t.acc=0)}v()},O=()=>f&&h,k=()=>{o||!O()||(d.current&&(d.current.last=0,d.current.acc=0),o=requestAnimationFrame(D))},A=()=>{cancelAnimationFrame(o),o=0};u.current={launch:()=>{let e=d.current;e&&(e.phase!==`playing`&&(b(),e=d.current),e.phase=`playing`,g(`playing`),e.serving&&(e.ball.x=e.paddle.x,e.ball.y=e.paddle.y-e.radius-1,e.serving=!1,e.serveDelay=1/0,e.ball.vx=e.baseSpeed*.35,e.ball.vy=-e.baseSpeed),k())},mov"
+    },
+    {
+      "feature": "Pause offscreen",
+      "needle": "visibilitychange`,N",
+      "char_offset": 406371,
+      "byte_offset": 406401,
+      "line": 116,
+      "excerpt": "rsecting,O()?k():A()},{threshold:.01});ee.observe(e);let N=()=>{f=document.visibilityState===`visible`,O()?k():A()};return document.addEventListener(`visibilitychange`,N),()=>{A(),clearTimeout(j),M.disconnect(),ee.disconnect(),document.removeEventListener(`visibilitychange`,N),u.current=null}},[f,n,r,i]);let b=(0,_.useCallback)(()=>d.current?.phase===`attract`?(u.current?.launch(),!0):!1,[]),x=(0,_.useCallback)(e=>{let t=c.current;t&&(b(),u.current?.movePaddleTo(e.clientX-t.getBoundingClientRect().left))},[b]),S=(0,_.useCallback)(e=>{let t=(d.current?.cell??8)*4;e.key===`ArrowLeft`?(b(),u.current?.nudgePaddle(-t),e.preventDefault()):e.key===`ArrowRight`?(b(),u.current?.nudgePaddle(t),e.preventDefault()):(e.key===` `||e.key===`Enter`)&&(u.current?.launch(),e.preventDefault())},[b]),C=h===`w"
+    },
+    {
+      "feature": "Reduced motion",
+      "needle": "window.matchMedia(`(prefers-reduced-motion: reduce)`)",
+      "char_offset": 291493,
+      "byte_offset": 291493,
+      "line": 9,
+      "excerpt": "a.actualBoundingBoxAscent+a.actualBoundingBoxDescent}}catch{return null}},Bi=()=>typeof window<`u`&&window.matchMedia(`(prefers-reduced-motion: reduce)`).matches,Vi=({word:e,pivotIndex:t,className:n=``,letterClassName:r=``,dotClassName:i=`bg-white`,loop:a=!1,speed:o=1,onComplete:s})=>{let c=(0,_.useRef)(null),l=(0,_.useRef)(null),u=(0,_.useRef)(null),d=(0,_.useRef)(null),f=(0,_.useRef)([]),p=(0,_.useRef)(s);(0,_.useEffect)(()=>{p.current=s},[s]);let[m,h]=(0,_.useState)(0),g=(0,_.useMemo)(()=>Array.from(e),[e]),v=(0,_.useMemo)(()=>{if(Number.isInteger(t)&&g[t]?.trim())return t;let e=g.findIndex"
+    }
+  ]
+}

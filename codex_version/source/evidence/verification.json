@@ -1,0 +1,91 @@
+[
+  {
+    "width": 1440,
+    "height": 1000,
+    "reducedMotion": false,
+    "passed": true,
+    "checks": [
+      "no horizontal overflow",
+      "portrait loads",
+      "4 real projects",
+      "next/previous controls",
+      "project details",
+      "anchor navigation",
+      "email link",
+      "motion mode",
+      "no page errors"
+    ]
+  },
+  {
+    "width": 390,
+    "height": 844,
+    "reducedMotion": false,
+    "passed": true,
+    "checks": [
+      "no horizontal overflow",
+      "portrait loads",
+      "4 real projects",
+      "next/previous controls",
+      "project details",
+      "anchor navigation",
+      "email link",
+      "motion mode",
+      "no page errors"
+    ]
+  },
+  {
+    "width": 768,
+    "height": 1024,
+    "reducedMotion": false,
+    "passed": true,
+    "checks": [
+      "no horizontal overflow",
+      "portrait loads",
+      "4 real projects",
+      "next/previous controls",
+      "project details",
+      "anchor navigation",
+      "email link",
+      "motion mode",
+      "no page errors"
+    ]
+  },
+  {
+    "width": 1440,
+    "height": 1000,
+    "reducedMotion": true,
+    "passed": true,
+    "checks": [
+      "no horizontal overflow",
+      "portrait loads",
+      "4 real projects",
+      "next/previous controls",
+      "project details",
+      "anchor navigation",
+      "email link",
+      "motion mode",
+      "no page errors"
+    ]
+  },
+  {
+    "width": 320,
+    "height": 740,
+    "reducedMotion": true,
+    "passed": true,
+    "checks": [
+      "no horizontal overflow",
+      "portrait loads",
+      "4 real projects",
+      "next/previous controls",
+      "project details",
+      "anchor navigation",
+      "email link",
+      "motion mode",
+      "no page errors"
+    ]
+  },
+  {
+    "javascriptDisabled": true,
+    "contentVisible": true
+  }
+]

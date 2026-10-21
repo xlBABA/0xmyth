@@ -1,0 +1,1 @@
+import{C as e,w as t}from"./index-C68F1z9D.js";var n=e();function r({value:e,format:r=`int`,className:i}){let a=t[r](e);return(0,n.jsxs)(`span`,{className:i,children:[(0,n.jsx)(`span`,{"data-count":e,"data-format":r,"aria-hidden":!0,className:`tabular-nums`,children:a}),(0,n.jsx)(`span`,{className:`sr-only`,children:a})]})}export{r as t};

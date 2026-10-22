@@ -1,0 +1,158 @@
+/* Mustaqbal AI design tokens. Our own palette, built from ideas in the Rapport / Mender /
+   Halden references (warm glass surfaces, emerald accent, solid colour tiles, accent picker).
+   Light is the default; <html data-theme="dark"> switches, <html data-accent="…"> recolours. */
+
+:root {
+  --font: 'Urbanist', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --serif: 'Instrument Serif', ui-serif, Georgia, serif;
+  --mono: 'Geist Mono', ui-monospace, 'SF Mono', Menlo, Consolas, monospace;
+
+  --fs-2xs: 0.75rem;
+  --fs-xs: 0.8125rem;
+  --fs-sm: 0.875rem;
+  --fs-md: 0.9375rem;
+  --fs-base: 1rem;
+  --fs-lg: 1.0625rem;
+  --fs-xl: 1.125rem;
+
+  --bg: #ece8df;
+  --mesh-a: #f3d2bb;
+  --mesh-b: #c6ded0;
+  --mesh-c: #efe1b6;
+  --glass: #ffffff80;
+  --glass-2: #ffffffb3;
+  --solid: #f7f5f0;
+  --raised: #fdfcf9;
+  --rim: #ffffffc4;
+  --well: #18201d0f;
+  --line: #18201d17;
+  --line-2: #18201d2b;
+  --hatch: #8e958f;
+  --shadow: 0 1px 0 #ffffffb3 inset, 0 24px 48px -30px #3c2f1f47;
+  --shadow-pop: 0 24px 60px -18px #2a1e1452, 0 2px 6px #2a1e1414;
+
+  --text: #16201c;
+  --muted: #5d6561;
+  --faint: #7d8580;
+
+  --primary: #146c54;
+  --primary-2: #0d4c3b;
+  --on-primary: #f6faf8;
+
+  --ink: #16201c;
+  --on-ink: #f8f5ef;
+  --butter: #f0c64a;
+  --on-butter: #16201c;
+  --tomato: #c9471f;
+  --on-tomato: #fbf7f1;
+  --emerald: #146c54;
+  --sky: #3b6fd1;
+  --plum: #7b4fc0;
+  --teal: #12707a;
+  --good: #2b7a52;
+  --warn: #8f5b00;
+  --bad: #c23a2a;
+  --slate: #66706b;
+  --soft: 14%;
+
+  --r-card: 26px;
+  --r-tile: 20px;
+  --r-ctl: 999px;
+  --gap: 16px;
+  --gutter: clamp(16px, 1.8vw, 30px);
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --bg: #0f1412;
+  --mesh-a: #c9471f40;
+  --mesh-b: #146c5470;
+  --mesh-c: #f0c64a17;
+  --glass: #ffffff0c;
+  --glass-2: #ffffff15;
+  --solid: #1a201d;
+  --raised: #222926;
+  --rim: #ffffff12;
+  --well: #ffffff0e;
+  --line: #ffffff14;
+  --line-2: #ffffff29;
+  --hatch: #6d7671;
+  --shadow: 0 1px 0 #ffffff0d inset, 0 24px 48px -30px #000000b3;
+  --shadow-pop: 0 24px 60px -18px #000000b3, 0 0 0 1px #ffffff14;
+
+  --text: #eef1ec;
+  --muted: #a5ada8;
+  --faint: #7f8782;
+
+  --primary: #4fcf9f;
+  --primary-2: #2a9c74;
+  --on-primary: #062419;
+
+  --ink: #eef1ec;
+  --on-ink: #16201c;
+  --butter: #f2cd5c;
+  --tomato: #e8653e;
+  --emerald: #4fcf9f;
+  --sky: #84a9f5;
+  --plum: #b494f0;
+  --teal: #4fb9c4;
+  --good: #6cc79a;
+  --warn: #efb547;
+  --bad: #f08a74;
+  --slate: #a1aaa5;
+  --soft: 20%;
+
+  color-scheme: dark;
+}
+
+/* Accent picker (idea from Halden): only the primary pair changes. */
+:root[data-accent='petrol'] {
+  --primary: #0f6c78;
+  --primary-2: #0a4a52;
+}
+:root[data-accent='indigo'] {
+  --primary: #4549b8;
+  --primary-2: #2f3283;
+}
+:root[data-accent='tomato'] {
+  --primary: #b9431d;
+  --primary-2: #842e13;
+}
+:root[data-theme='dark'][data-accent='petrol'] {
+  --primary: #5cc6d2;
+  --primary-2: #2f8e99;
+  --on-primary: #04252a;
+}
+:root[data-theme='dark'][data-accent='indigo'] {
+  --primary: #9a9ef7;
+  --primary-2: #6a6ee0;
+  --on-primary: #121345;
+}
+:root[data-theme='dark'][data-accent='tomato'] {
+  --primary: #f08a65;
+  --primary-2: #cf5e37;
+  --on-primary: #2e0e03;
+}
+
+/* The 17 official UN SDG colours. */
+:root {
+  --sdg-1: #e5243b;
+  --sdg-2: #dda63a;
+  --sdg-3: #4c9f38;
+  --sdg-4: #c5192d;
+  --sdg-5: #ff3a21;
+  --sdg-6: #26bde2;
+  --sdg-7: #fcc30b;
+  --sdg-8: #a21942;
+  --sdg-9: #fd6925;
+  --sdg-10: #dd1367;
+  --sdg-11: #fd9d24;
+  --sdg-12: #bf8b2e;
+  --sdg-13: #3f7e44;
+  --sdg-14: #0a97d9;
+  --sdg-15: #56c02b;
+  --sdg-16: #00689d;
+  --sdg-17: #19486a;
+}

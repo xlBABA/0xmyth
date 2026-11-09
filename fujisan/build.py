@@ -90,7 +90,7 @@ def img_tag(src, alt, cls, eager=False):
 
 
 def meta_row(it):
-    out = ['<p class="meta">']
+    out = ['<p class="meta"><span class="prices">']
     if it.get("options"):
         parts = []
         for o in it["options"]:
@@ -99,10 +99,14 @@ def meta_row(it):
         out.append('<span class="sep" aria-hidden="true">·</span>'.join(parts))
     else:
         out.append(f'<span class="price"><span class="num">{fmt_price(it["price"])}</span>{RIYAL}</span>')
+    out.append("</span>")
+    facts = ""
     if it.get("pcs"):
-        out.append(f'<span class="pcs">{pcs_label(it["pcs"])}</span>')
+        facts += f'<span class="pcs">{pcs_label(it["pcs"])}</span>'
     if it.get("cal") is not None:
-        out.append(f'<span class="cal"><span dir="ltr" lang="en">{it["cal"]} cal</span></span>')
+        facts += f'<span class="cal"><span dir="ltr" lang="en">{it["cal"]} cal</span></span>'
+    if facts:
+        out.append(f'<span class="facts">{facts}</span>')
     out.append("</p>")
     return "".join(out)
 
@@ -115,10 +119,16 @@ def alt_text(it):
     return f"صورة {it['ar']}"
 
 
+def ph_class(src):
+    """Very wide photos (platters, plates) get a pill-shaped plate instead of a round one."""
+    size = webp_size(ROOT / src)
+    return "ph ph--wide" if size and size[0] / size[1] >= 1.6 else "ph"
+
+
 def item_li(it, hl):
     photo = ""
     if it.get("photo"):
-        photo = f'<div class="ph">{img_tag(it["photo"], alt_text(it), "ph-img")}</div>'
+        photo = f'<div class="{ph_class(it["photo"])}">{img_tag(it["photo"], alt_text(it), "ph-img")}</div>'
     desc = f'<p class="desc"><span dir="ltr" lang="en">{esc(it["desc"])}</span></p>' if it.get("desc") else ""
     return (f'<li class="item{"" if photo else " item--nophoto"}" id="i-{esc(it["id"])}">{photo}<div class="bd">'
             f'<h{hl} class="nm"><span class="ar">{esc(it["ar"])}</span>{badge(it)}</h{hl}>'
@@ -152,7 +162,7 @@ def group_items(items):
 def section_head(sec):
     return (f'<header class="sh"><div class="sh-t"><h2 id="{esc(sec["id"])}-h">'
             f'<span class="sh-ar">{esc(sec["ar"])}</span>'
-            f'<span class="sh-en" dir="ltr" lang="en">{esc(sec["en"])}</span></h2>'
+            f'<span class="sh-en" dir="ltr" lang="en" data-jp="{esc(sec["jp"])}">{esc(sec["en"])}</span></h2>'
             f'<svg class="brush" viewBox="0 0 1120 46" aria-hidden="true"><use href="#brush"/></svg></div>'
             f'<span class="sh-jp" lang="ja" aria-hidden="true">{esc(sec["jp"])}</span></header>')
 
@@ -267,14 +277,14 @@ SPRITE = """<svg class="sprite" width="0" height="0" aria-hidden="true" focusabl
 </defs></svg>"""
 
 PAGE = """<!doctype html>
-<html lang="ar" dir="rtl" data-menu-hash="{hash}">
+<html lang="ar" dir="rtl" class="theme-{theme}{has_sw}" data-menu-hash="{hash}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Fuji San | فوجي سان — المنيو</title>
 <meta name="description" content="{description}">
-<meta name="theme-color" content="#0C0C0C">
-<meta name="color-scheme" content="dark">
+<meta name="theme-color" content="{theme_color}">
+<meta name="color-scheme" content="{theme_scheme}">
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Fuji San | فوجي سان">
 <meta property="og:title" content="Fuji San | فوجي سان — المنيو">
@@ -289,7 +299,7 @@ PAGE = """<!doctype html>
 <link rel="icon" href="img/favicon-32.png" sizes="32x32" type="image/png">
 <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 <link rel="manifest" href="site.webmanifest">
-<link rel="preload" href="fonts/reemkufi-600.woff2" as="font" type="font/woff2" crossorigin>
+<script>{theme_js}</script>
 <style>{css}</style>
 <script src="app.js" defer></script>
 <script type="application/ld+json">{jsonld}</script>
@@ -297,8 +307,9 @@ PAGE = """<!doctype html>
 <body>
 {sprite}
 <div class="sun" aria-hidden="true"></div>
+<div class="wm" lang="ja" aria-hidden="true">富士山</div>
 <a class="skip" href="#menu">تخطَّ إلى المنيو</a>
-<header class="hero">
+{switcher}<header class="hero">
 <div class="hero-in">
 <h1 class="logo">{logo}</h1>
 <p class="tag-ar">{tag_ar}</p>
@@ -330,12 +341,78 @@ def minify_css(css):
     """Strip comments and redundant whitespace; styles.css stays the editable source."""
     css = re.sub(r"/\*.*?\*/", "", css, flags=re.S)
     css = re.sub(r"\s+", " ", css)
-    css = re.sub(r"\s*([{}:;,>])\s*", r"\1", css)
+    css = re.sub(r"\s*([{};,>])\s*", r"\1", css)
+    css = re.sub(r":\s+", ":", css)  # keep the space before ":" (".a :is(.b)" is a descendant selector)
     css = css.replace(";}", "}").replace("</", "<\\/")
     return css.strip()
 
 
+# ---------------------------------------------------------------- themes
+# Everything that differs per theme lives in styles.css (scoped to html.theme-*), including
+# the logo (a CSS background, so only the active theme's file is fetched). HTML/JS only need
+# the browser colours, the heading font to preload and the closing image of each theme.
+THEMES = {
+    "sumi":  {"label": "سومي", "color": "#0C0C0C", "scheme": "dark",  "font": "fonts/reemkufi-600.woff2",
+              "bye": ["img/fuji-sun.webp", 520, 339]},
+    "washi": {"label": "واشي", "color": "#F4EEE3", "scheme": "light", "font": "fonts/amiri-700.woff2",
+              "bye": ["img/fuji-sun-ink.webp", 520, 339]},
+    "ai":    {"label": "آي",   "color": "#13284B", "scheme": "dark",  "font": "fonts/baloo-600-800.woff2",
+              "bye": ["img/emblem-red.svg", 96, 96]},
+}
+STORAGE_KEY = "fujisan-theme"
+
+
+def read_flags():
+    """SHOW_SWITCHER and DEFAULT_THEME are edited at the top of app.js; mirror them here."""
+    js = (ROOT / "app.js").read_text(encoding="utf-8")
+    sw = re.search(r"const\s+SHOW_SWITCHER\s*=\s*(true|false)", js)
+    df = re.search(r"const\s+DEFAULT_THEME\s*=\s*[\"'](\w+)[\"']", js)
+    show = sw.group(1) == "true" if sw else True
+    default = df.group(1) if df and df.group(1) in THEMES else "sumi"
+    return show, default
+
+
+def theme_script(show_sw, default):
+    """Inline <head> script: picks the theme before first paint (URL ?theme= → localStorage →
+    default), sets the <html> class and browser colours and preloads that theme's heading
+    font only. FJ.bye sets the theme's closing image; app.js reuses FJ when switching."""
+    themes = {k: {"color": v["color"], "scheme": v["scheme"], "font": v["font"], "bye": v["bye"]} for k, v in THEMES.items()}
+    js = """(function(d,w){var T=%s,S=%s,K="%s",t=null,r=d.documentElement;
+if(S){try{t=new URLSearchParams(location.search).get("theme")}catch(e){}
+if(!T.hasOwnProperty(t)){try{t=localStorage.getItem(K)}catch(e){t=null}}}
+if(!T.hasOwnProperty(t))t=%s;
+r.className=r.className.replace(/\\btheme-\\w+/,"theme-"+t);
+function meta(){var c=T[w.FJ.theme],a=d.querySelector('meta[name="theme-color"]'),b=d.querySelector('meta[name="color-scheme"]');if(a)a.setAttribute("content",c.color);if(b)b.setAttribute("content",c.scheme)}
+w.FJ={theme:t,T:T,key:K,show:S,meta:meta,
+bye:function(i){var b=T[w.FJ.theme].bye;i.src=b[0];i.width=b[1];i.height=b[2]}};
+try{meta();var l=d.createElement("link");l.rel="preload";l.as="font";l.type="font/woff2";l.crossOrigin="";l.href=T[t].font;d.head.appendChild(l)}catch(e){}
+})(document,window);""" % (json.dumps(themes, ensure_ascii=False, separators=(",", ":")), "true" if show_sw else "false",
+                           STORAGE_KEY, json.dumps(default))
+    return js.replace("\n", "").replace("</", "<\\/")
+
+
+def render_switcher(default):
+    btns = "".join(f'<button type="button" class="tsw-b" data-theme="{k}" aria-pressed="{"true" if k == default else "false"}">'
+                   f'<span class="tsw-sw" aria-hidden="true"></span>{v["label"]}</button>' for k, v in THEMES.items())
+    return (f'<div class="tsw" id="tsw" role="group" aria-labelledby="tsw-t"><p class="tsw-t" id="tsw-t">اختر الثيم</p>'
+            f'<div class="tsw-row">{btns}</div></div>\n')
+
+
+def render_logo():
+    """The logo is a CSS background chosen by the theme class (styles.css), so the browser
+    only ever fetches the active theme's version; role=img + aria-label name the heading."""
+    return '<span class="logo-img" role="img" aria-label="فوجي سان — Fuji San"></span>'
+
+
+def render_bye(default):
+    src, w, h = THEMES[default]["bye"]
+    return (f'<img class="bye-img" alt="" width="{w}" height="{h}" loading="lazy" decoding="async">'
+            f'<script>FJ.bye(document.currentScript.previousElementSibling)</script>'
+            f'<noscript><img class="bye-img" src="{src}" alt="" width="{w}" height="{h}" loading="lazy"></noscript>')
+
+
 def build():
+    show_sw, default = read_flags()
     raw = DATA.read_bytes()
     menu = json.loads(raw.decode("utf-8"))
     r, n = menu["restaurant"], menu["notes"]
@@ -361,15 +438,17 @@ def build():
         og_url=f'<meta property="og:url" content="{esc(site)}/">\n<link rel="canonical" href="{esc(site)}/">\n' if site else "",
         jsonld=json.dumps(jsonld, ensure_ascii=False).replace("</", "<\\/"),
         sprite=SPRITE,
-        logo=img_tag("img/logo.webp", "فوجي سان — Fuji San", "logo-img", eager=True).replace(
-            ' alt=', ' srcset="img/logo-400.webp 400w, img/logo-560.webp 560w, img/logo.webp 720w"'
-                     ' sizes="(min-width: 600px) 420px, 76vw" alt=', 1),
+        theme=default, has_sw=" has-sw" if show_sw else "",
+        theme_color=THEMES[default]["color"], theme_scheme=THEMES[default]["scheme"],
+        theme_js=theme_script(show_sw, default),
+        switcher=render_switcher(default) if show_sw else "",
+        logo=render_logo(),
         css=minify_css((ROOT / "styles.css").read_text(encoding="utf-8")),
         tag_ar=esc(r["tagline"]["ar"]), tag_en=esc(r["tagline"]["en"]), tag_jp=esc(r["tagline"]["jp"]),
         cuisine='<span class="dot" aria-hidden="true">•</span>'.join(f"<span>{esc(c)}</span>" for c in r["cuisine"]),
         nav=render_nav(menu),
         sections=render_sections(menu),
-        fuji_sun=img_tag("img/fuji-sun.webp", "", "bye-img"),
+        fuji_sun=render_bye(default),
         closing_jp=esc(n["closingJp"]), closing_ar=esc(n["closingAr"]), closing_en=esc(n["closingEn"]),
         contact=render_contact(menu),
         allergens=render_allergens(menu),
@@ -378,8 +457,16 @@ def build():
         cal_ar=esc(n["caloriesAr"]), cal_en=esc(n["caloriesEn"]),
     )
     OUT.write_text(page, encoding="utf-8")
+    # home-screen colours follow the default theme
+    mf = ROOT / "site.webmanifest"
+    if mf.exists():
+        m = json.loads(mf.read_text(encoding="utf-8"))
+        if m.get("theme_color") != THEMES[default]["color"]:
+            m["theme_color"] = m["background_color"] = THEMES[default]["color"]
+            mf.write_text(json.dumps(m, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     n_items = sum(1 for s in menu["sections"] for it in s["items"] if "id" in it)
-    print(f"wrote {OUT.name}: {len(page.encode()) / 1024:.1f} KB, {n_items} items, hash {fnv1a(raw)}")
+    print(f"wrote {OUT.name}: {len(page.encode()) / 1024:.1f} KB, {n_items} items, hash {fnv1a(raw)}, "
+          f"default theme {default}, switcher {'on' if show_sw else 'off'}")
 
 
 if __name__ == "__main__":

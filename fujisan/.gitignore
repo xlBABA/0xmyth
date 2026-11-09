@@ -1,0 +1,5 @@
+# source material — keep out of the published site
+*.pdf
+__pycache__/
+*.pyc
+.DS_Store

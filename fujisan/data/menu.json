@@ -1,0 +1,2056 @@
+{
+  "site": {
+    "_note": "Set url to the live address (e.g. https://menu.example.sa) so Open Graph / canonical links are absolute, then re-run build.py",
+    "url": ""
+  },
+  "restaurant": {
+    "ar": "فوجي سان",
+    "en": "Fuji San",
+    "jp": "フジサン",
+    "tagline": {
+      "ar": "من السفح إلى القمة",
+      "en": "From the foothill to the summit",
+      "jp": "麓から頂へ"
+    },
+    "cuisine": [
+      "سوشي",
+      "رامن",
+      "مطبخ ياباني"
+    ]
+  },
+  "contact": {
+    "_note": "Fill these in to activate the buttons. phone: +9665XXXXXXXX, whatsapp: digits only with country code, instagram: handle without @",
+    "phone": "",
+    "whatsapp": "",
+    "instagram": ""
+  },
+  "levels": {
+    "foothill": {
+      "ar": "السفح",
+      "en": "Foothill",
+      "typeAr": "مطبوخ",
+      "typeEn": "Cooked",
+      "jp": "麓",
+      "color": "#CDA868",
+      "fill": 1
+    },
+    "mid": {
+      "ar": "المنتصف",
+      "en": "Mid-Slope",
+      "typeAr": "مبتكر",
+      "typeEn": "Innovative",
+      "jp": "中腹",
+      "color": "#93B4CF",
+      "fill": 2
+    },
+    "summit": {
+      "ar": "القمة",
+      "en": "Summit",
+      "typeAr": "أصلي · نيّء",
+      "typeEn": "Original · Raw",
+      "jp": "頂",
+      "color": "#E0434B",
+      "fill": 3
+    }
+  },
+  "climb": {
+    "beforeSection": "maki",
+    "ar": "رحلتك على الجبل",
+    "en": "Climb the Menu",
+    "textAr": "تدرّج في عالم السوشي من السفح إلى القمة: من المطبوخ، إلى المبتكر، ثم الأصلي (النيّء). كل صنف يحمل علامة مستواه.",
+    "textEn": "Every roll is marked with its level — cooked at the foothill, innovative mid-slope, original raw at the summit."
+  },
+  "notes": {
+    "vatAr": "الأسعار شاملة ضريبة القيمة المضافة ١٥٪",
+    "vatEn": "Prices include 15% VAT",
+    "allergyAr": "قد تحتوي المكونات على مسببات حساسية",
+    "allergyEn": "Ingredients may cause allergies",
+    "caloriesAr": "يحتاج البالغون إلى ٢٠٠٠ سعرة حرارية في المتوسط يومياً، وقد تختلف الاحتياجات الفردية من السعرات الحرارية من شخص لآخر. القيمة الغذائية الإضافية متاحة عند الطلب.",
+    "caloriesEn": "Adults need 2,000 calories per day on average; individual calorie needs may vary. Additional nutritional information available upon request.",
+    "closingJp": "いただきます",
+    "closingAr": "بالهناء والشفاء",
+    "closingEn": "Itadakimasu · Enjoy your meal"
+  },
+  "allergens": [
+    {
+      "ar": "بيض",
+      "en": "Eggs"
+    },
+    {
+      "ar": "حليب ولاكتوز",
+      "en": "Milk / Lactose"
+    },
+    {
+      "ar": "جلوتين",
+      "en": "Gluten"
+    },
+    {
+      "ar": "فول سوداني",
+      "en": "Peanuts"
+    },
+    {
+      "ar": "مكسرات",
+      "en": "Tree nuts"
+    },
+    {
+      "ar": "صويا",
+      "en": "Soya"
+    },
+    {
+      "ar": "سمسم",
+      "en": "Sesame"
+    },
+    {
+      "ar": "أسماك",
+      "en": "Fish"
+    },
+    {
+      "ar": "قشريات",
+      "en": "Crustaceans"
+    },
+    {
+      "ar": "رخويات",
+      "en": "Molluscs"
+    },
+    {
+      "ar": "خردل",
+      "en": "Mustard"
+    },
+    {
+      "ar": "كرفس",
+      "en": "Celery"
+    },
+    {
+      "ar": "ترمس",
+      "en": "Lupin"
+    },
+    {
+      "ar": "كبريتيت",
+      "en": "Sulphites"
+    }
+  ],
+  "sections": [
+    {
+      "id": "new",
+      "ar": "جديد",
+      "nav": "جديد",
+      "en": "New on the Menu",
+      "jp": "新作",
+      "layout": "featured",
+      "items": [
+        {
+          "ref": "shoyu-miso-ramen"
+        },
+        {
+          "ref": "tom-yum-ramen"
+        },
+        {
+          "ref": "truffle-tempura-roll"
+        }
+      ]
+    },
+    {
+      "id": "boxes",
+      "ar": "بوكسات السوشي",
+      "nav": "بوكسات",
+      "en": "Sushi Boxes",
+      "jp": "ボックス",
+      "layout": "featured",
+      "items": [
+        {
+          "id": "chicken-box",
+          "ar": "تشيكن بوكس",
+          "en": "Chicken Box",
+          "desc": "6 crunchy chicken mono · 8 special chicken roll · 4 spicy chicken roll",
+          "price": 85,
+          "pcs": 18,
+          "cal": 4196,
+          "photo": "img/chicken-box.webp",
+          "level": null,
+          "isNew": true
+        },
+        {
+          "id": "cooked-box",
+          "ar": "كوكد بوكس",
+          "en": "Cooked Box",
+          "desc": "6 spicy mono · 4 tempura maki · 4 special dragon · 4 special volcano",
+          "price": 99,
+          "pcs": 18,
+          "cal": 827,
+          "photo": "img/cooked-box.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "original-box",
+          "ar": "اوريجنال بوكس",
+          "en": "Original Box",
+          "desc": "4 Philadelphia · 4 rainbow · 4 Boston · 4 shrimp maki · 4 salmon maki · 4 California maki",
+          "price": 136,
+          "pcs": 24,
+          "cal": 807,
+          "photo": "img/original-box.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "signature-box",
+          "ar": "سجنتشر بوكس",
+          "en": "Signature Box",
+          "desc": "4 dynamite roll · 4 super crunchy · 4 crunchy maki · 4 crunchy salmon · 4 crispy dynamite · 4 tempura maki",
+          "price": 145,
+          "pcs": 24,
+          "cal": 1241,
+          "photo": "img/signature-box.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "california-box",
+          "ar": "كاليفورنيا بوكس",
+          "en": "California Box",
+          "desc": "4 special dragon · 4 pyramids · 4 mango roll · 4 viking · 4 crispy dynamite · 4 crunchy kani · 4 hot cheddar · 4 tempura maki",
+          "price": 185,
+          "pcs": 32,
+          "cal": 1662,
+          "photo": "img/california-box.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "gathering-box",
+          "ar": "قاذرينج بوكس",
+          "en": "Gathering Box",
+          "desc": "4 spicy tempura · 4 crispy dynamite · 4 special dragon · 4 crazy crispy california · 4 tempura maki · 4 super crunchy · 4 crunchy maki · 4 hot cheddar · 4 crunchy kani · 4 ebikani · 4 Boston · 2 shake sushi · 2 ebi sushi",
+          "price": 279,
+          "pcs": 48,
+          "cal": 2320,
+          "photo": "img/gathering-box.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "appetizers",
+      "ar": "مقبلات",
+      "nav": "مقبلات",
+      "en": "Appetizers",
+      "jp": "前菜",
+      "layout": "list",
+      "items": [
+        {
+          "id": "ebi-kunafa",
+          "ar": "إيبي كنافه",
+          "en": "Ebi Kunafa",
+          "desc": "Marinated shrimp, kunafa, sweet chili sauce",
+          "price": 29.5,
+          "pcs": 3,
+          "cal": 343,
+          "photo": "img/ebi-kunafa.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "ebi-tempura",
+          "ar": "ايبي تيمبورا",
+          "en": "Ebi Tempura",
+          "desc": "Prawns",
+          "price": 29.5,
+          "pcs": 3,
+          "cal": 265,
+          "photo": "img/ebi-tempura.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "spring-rolls",
+          "ar": "سبرنج رول",
+          "en": "Spring Rolls",
+          "desc": "Mixed vegetables, sweet chili sauce",
+          "price": 12,
+          "pcs": 2,
+          "cal": 169,
+          "photo": "img/spring-rolls.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "kani-spring-rolls",
+          "ar": "كاني سبرنج رول",
+          "en": "Kani Spring Rolls",
+          "desc": "Crab sticks, Philadelphia cheese, dill, mozzarella cheese",
+          "price": 15,
+          "pcs": 3,
+          "cal": 170,
+          "photo": "img/kani-spring-rolls.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "spicy-edamame",
+          "ar": "سبايسي اديمامي",
+          "en": "Spicy Edamame",
+          "desc": "Edamame, garlic, chili sauce",
+          "price": 19,
+          "pcs": null,
+          "cal": 157,
+          "photo": "img/spicy-edamame.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "edamame-sea-salt",
+          "ar": "اديمامي ملح بحري",
+          "en": "Edamame Sea Salt",
+          "desc": "Edamame, sea salt",
+          "price": 16,
+          "pcs": null,
+          "cal": 132,
+          "photo": "img/edamame-sea-salt.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "crispy-dynamite-calamari",
+          "ar": "كريسبي دايناميت كاليماري",
+          "en": "Crispy Dynamite Calamari",
+          "desc": "Calamari (squid), dynamite mayonnaise sauce, wasabi sauce",
+          "price": 23,
+          "pcs": null,
+          "cal": 330,
+          "photo": "img/crispy-dynamite-calamari.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "crispy-fried-calamari",
+          "ar": "كلماري كريسبي",
+          "en": "Crispy Fried Calamari",
+          "desc": "Fried calamari, vinegar sauce",
+          "price": 24.5,
+          "pcs": null,
+          "cal": 310,
+          "photo": "img/crispy-fried-calamari.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "soup",
+      "ar": "شوربة",
+      "nav": "شوربة",
+      "en": "Soup",
+      "jp": "汁物",
+      "layout": "list",
+      "items": [
+        {
+          "id": "tom-yum-kani-soup",
+          "ar": "شوربة توم يوم كاني",
+          "en": "Tom Yum Kani Soup",
+          "desc": "Onion, chili, mushroom, shrimp, cuttlefish, crab, lemon juice",
+          "price": 29,
+          "pcs": null,
+          "cal": 273,
+          "photo": "img/tom-yum-kani-soup.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "miso-soup",
+          "ar": "شوربة ميسو",
+          "en": "Miso Soup",
+          "desc": "Miso paste, wakame, spring onion, tofu",
+          "price": 22,
+          "pcs": null,
+          "cal": 116,
+          "photo": "img/miso-soup.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "miso-crab-soup",
+          "ar": "شوربة ميسو كراب",
+          "en": "Miso Crab Soup",
+          "desc": "Crabstick, tofu, spring onion, miso paste",
+          "price": 28,
+          "pcs": null,
+          "cal": 157,
+          "photo": "img/miso-crab-soup.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "chicken-cream-soup",
+          "ar": "شوربة الدجاج بالكريمة",
+          "en": "Chicken Cream Soup",
+          "desc": "Chicken, cream, onion",
+          "price": 22,
+          "pcs": null,
+          "cal": 200,
+          "photo": "img/chicken-cream-soup.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "seafood-soup",
+          "ar": "شوربة بحرية",
+          "en": "Seafood Soup",
+          "desc": "Shrimp, calamari, onion, milk, green pepper",
+          "price": 27,
+          "pcs": null,
+          "cal": 127,
+          "photo": "img/seafood-soup.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "ramen",
+      "ar": "أطباق الرامن",
+      "nav": "رامن",
+      "en": "Ramen",
+      "jp": "ラーメン",
+      "layout": "list",
+      "items": [
+        {
+          "id": "shoyu-miso-ramen",
+          "ar": "رامن شويو ميسو",
+          "en": "Shoyu Miso Ramen",
+          "desc": "Shrimp, crab sticks, Japanese ramen, egg, miso, mushrooms, green onion, chili oil, ginger oil",
+          "price": 55,
+          "pcs": null,
+          "cal": 767,
+          "photo": "img/shoyu-miso-ramen.webp",
+          "hero": "img/shoyu-miso-ramen-hero.webp",
+          "level": null,
+          "isNew": true
+        },
+        {
+          "id": "tom-yum-ramen",
+          "ar": "رامن توم يوم",
+          "en": "Tom Yum Ramen",
+          "desc": "Shrimp, squid, crab sticks, black mushrooms, tomato, chili, egg, green onion",
+          "price": 59,
+          "pcs": null,
+          "cal": 752,
+          "photo": "img/tom-yum-ramen.webp",
+          "hero": "img/tom-yum-ramen-hero.webp",
+          "level": null,
+          "isNew": true
+        }
+      ]
+    },
+    {
+      "id": "salad",
+      "ar": "سلطة",
+      "nav": "سلطة",
+      "en": "Salad",
+      "jp": "サラダ",
+      "layout": "list",
+      "items": [
+        {
+          "id": "dynamite-salad",
+          "ar": "سلطة دينمايت",
+          "en": "Dynamite Salad",
+          "desc": "Shrimp, spicy mayo, tobiko, carrot, cabbage",
+          "price": 41,
+          "pcs": null,
+          "cal": 307,
+          "photo": "img/dynamite-salad.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "kani-salad",
+          "ar": "سلطة كاني",
+          "en": "Kani Salad",
+          "desc": "Crabstick, spicy mayo, tobiko, cucumber, lettuce",
+          "price": 39.5,
+          "pcs": null,
+          "cal": 261,
+          "photo": "img/kani-salad.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "goma-salad",
+          "ar": "سلطة جوما",
+          "en": "Goma Salad",
+          "desc": "Red lettuce, sweet corn, edamame, rocket, avocado, crab, shrimp, goma sauce, sesame seeds",
+          "price": 37,
+          "pcs": null,
+          "cal": 242,
+          "photo": "img/goma-salad.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "spicy-salmon-salad",
+          "ar": "سلطة سالمون سبايسي",
+          "en": "Spicy Salmon Salad",
+          "desc": "Fresh salmon, tobiko, spicy mayo, crunchy, lettuce",
+          "price": 45.5,
+          "pcs": null,
+          "cal": 347,
+          "photo": "img/spicy-salmon-salad.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "spicy-tuna-salad",
+          "ar": "سلطة تونا سبايسي",
+          "en": "Spicy Tuna Salad",
+          "desc": "Breaded tuna, tobiko, spicy mayo, crunchy, lettuce",
+          "price": 45,
+          "pcs": null,
+          "cal": 353,
+          "photo": "img/spicy-tuna-salad.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "vegetable-salad",
+          "ar": "سلطة الخضروات",
+          "en": "Vegetable Salad",
+          "desc": "Cucumber, green pepper, carrots, tomato, special sauce, sesame seeds",
+          "price": 20,
+          "pcs": null,
+          "cal": 122,
+          "photo": "img/vegetable-salad.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "wasabi-salad",
+          "ar": "سلطة وسابي",
+          "en": "Wasabi Salad",
+          "desc": "Crabstick, salmon, tuna, shrimp, tobiko, cucumber, carrot, cabbage, wasabi sauce",
+          "price": 49.5,
+          "pcs": null,
+          "cal": 215,
+          "photo": "img/wasabi-salad.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "main",
+      "ar": "أطباق رئيسية",
+      "nav": "أطباق رئيسية",
+      "en": "Main Dishes",
+      "jp": "主菜",
+      "layout": "list",
+      "items": [
+        {
+          "id": "chicken-satay",
+          "ar": "دجاج ساتاي",
+          "en": "Chicken Satay",
+          "desc": "Chicken breast, peanut butter, lemon, curry powder, soy sauce",
+          "price": 34,
+          "pcs": null,
+          "cal": 690,
+          "photo": "img/chicken-satay.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "chicken-donburi",
+          "ar": "دجاج دنبوري",
+          "en": "Chicken Donburi",
+          "desc": "Breaded chicken, onion, egg, soy sauce, green onion, white rice",
+          "price": 35,
+          "pcs": null,
+          "cal": 611,
+          "photo": "img/chicken-donburi.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "beef-katsudon",
+          "ar": "لحم كاتسودون",
+          "en": "Beef Katsudon",
+          "desc": "Breaded beef, onion, egg, soy sauce, green onion, white rice",
+          "price": 39,
+          "pcs": null,
+          "cal": 766,
+          "photo": "img/beef-katsudon.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "shrimp-thermidor",
+          "ar": "جمبري ترمدور",
+          "en": "Shrimp Thermidor",
+          "desc": "Shrimp, mushroom, cream",
+          "price": 43,
+          "pcs": null,
+          "cal": 346,
+          "photo": "img/shrimp-thermidor.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "lobster-thermidor",
+          "ar": "استاكوزا ترمدور",
+          "en": "Lobster Thermidor",
+          "desc": "Lobster, mushroom, cream",
+          "price": 50.5,
+          "pcs": null,
+          "cal": 438,
+          "photo": "img/lobster-thermidor.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "katsu-curry",
+          "ar": "كاتسو كاري",
+          "en": "Katsu Curry",
+          "desc": "Breaded chicken, curry sauce, Japanese rice",
+          "price": 38.5,
+          "pcs": null,
+          "cal": 694,
+          "photo": "img/katsu-curry.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "chicken-teppanyaki",
+          "ar": "دجاج تبنياكي",
+          "en": "Chicken Teppanyaki",
+          "desc": "Chicken, carrot, cabbage, green pepper, garlic sauce",
+          "price": 34,
+          "pcs": null,
+          "cal": 522,
+          "photo": "img/chicken-teppanyaki.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "beef-teppanyaki",
+          "ar": "لحم تبنياكي",
+          "en": "Beef Teppanyaki",
+          "desc": "Beef, carrot, cabbage, green pepper, garlic sauce",
+          "price": 49,
+          "pcs": null,
+          "cal": 653,
+          "photo": "img/beef-teppanyaki.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "shrimp-teppanyaki",
+          "ar": "جمبري تبنياكي",
+          "en": "Shrimp Teppanyaki",
+          "desc": "Shrimp, carrot, cabbage, green pepper, lemon sauce",
+          "price": 57,
+          "pcs": null,
+          "cal": 353,
+          "photo": "img/shrimp-teppanyaki.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "salmon-teppanyaki",
+          "ar": "سالمون تبنياكي",
+          "en": "Salmon Teppanyaki",
+          "desc": "Salmon, carrot, cabbage, green pepper, lemon sauce",
+          "price": 55,
+          "pcs": null,
+          "cal": 407,
+          "photo": "img/salmon-teppanyaki.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "chicken-teriyaki",
+          "ar": "دجاج تيرياكي",
+          "en": "Chicken Teriyaki",
+          "desc": "Grilled chicken legs with teriyaki sauce",
+          "price": 32,
+          "pcs": null,
+          "cal": 393,
+          "photo": "img/chicken-teriyaki.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "tenderloin-beef-teriyaki",
+          "ar": "لحم تيرياكي",
+          "en": "Tenderloin Beef Teriyaki",
+          "desc": "Broiled prime shell steak, teriyaki sauce, sesame seeds",
+          "price": 49,
+          "pcs": null,
+          "cal": 672,
+          "photo": "img/tenderloin-beef-teriyaki.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "rice-noodles",
+      "ar": "أرز ونودلز",
+      "nav": "أرز ونودلز",
+      "en": "Rice & Noodles",
+      "jp": "ご飯・麺",
+      "layout": "list",
+      "items": [
+        {
+          "id": "steamed-rice",
+          "ar": "أرز بالبخار",
+          "en": "Steamed Rice",
+          "desc": "Rice",
+          "price": 12,
+          "pcs": null,
+          "cal": 369,
+          "photo": "img/steamed-rice.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "garlic-rice",
+          "ar": "أرز بالثوم",
+          "en": "Garlic Rice",
+          "desc": "",
+          "price": 17,
+          "pcs": null,
+          "cal": 334,
+          "photo": "img/garlic-rice.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "vegetable-rice",
+          "ar": "أرز بالخضار",
+          "en": "Vegetable Rice",
+          "desc": "Mixed vegetables, rice",
+          "price": 18,
+          "pcs": null,
+          "cal": 380,
+          "photo": "img/vegetable-rice.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "seafood-yaki-udon",
+          "ar": "ياكي اودن بالمأكولات البحرية",
+          "en": "Seafood Yaki Udon",
+          "desc": "Fried noodles, vegetables, seafood",
+          "price": 39.5,
+          "pcs": null,
+          "cal": 336,
+          "photo": "img/seafood-yaki-udon.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "chicken-yaki-udon",
+          "ar": "ياكي اودن بالدجاج",
+          "en": "Chicken Yaki Udon",
+          "desc": "Fried noodles, vegetables, chicken",
+          "price": 34,
+          "pcs": null,
+          "cal": 414,
+          "photo": "img/chicken-yaki-udon.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "vegetable-yaki-udon",
+          "ar": "ياكي اودن بالخضار",
+          "en": "Vegetable Yaki Udon",
+          "desc": "Fried noodles, vegetables",
+          "price": 24,
+          "pcs": null,
+          "cal": 293,
+          "photo": "img/vegetable-yaki-udon.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "chicken-roll",
+      "ar": "تشيكن رول",
+      "nav": "تشيكن رول",
+      "en": "Chicken Roll",
+      "jp": "チキンロール",
+      "layout": "list",
+      "items": [
+        {
+          "id": "crunchy-chicken-mono",
+          "ar": "كرنشي تشيكن مونو",
+          "en": "Crunchy Chicken Mono",
+          "desc": "Crispy chicken, Philadelphia, spicy mayo, teriyaki sauce, rice",
+          "price": 29,
+          "pcs": 6,
+          "cal": 288,
+          "photo": "img/crunchy-chicken-mono.webp",
+          "level": "foothill",
+          "isNew": true
+        },
+        {
+          "id": "special-chicken-roll",
+          "ar": "سبيشل تشيكن رول",
+          "en": "Special Chicken Roll",
+          "desc": "Crispy chicken, sesame seeds, cucumber, avocado, spicy mayo, teriyaki sauce, rice",
+          "price": 26,
+          "pcs": 4,
+          "cal": 230,
+          "photo": "img/special-chicken-roll.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "spicy-chicken-roll",
+          "ar": "سبايسي تشيكن رول",
+          "en": "Spicy Chicken Roll",
+          "desc": "Crispy chicken, Philadelphia, spicy mayo, teriyaki sauce, crunchy potato, rice",
+          "price": 27,
+          "pcs": 4,
+          "cal": 247,
+          "photo": "img/spicy-chicken-roll.webp",
+          "level": "foothill",
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "maki",
+      "ar": "ماكي",
+      "nav": "ماكي",
+      "en": "Maki Rolls",
+      "jp": "巻き寿司",
+      "layout": "list",
+      "items": [
+        {
+          "id": "truffle-tempura-roll",
+          "ar": "تمبورا بالترافل رول",
+          "en": "Truffle Tempura Roll",
+          "desc": "Shrimp tempura roll, truffle mayo, avocado, sushi rice",
+          "price": 39,
+          "pcs": 4,
+          "cal": 357,
+          "photo": "img/truffle-tempura-roll.webp",
+          "hero": "img/truffle-tempura-roll-hero.webp",
+          "level": "foothill",
+          "isNew": true
+        },
+        {
+          "id": "spicy-lady",
+          "ar": "سبايسي ليدي",
+          "en": "Spicy Lady",
+          "desc": "Shrimp tempura, crab stick, spicy mayo, avocado, rice",
+          "price": 36.5,
+          "pcs": 4,
+          "cal": 224,
+          "photo": "img/spicy-lady.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "super-crunchy",
+          "ar": "سوبر كرانشي",
+          "en": "Super Crunchy",
+          "desc": "Shrimp tempura, tobiko, crunchy potato, spicy mayo, rice",
+          "price": 39.5,
+          "pcs": 4,
+          "cal": 229,
+          "photo": "img/super-crunchy.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "tempura-maki",
+          "ar": "تمبورا ماكي",
+          "en": "Tempura Maki",
+          "desc": "Shrimp tempura, avocado, cucumber, sesame seeds, teriyaki sauce, rice",
+          "price": 28,
+          "pcs": 4,
+          "cal": 199,
+          "photo": "img/tempura-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "butterfly-roll",
+          "ar": "بترفلاي رول",
+          "en": "Butterfly Roll",
+          "desc": "Shrimp tempura, Philadelphia, cucumber, unagi, smoked salmon, teriyaki sauce, rice",
+          "price": 39,
+          "pcs": 4,
+          "cal": 217,
+          "photo": "img/butterfly-roll.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "nuts-roll",
+          "ar": "نتس رول",
+          "en": "Nuts Roll",
+          "desc": "Shrimp tempura, crab stick, Philadelphia, nuts, teriyaki sauce, rice",
+          "price": 32,
+          "pcs": 4,
+          "cal": 238,
+          "photo": "img/nuts-roll.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "shaki-teriyaki",
+          "ar": "شاكي ترياكي",
+          "en": "Shaki Teriyaki",
+          "desc": "Shrimp tempura, avocado, teriyaki-seared salmon, brown sugar, rice",
+          "price": 28,
+          "pcs": 4,
+          "cal": 145,
+          "photo": "img/shaki-teriyaki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "kunafa-roll",
+          "ar": "كنافه رول",
+          "en": "Kunafa Roll",
+          "desc": "Shrimp tempura, fresh salmon, Philadelphia, kunafa, teriyaki sauce, rice",
+          "price": 29.5,
+          "pcs": 4,
+          "cal": 184,
+          "photo": "img/kunafa-roll.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "pyramids",
+          "ar": "بيراميدز",
+          "en": "Pyramids",
+          "desc": "Shrimp tempura, fresh salmon, avocado, Philadelphia, crunchy, sesame seeds, spicy mayo, rice",
+          "price": 29.5,
+          "pcs": 4,
+          "cal": 215,
+          "photo": "img/pyramids.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "crazy-crispy-california",
+          "ar": "كريزي كرسبي كاليفورنيا",
+          "en": "Crazy Crispy California",
+          "desc": "Crab stick, avocado, cucumber, tobiko, crunchy, Japanese mayo, rice",
+          "price": 33,
+          "pcs": 4,
+          "cal": 222,
+          "photo": "img/crazy-crispy-california.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "california-maki",
+          "ar": "كاليفورنيا ماكي",
+          "en": "California Maki",
+          "desc": "Crab stick, avocado, cucumber, tobiko, rice",
+          "price": 39.5,
+          "pcs": 4,
+          "cal": 125,
+          "photo": "img/california-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "yasai-maki",
+          "ar": "يساي ماكي",
+          "en": "Yasai Maki",
+          "desc": "Cucumber, carrots, lettuce, sesame seeds, rice",
+          "price": 18,
+          "pcs": 4,
+          "cal": 100,
+          "photo": "img/yasai-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "hawaii-maki",
+          "ar": "هاواي ماكي",
+          "en": "Hawaii Maki",
+          "desc": "Carrots, cucumber, lettuce, green pepper, rice",
+          "price": 20,
+          "pcs": 6,
+          "cal": 85,
+          "photo": "img/hawaii-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "fire-jet",
+          "ar": "فاير جت",
+          "en": "Fire Jet",
+          "desc": "Shrimp tempura, avocado, seared salmon, tobiko, dynamite sauce",
+          "price": 33,
+          "pcs": 4,
+          "cal": 217,
+          "photo": "img/fire-jet.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "crunchy-tuna",
+          "ar": "كرنشي تونا",
+          "en": "Crunchy Tuna",
+          "desc": "Fresh tuna, cucumber, spicy mayo, crunchy, rice",
+          "price": 28,
+          "pcs": 4,
+          "cal": 207,
+          "photo": "img/crunchy-tuna.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "ura-shrimp",
+          "ar": "اورا جمبري",
+          "en": "Ura Shrimp",
+          "desc": "Shrimp, cucumber, lettuce, tobiko, rice",
+          "price": 39.5,
+          "pcs": 4,
+          "cal": 137,
+          "photo": "img/ura-shrimp.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "oishii-ura-maki",
+          "ar": "أويشي اورا ماكي",
+          "en": "Oishii Ura Maki",
+          "desc": "Crab stick, shrimp, tobiko, rice",
+          "price": 40,
+          "pcs": 4,
+          "cal": 139,
+          "photo": "img/oishii-ura-maki.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "full-house",
+          "ar": "فل هاوس",
+          "en": "Full House",
+          "desc": "Shrimp, crab stick, tuna, togarashi, wasabi sauce, rice",
+          "price": 33,
+          "pcs": 4,
+          "cal": 179,
+          "photo": "img/full-house.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "caterpillar",
+          "ar": "كاتربلر",
+          "en": "Caterpillar",
+          "desc": "Unagi, cucumber, avocado",
+          "price": 43,
+          "pcs": 4,
+          "cal": 189,
+          "photo": "img/caterpillar.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "veggie-roll",
+          "ar": "فيجي رول",
+          "en": "Veggie Roll",
+          "desc": "Avocado, mango, lettuce, cucumber, edamame, spicy mayo, cream cheese, rice",
+          "price": 21,
+          "pcs": 4,
+          "cal": 209,
+          "photo": "img/veggie-roll.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "salmon-furai",
+          "ar": "سالمون فوراي",
+          "en": "Salmon Furai",
+          "desc": "Breaded salmon, lettuce, avocado, crunchy, sesame sauce, green onion",
+          "price": 31,
+          "pcs": 4,
+          "cal": 175,
+          "photo": "img/salmon-furai.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "spider",
+          "ar": "سبايدر",
+          "en": "Spider",
+          "desc": "Breaded salmon, shrimp, teriyaki sauce, seeds, rice",
+          "price": 30.5,
+          "pcs": 4,
+          "cal": 175,
+          "photo": "img/spider.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "mango-roll",
+          "ar": "مانجو رول",
+          "en": "Mango Roll",
+          "desc": "Crab stick, pineapple, mango, teriyaki sauce, sesame seeds, rice",
+          "price": 28,
+          "pcs": 4,
+          "cal": 127,
+          "photo": "img/mango-roll.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "crunchy-maki",
+          "ar": "كرانشي ماكي",
+          "en": "Crunchy Maki",
+          "desc": "Crab stick, avocado, crunchy, tobiko, Japanese mayo, rice",
+          "price": 32.5,
+          "pcs": 4,
+          "cal": 221,
+          "photo": "img/crunchy-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "salmon-tobiko-roll",
+          "ar": "سالمون توبيكو رول",
+          "en": "Salmon Tobiko Roll",
+          "desc": "Salmon, tuna, crab stick, mango, carrots, cucumber, cream cheese, spicy mayo, sesame seeds, sesame oil, soy sauce, rice",
+          "price": 35,
+          "pcs": 4,
+          "cal": 201,
+          "photo": "img/salmon-tobiko-roll.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "glazed-salmon-roll",
+          "ar": "جليزد سالمون رول",
+          "en": "Glazed Salmon Roll",
+          "desc": "Salmon, avocado, carrots, cucumber, mango, spicy mayo, teriyaki sauce, chili, rice",
+          "price": 31,
+          "pcs": 4,
+          "cal": 186,
+          "photo": "img/glazed-salmon-roll.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "crunchy-salmon",
+          "ar": "كرانشي سالمون",
+          "en": "Crunchy Salmon",
+          "desc": "Fresh salmon, cucumber, crunchy, spicy mayo, rice",
+          "price": 26,
+          "pcs": 4,
+          "cal": 149,
+          "photo": "img/crunchy-salmon.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "orlando-roll",
+          "ar": "اورلاندو رول",
+          "en": "Orlando Roll",
+          "desc": "Crab stick, cucumber, avocado, seared salmon, sesame sauce, rice",
+          "price": 29,
+          "pcs": 4,
+          "cal": 177,
+          "photo": "img/orlando-roll.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "magical-roll",
+          "ar": "ماجيكال رول",
+          "en": "Magical Roll",
+          "desc": "Seared salmon and tuna, shrimp, avocado, lemon mint sauce, nino sauce, rice",
+          "price": 33,
+          "pcs": 4,
+          "cal": 198,
+          "photo": "img/magical-roll.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "salmon-mix",
+          "ar": "سالمون مكس",
+          "en": "Salmon Mix",
+          "desc": "Fresh salmon, shrimp, green onion, Japanese mayo, rice",
+          "price": 32,
+          "pcs": 4,
+          "cal": 174,
+          "photo": "img/salmon-mix.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "philadelphia",
+          "ar": "فلادلفيا",
+          "en": "Philadelphia",
+          "desc": "Fresh salmon, Philadelphia, avocado, rice",
+          "price": 28,
+          "pcs": 4,
+          "cal": 196,
+          "photo": "img/philadelphia.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "crunchy-dragon",
+          "ar": "كرانشي دراجون",
+          "en": "Crunchy Dragon",
+          "desc": "Tuna, unagi, avocado, crunchy, spicy mayo, goma sauce, nino sauce, rice",
+          "price": 39.5,
+          "pcs": 4,
+          "cal": 216,
+          "photo": "img/crunchy-dragon.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "dynamite-roll",
+          "ar": "دايناميت رول",
+          "en": "Dynamite Roll",
+          "desc": "Shrimp tempura, carrot, cucumber, tobiko, spicy mayo, rice",
+          "price": 29,
+          "pcs": 4,
+          "cal": 215,
+          "photo": "img/dynamite-roll.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "crunchy-melt",
+          "ar": "كرانشي ملت",
+          "en": "Crunchy Melt",
+          "desc": "Shrimp tempura, cream cheese, crunchy, mozzarella cheese, spicy mayo",
+          "price": 29,
+          "pcs": 4,
+          "cal": 232,
+          "photo": "img/crunchy-melt.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "hot-cheddar",
+          "ar": "هوت شيدر",
+          "en": "Hot Cheddar",
+          "desc": "Shrimp tempura, avocado, smoked salmon, cheddar, Philadelphia, teriyaki sauce, rice",
+          "price": 30.5,
+          "pcs": 4,
+          "cal": 203,
+          "photo": "img/hot-cheddar.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "special-dragon",
+          "ar": "سبيشل دراجون",
+          "en": "Special Dragon",
+          "desc": "Shrimp tempura, smoked salmon, spicy mayo, teriyaki sauce, tobiko, crunchy, green onion, rice",
+          "price": 34,
+          "pcs": 4,
+          "cal": 267,
+          "photo": "img/special-dragon.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "spicy-tempura",
+          "ar": "سبايسي تمبورا",
+          "en": "Spicy Tempura",
+          "desc": "Shrimp tempura, lettuce, cheddar, spicy mayo, rice",
+          "price": 28.5,
+          "pcs": 4,
+          "cal": 180,
+          "photo": "img/spicy-tempura.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "boston",
+          "ar": "بوسطن",
+          "en": "Boston",
+          "desc": "Fresh salmon, cucumber, avocado, dill, lemon mint sauce, rice",
+          "price": 26,
+          "pcs": 4,
+          "cal": 155,
+          "photo": "img/boston.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "special-volcano",
+          "ar": "سبيشل فولكينو",
+          "en": "Special Volcano",
+          "desc": "Fresh salmon, Philadelphia, tobiko, green onion, spicy mayo, crunchy, teriyaki sauce, rice",
+          "price": 33,
+          "pcs": 4,
+          "cal": 189,
+          "photo": "img/special-volcano.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "samurai-roll",
+          "ar": "ساموراي رول",
+          "en": "Samurai Roll",
+          "desc": "Shrimp, crab stick, avocado, crunchy, tobiko, marinated salmon, rice",
+          "price": 39.5,
+          "pcs": 4,
+          "cal": 190,
+          "photo": "img/samurai-roll.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "tempura-mix",
+          "ar": "تمبورا مكس",
+          "en": "Tempura Mix",
+          "desc": "Shrimp tempura, spicy tuna, avocado, cucumber, dynamite sauce",
+          "price": 36,
+          "pcs": 4,
+          "cal": 224,
+          "photo": "img/tempura-mix.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "snabi",
+          "ar": "سنابي",
+          "en": "Snabi",
+          "desc": "Shrimp tempura, Philadelphia cheese, spring roll, teriyaki sauce, sesame seeds, rice",
+          "price": 33,
+          "pcs": 4,
+          "cal": 170,
+          "photo": "img/snabi.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "spicy-mono",
+          "ar": "سبايسي مونو",
+          "en": "Spicy Mono",
+          "desc": "Fresh salmon, Philadelphia, spicy mayo, yuzu sauce, green onion, rice",
+          "price": 33.5,
+          "pcs": 6,
+          "cal": 172,
+          "photo": "img/spicy-mono.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "rainbow",
+          "ar": "راينبو",
+          "en": "Rainbow",
+          "desc": "Crab stick, avocado, cucumber, fresh salmon, tuna, Japanese mayo, rice",
+          "price": 32.5,
+          "pcs": 4,
+          "cal": 139,
+          "photo": "img/rainbow.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "ura-salmon",
+          "ar": "اورا سالمون",
+          "en": "Ura Salmon",
+          "desc": "Fresh salmon, cucumber, lettuce, tobiko, rice",
+          "price": 37.5,
+          "pcs": 4,
+          "cal": 109,
+          "photo": "img/ura-salmon.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "viking",
+          "ar": "فايكنج",
+          "en": "Viking",
+          "desc": "Crab stick, cucumber, avocado, green onion, spicy mayo, rice",
+          "price": 26,
+          "pcs": 4,
+          "cal": 188,
+          "photo": "img/viking.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "ebikani",
+          "ar": "ايبيكاني",
+          "en": "Ebikani",
+          "desc": "Crab stick, cucumber, shrimp, spicy mayo, avocado, rice",
+          "price": 30.5,
+          "pcs": 4,
+          "cal": 187,
+          "photo": "img/ebikani.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "smoked-salmon",
+          "ar": "سموك سالمون",
+          "en": "Smoked Salmon",
+          "desc": "Smoked salmon, sesame seeds, sweet Philadelphia sauce, rice",
+          "price": 32,
+          "pcs": 4,
+          "cal": 161,
+          "photo": "img/smoked-salmon.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "futo-maki",
+          "ar": "فوتو ماكي",
+          "en": "Futo Maki",
+          "desc": "Carrots, cucumber, pineapple, lettuce, rice",
+          "price": 23,
+          "pcs": 6,
+          "cal": 114,
+          "photo": "img/futo-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "kappa-maki",
+          "ar": "كابا ماكي",
+          "en": "Kappa Maki",
+          "desc": "Cucumber, rice",
+          "price": 16,
+          "pcs": 4,
+          "cal": 80,
+          "photo": "img/kappa-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "avocado-maki",
+          "ar": "أفوكادو ماكي",
+          "en": "Avocado Maki",
+          "desc": "Avocado, rice",
+          "price": 18,
+          "pcs": 4,
+          "cal": 116,
+          "photo": "img/avocado-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "crispy-dynamite",
+          "ar": "كريسبي دايناميت",
+          "en": "Crispy Dynamite",
+          "desc": "Crab sticks, shrimp tempura, crunchy, spicy mayo, sushi rice",
+          "price": 29.5,
+          "pcs": 4,
+          "cal": 228,
+          "photo": "img/crispy-dynamite.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "crunchy-kani-roll",
+          "ar": "كرانشي كاني رول",
+          "en": "Crunchy Kani Roll",
+          "desc": "Crab stick, mango, crunchy, cream cheese, spicy mayo, sushi rice",
+          "price": 29,
+          "pcs": 4,
+          "cal": 235,
+          "photo": "img/crunchy-kani-roll.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "special-lobster",
+          "ar": "سبيشل لوبستر",
+          "en": "Special Lobster",
+          "desc": "Crab tempura, breaded lobster, Philadelphia cheese, goma sauce, dynamite sauce",
+          "price": 40,
+          "pcs": 4,
+          "cal": 224,
+          "photo": "img/special-lobster.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "green-lobster",
+          "ar": "جرين لوبستر",
+          "en": "Green Lobster",
+          "desc": "Breaded lobster, avocado, sweet mayonnaise sauce, dynamite sauce",
+          "price": 42,
+          "pcs": 4,
+          "cal": 224,
+          "photo": "img/green-lobster.webp",
+          "level": "foothill",
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "sushi",
+      "ar": "سوشي",
+      "nav": "سوشي",
+      "en": "Sushi",
+      "jp": "握り寿司",
+      "layout": "list",
+      "items": [
+        {
+          "id": "crispy-rice-salmon",
+          "ar": "كريسبي رايز سالمون",
+          "en": "Crispy Rice Salmon",
+          "desc": "Crispy rice, salmon, spicy mayo, garlic chips",
+          "price": 28,
+          "pcs": 4,
+          "cal": 352,
+          "photo": "img/crispy-rice-salmon.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "unagi-sushi",
+          "ar": "أوناجي سوشي",
+          "en": "Unagi Sushi",
+          "desc": "Freshwater eel, rice, nori, teriyaki sauce, sesame seeds",
+          "price": 37,
+          "pcs": 2,
+          "cal": 122,
+          "photo": "img/unagi-sushi.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "shake-sushi",
+          "ar": "شاكي سوشي",
+          "en": "Shake Sushi",
+          "desc": "Fresh salmon, rice",
+          "price": 23,
+          "pcs": 2,
+          "cal": 101,
+          "photo": "img/shake-sushi.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "maguro-sushi",
+          "ar": "ماجورو سوشي",
+          "en": "Maguro Sushi",
+          "desc": "Fresh tuna, rice",
+          "price": 24,
+          "pcs": 2,
+          "cal": 121,
+          "photo": "img/maguro-sushi.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "tempura-sushi",
+          "ar": "تمبورا سوشي",
+          "en": "Tempura Sushi",
+          "desc": "Shrimp tempura, rice, nori",
+          "price": 26.5,
+          "pcs": 2,
+          "cal": 129,
+          "photo": "img/tempura-sushi.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "kani-sushi",
+          "ar": "كاني سوشي",
+          "en": "Kani Sushi",
+          "desc": "Crabstick, rice, nori",
+          "price": 24,
+          "pcs": 2,
+          "cal": 122,
+          "photo": "img/kani-sushi.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "ebi-sushi",
+          "ar": "ايبي سوشي",
+          "en": "Ebi Sushi",
+          "desc": "Shrimp, rice",
+          "price": 25,
+          "pcs": 2,
+          "cal": 101,
+          "photo": "img/ebi-sushi.webp",
+          "level": "foothill",
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "sashimi",
+      "ar": "ساشيمي",
+      "nav": "ساشيمي",
+      "en": "Sashimi",
+      "jp": "刺身",
+      "layout": "list",
+      "items": [
+        {
+          "id": "unagi-sashimi",
+          "ar": "أوناجي ساشيمي",
+          "en": "Unagi Sashimi",
+          "desc": "Cooked freshwater eel, teriyaki sauce, sesame seeds",
+          "price": 39,
+          "pcs": 3,
+          "cal": 176,
+          "photo": "img/unagi-sashimi.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "maguro-sashimi",
+          "ar": "ماجورو ساشيمي",
+          "en": "Maguro Sashimi",
+          "desc": "Sliced raw fresh tuna",
+          "price": 29,
+          "pcs": 3,
+          "cal": 87,
+          "photo": "img/maguro-sashimi.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "shake-sashimi",
+          "ar": "شاكي ساشيمي",
+          "en": "Shake Sashimi",
+          "desc": "Sliced raw fresh salmon",
+          "price": 25,
+          "pcs": 3,
+          "cal": 85,
+          "photo": "img/shake-sashimi.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "ebi-sashimi",
+          "ar": "ايبي ساشيمي",
+          "en": "Ebi Sashimi",
+          "desc": "Boiled shrimp",
+          "price": 24,
+          "pcs": 3,
+          "cal": 101,
+          "photo": "img/ebi-sashimi.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "kani-sashimi",
+          "ar": "كاني ساشيمي",
+          "en": "Kani Sashimi",
+          "desc": "Crabstick",
+          "price": 23,
+          "pcs": 3,
+          "cal": 122,
+          "photo": "img/kani-sashimi.webp",
+          "level": "foothill",
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "hoso-maki",
+      "ar": "هوسو ماكي",
+      "nav": "هوسو ماكي",
+      "en": "Hoso Maki",
+      "jp": "細巻き",
+      "layout": "list",
+      "items": [
+        {
+          "id": "salmon-skin-maki",
+          "ar": "سالمون سكن ماكي",
+          "en": "Salmon Skin Maki",
+          "desc": "Crunchy salmon skin, sesame seeds, teriyaki sauce, rice",
+          "price": 23,
+          "pcs": 4,
+          "cal": 197,
+          "photo": "img/salmon-skin-maki.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "unagi-maki",
+          "ar": "أوناجي ماكي",
+          "en": "Unagi Maki",
+          "desc": "Freshwater eel, sesame seeds, teriyaki sauce, rice",
+          "price": 33,
+          "pcs": 4,
+          "cal": 173,
+          "photo": "img/unagi-maki.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "crab-maki",
+          "ar": "كراب ماكي",
+          "en": "Crab Maki",
+          "desc": "Crab stick, rice",
+          "price": 20,
+          "pcs": 4,
+          "cal": 98,
+          "photo": "img/crab-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "shrimp-maki",
+          "ar": "جمبري ماكي",
+          "en": "Shrimp Maki",
+          "desc": "Boiled shrimp, rice",
+          "price": 23,
+          "pcs": 4,
+          "cal": 95,
+          "photo": "img/shrimp-maki.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "tuna-maki",
+          "ar": "تونا ماكي",
+          "en": "Tuna Maki",
+          "desc": "Fresh tuna, rice",
+          "price": 26,
+          "pcs": 4,
+          "cal": 98,
+          "photo": "img/tuna-maki.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "salmon-tuna-maki",
+          "ar": "سالمون تونا ماكي",
+          "en": "Salmon Tuna Maki",
+          "desc": "Fresh salmon, fresh tuna, avocado, rice",
+          "price": 28,
+          "pcs": 4,
+          "cal": 123,
+          "photo": "img/salmon-tuna-maki.webp",
+          "level": "summit",
+          "isNew": false
+        },
+        {
+          "id": "salmon-maki",
+          "ar": "سالمون ماكي",
+          "en": "Salmon Maki",
+          "desc": "Fresh salmon, rice",
+          "price": 24,
+          "pcs": 4,
+          "cal": 97,
+          "photo": "img/salmon-maki.webp",
+          "level": "summit",
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "maki-bowl",
+      "ar": "ماكي بول",
+      "nav": "ماكي بول",
+      "en": "Maki Bowl",
+      "jp": "丼",
+      "layout": "list",
+      "items": [
+        {
+          "id": "crunchy-chicken",
+          "ar": "كرنشي تشيكن",
+          "en": "Crunchy Chicken",
+          "desc": "Sushi rice, chicken, avocado, crunchy potato, mango, edamame, pickled beetroot, corn, spicy mayo, black & white sesame, yuzu",
+          "price": 44,
+          "pcs": null,
+          "cal": 865,
+          "photo": "img/crunchy-chicken.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "california-boston",
+          "ar": "كاليفورنيا بوسطن",
+          "en": "California Boston",
+          "desc": "Sushi rice, crab mix, salmon, avocado, cucumber, crunchy, tobiko, dill, edamame, lemon mint sauce",
+          "price": 49,
+          "pcs": null,
+          "cal": 708,
+          "photo": "img/california-boston.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "nuts-crunchy",
+          "ar": "نتس كرانشي",
+          "en": "Nuts Crunchy",
+          "desc": "Shrimp, crab mix, sushi rice, Philadelphia, nuts, avocado, edamame, pineapple, crunchy potato, tobiko, spicy mayo, teriyaki sauce",
+          "price": 69,
+          "pcs": null,
+          "cal": 1078,
+          "photo": "img/nuts-crunchy.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "super-kani",
+          "ar": "سوبر كاني",
+          "en": "Super Kani",
+          "desc": "Shrimp, crab mix, sushi rice, corn, avocado, pineapple, cucumber, crunchy potato, tobiko, spicy mayo",
+          "price": 59,
+          "pcs": null,
+          "cal": 858,
+          "photo": "img/super-kani.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "combos",
+      "ar": "كومبوز",
+      "nav": "كومبوز",
+      "en": "Combos",
+      "jp": "盛り合わせ",
+      "layout": "list",
+      "items": [
+        {
+          "id": "special-combination",
+          "ar": "سبيشل كومبو",
+          "en": "Special Combination",
+          "desc": "4 special dragon · 4 caterpillar · 4 crazy crispy california",
+          "price": 94,
+          "pcs": null,
+          "cal": 678,
+          "photo": "img/special-combination.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "vegetarian-combination",
+          "ar": "فيجي كومبو",
+          "en": "Vegetarian Combination",
+          "desc": "4 Hawaii maki · 4 futo maki · 4 yasai maki",
+          "price": 52,
+          "pcs": null,
+          "cal": 294,
+          "photo": "img/vegetarian-combination.webp",
+          "level": "foothill",
+          "isNew": false
+        },
+        {
+          "id": "philadelphia-combination",
+          "ar": "فيلادلفيا كومبو",
+          "en": "Philadelphia Combination",
+          "desc": "4 butterfly maki · 4 crunchy melt · 4 Philadelphia maki",
+          "price": 84,
+          "pcs": null,
+          "cal": 645,
+          "photo": "img/philadelphia-combination.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "spicy-combination",
+          "ar": "سبايسي كومبو",
+          "en": "Spicy Combination",
+          "desc": "4 special volcano · 4 dynamite roll · 4 crunchy spicy tuna",
+          "price": 77,
+          "pcs": null,
+          "cal": 611,
+          "photo": "img/spicy-combination.webp",
+          "level": "mid",
+          "isNew": false
+        },
+        {
+          "id": "classic-combination",
+          "ar": "كلاسيك كومبو",
+          "en": "Classic Combination",
+          "desc": "1 crab nigiri · 1 salmon sushi · 1 tuna sushi · 1 ebi sushi · 2 salmon sashimi · 1 tuna sashimi · 1 ebi sashimi · 4 salmon maki",
+          "price": 85,
+          "pcs": null,
+          "cal": 611,
+          "photo": "img/classic-combination.webp",
+          "level": "summit",
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "drinks",
+      "ar": "المشروبات",
+      "nav": "مشروبات",
+      "en": "Drinks",
+      "jp": "飲み物",
+      "layout": "list",
+      "items": [
+        {
+          "id": "lemon-juice",
+          "ar": "عصير ليمون",
+          "en": "Lemon Juice",
+          "desc": "Fresh lemon juice",
+          "price": 12,
+          "pcs": null,
+          "cal": 186,
+          "photo": "img/lemon-juice.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "lemon-juice-with-mint",
+          "ar": "عصير ليمون مع نعناع",
+          "en": "Lemon Juice with Mint",
+          "desc": "",
+          "price": 14,
+          "pcs": null,
+          "cal": 293,
+          "photo": "img/lemon-juice-with-mint.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "lemon-juice-with-strawberry",
+          "ar": "عصير ليمون مع فراولة",
+          "en": "Lemon Juice with Strawberry",
+          "desc": "",
+          "price": 15,
+          "pcs": null,
+          "cal": 269,
+          "photo": "img/lemon-juice-with-strawberry.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "pina-colada",
+          "ar": "بيناكولادا",
+          "en": "Piña Colada",
+          "desc": "Coconut milk, fresh pineapple, pineapple juice",
+          "price": 15,
+          "pcs": null,
+          "cal": 314,
+          "photo": "img/pina-colada.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "orange-juice",
+          "ar": "عصير برتقال",
+          "en": "Orange Juice",
+          "desc": "Fresh orange",
+          "price": 17,
+          "pcs": null,
+          "cal": 167,
+          "photo": "img/orange-juice.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "saudi-mocktail",
+          "ar": "سعودي موكتيل",
+          "en": "Saudi Mocktail",
+          "desc": "Apple juice, fresh apple, Perrier, fresh orange",
+          "price": 15,
+          "options": [
+            {
+              "ar": "كوب",
+              "en": "Glass",
+              "price": 15
+            },
+            {
+              "ar": "جك",
+              "en": "Jug",
+              "price": 40
+            }
+          ],
+          "pcs": null,
+          "cal": 99,
+          "photo": "img/saudi-mocktail.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "water",
+          "ar": "ماء",
+          "en": "Water",
+          "desc": "",
+          "price": 2,
+          "pcs": null,
+          "cal": 0,
+          "photo": "img/water.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "sparkling-water",
+          "ar": "مياه فوارة",
+          "en": "Sparkling Water",
+          "desc": "",
+          "price": 9,
+          "pcs": null,
+          "cal": 0,
+          "photo": "img/sparkling-water.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "soft-drinks",
+          "ar": "مشروبات غازية",
+          "en": "Soft Drinks",
+          "desc": "",
+          "price": 7,
+          "pcs": null,
+          "cal": 150,
+          "photo": "img/soft-drinks.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "iced-tea",
+          "ar": "شاي مثّلج (ليمون، خوخ)",
+          "en": "Iced Tea",
+          "desc": "Lemon or peach",
+          "price": 8,
+          "pcs": null,
+          "cal": 70,
+          "photo": "img/iced-tea.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    },
+    {
+      "id": "desserts",
+      "ar": "حلويات",
+      "nav": "حلويات",
+      "en": "Dessert",
+      "jp": "甘味",
+      "layout": "list",
+      "items": [
+        {
+          "id": "oreokolata",
+          "ar": "اوريوكولاتا",
+          "en": "Oreokolata",
+          "desc": "Oreo, chocolate, nuts, ice cream",
+          "price": 35,
+          "pcs": null,
+          "cal": 606,
+          "photo": "img/oreokolata.webp",
+          "level": null,
+          "isNew": false
+        },
+        {
+          "id": "broken-heart",
+          "ar": "بروكن هارت",
+          "en": "Broken Heart",
+          "desc": "Cheesecake, blueberry, cherry sauce",
+          "price": 34,
+          "pcs": null,
+          "cal": 566,
+          "photo": "img/broken-heart.webp",
+          "level": null,
+          "isNew": false
+        }
+      ]
+    }
+  ]
+}
